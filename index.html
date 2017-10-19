@@ -323,17 +323,10 @@
       
         
           
-          iCarousel                  卡片切换JSPatch                     js控制oc代码，修复线上bugFoldingTabBar        q版tabbarMMProgressHUD   各种动画的提示框IQKeyboardManager     键盘问题
-Installing AFNetworking (3.1.0)Installing AMTagListView (1.5.0)Installing BaiduMapKit (3.2.1)Installing FDFullscreenPopGesture (1.1)Installing FMDB (2.6.2)Installing FDFullscreenPopGesture (5.2.0)Installing LFLiveKit (1.9.6)Installing LTNavigationBar (2.1.9)Installing MJExtension (3.0.13)Installing MJRefresh (3.1.12)Installing Masonry (1.0.2)Installing ReactiveCocoa (4.1.0)Installing Realm (2.4.3)Installing Result (2.1.3)Installing SDAutoLayout (2.1.7)Installing SDWebImage (4.0.0)Installing SVProgressHUD (2.1.2)Installing UITableView+FDTemplateLayoutCell (1.4)Installing UMengSocialCOM (5.2.1)Installing WebViewJavascriptBridge (6.0.2)Installing YYKit (1.0.9)Installing pop (1.0.9)
+            <p>iCarousel                  卡片切换<br>JSPatch                     js控制oc代码，修复线上bug<br>FoldingTabBar        q版tabbar<br>MMProgressHUD   各种动画的提示框<br>IQKeyboardManager     键盘问题</p>
+<p>Installing AFNetworking (3.1.0)<br>Installing AMTagListView (1.5.0)<br>Installing BaiduMapKit (3.2.1)<br>Installing FDFullscreenPopGesture (1.1)<br>Installing FMDB (2.6.2)<br>Installing FDFullscreenPopGesture (5.2.0)<br>Installing LFLiveKit (1.9.6)<br>Installing LTNavigationBar (2.1.9)<br>Installing MJExtension (3.0.13)<br>Installing MJRefresh (3.1.12)<br>Installing Masonry (1.0.2)<br>Installing ReactiveCocoa (4.1.0)<br>Installing Realm (2.4.3)<br>Installing Result (2.1.3)<br>Installing SDAutoLayout (2.1.7)<br>Installing SDWebImage (4.0.0)<br>Installing SVProgressHUD (2.1.2)<br>Installing UITableView+FDTemplateLayoutCell (1.4)<br>Installing UMengSocialCOM (5.2.1)<br>Installing WebViewJavascriptBridge (6.0.2)<br>Installing YYKit (1.0.9)<br>Installing pop (1.0.9)</p>
 
           
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2017/10/19/🐂👃的第三方库/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
         
       
     </div>
@@ -451,19 +444,16 @@ Installing AFNetworking (3.1.0)Installing AMTagListView (1.5.0)Installing BaiduM
       
         
           
-          两种方式：12- (nullable __kindof UITableViewCell *)dequeueReusableCellWithIdentifier:(NSString *)identifier;  - (__kindof UITableViewCell *)dequeueReusableCellWithIdentifier:(NSString *)identifier forIndexPath:(NSIndexPath *)indexPath NS_AVAILABLE_IOS(6_0);
-那么这两种复用方式有什么区别呢？从第二种方式的注释我们知道它是在iOS6上新增的，而且新增了一个参数indexpath。以前我们用第一种方式得到复用的cell一般是下面这样写的：
-12345678- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath &#123;    static NSString *reuseIdentifier = @&quot;reuseIdentifier&quot;;    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:reuseIdentifier];    if (!cell) &#123;        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:reuseIdentifier];    &#125;    return cell;&#125;
-因为第一种方式的返回值是nullable的，所以它可能为空，我们需要考虑在复用cell为空是创建一个cell。而使用第二种方式则不必考虑为空的情况，但是它也是有前提的，在获取复用cell之前，它必须先注册一个cell，注册的方式有以下两种：
-12- (void)registerNib:(nullable UINib *)nib forCellReuseIdentifier:(NSString *)identifier NS
-          ...
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2017/10/19/UITableViewCell两种复用方式的区别/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
+            <h2 id="两种方式："><a href="#两种方式：" class="headerlink" title="两种方式："></a>两种方式：</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">- (nullable __kindof UITableViewCell *)dequeueReusableCellWithIdentifier:(NSString *)identifier;  </div><div class="line">- (__kindof UITableViewCell *)dequeueReusableCellWithIdentifier:(NSString *)identifier forIndexPath:(NSIndexPath *)indexPath NS_AVAILABLE_IOS(6_0);</div></pre></td></tr></table></figure>
+<p>那么这两种复用方式有什么区别呢？<br>从第二种方式的注释我们知道它是在iOS6上新增的，而且新增了一个参数indexpath。以前我们用第一种方式得到复用的cell一般是下面这样写的：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath &#123;</div><div class="line">    static NSString *reuseIdentifier = @&quot;reuseIdentifier&quot;;</div><div class="line">    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:reuseIdentifier];</div><div class="line">    if (!cell) &#123;</div><div class="line">        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:reuseIdentifier];</div><div class="line">    &#125;</div><div class="line">    return cell;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>因为第一种方式的返回值是nullable的，所以它可能为空，我们需要考虑在复用cell为空是创建一个cell。而使用第二种方式则不必考虑为空的情况，但是它也是有前提的，在获取复用cell之前，它必须先注册一个cell，注册的方式有以下两种：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">- (void)registerNib:(nullable UINib *)nib forCellReuseIdentifier:(NSString *)identifier NS_AVAILABLE_IOS(5_0);</div><div class="line">- (void)registerClass:(nullable Class)cellClass forCellReuseIdentifier:(NSString *)identifier NS_AVAILABLE_IOS(6_0);</div></pre></td></tr></table></figure>
+<ul>
+<li>当我们的cell是通过xib自定义的时候，调用<em>- (void)registerNib:(nullable UINib \</em>)nib forCellReuseIdentifier:(NSString *)identifier<em>注册，通过代码自定义的cell时，就调用</em>- (void)registerClass:(nullable Class)cellClass forCellReuseIdentifier:(NSString *)identifier*注册。</li>
+</ul>
+
+          
         
       
     </div>
@@ -580,25 +570,12 @@ Installing AFNetworking (3.1.0)Installing AMTagListView (1.5.0)Installing BaiduM
 
       
         
-          
-          我们都知道在多人开发时，项目版本控制是非常必要的。好处就是每个人可以同时开发自己的模块，然后统一合入到svn仓库中去，只要我们处理好同时有两个人以上会接触到的文件的冲突问题，这样可以提高开发效率，还有就是使用svn我们把代码分散到服务器和每个人的电脑中，这样可以避免项目被误删恢复不了的问题。
-今天心血来潮就在自己的mac上实践了一下，也是参考着网上的教程一步步配置的，记录在这里也算是对整个流程的一个总结吧。
-首先，mac下是自带svn的服务器端和客户端的，我们不需要安装第三方软件就可以操作它，只不过没有那么直观。
-
-创建代码仓库，用于存储客户端上传的代码根据网上的教程是在终端输入下面的命令创建代码仓库，此时该路径下会多出一些文件。但是在此之前必须确保/Users/ljy/Desktop/svn/mycode已经存在。12345promote:~ ljy$ svnadmin create /Users/ljy/Desktop/svn/mycodepromote:~ ljy$ cd /Users/ljy/Desktop/svn/mycode/promote:mycode ljy$ lsREADME.txt	db		hooksconf		format		locks
-
-
-配置svn用户权限配置svn用户权限涉及到conf文件夹下的三个文件authz、passws、svnserve.conf。123promote:mycode ljy$ cd /Users/ljy/Desktop/svn/mycode/confpromote:conf ljy$ lsauthz		passwd		svnserve.conf
-
-首先打开svnserve.conf文件1234promote:~ ljy$ cd /Users/ljy/Desktop/svn/mycode/confpromote:conf ljy$ lsauthz		passwd		svnserve.confpromote:conf ljy$ vim svnserve.conf
-
-
-将里面所有以一个#开头的行的#和空格删掉(   空格一定要注意 )，###开头的注释不需要处理。
-
-添加用户打开 passed文件，在[users]下面添加用户名和密码，格式为username = password
-配置用户组和权限
-打开author文件，
-          ...
+          <p>我们都知道在多人开发时，项目版本控制是非常必要的。好处就是每个人可以同时开发自己的模块，然后统一合入到svn仓库中去，只要我们处理好同时有两个人以上会接触到的文件的冲突问题，这样可以提高开发效率，还有就是使用svn我们把代码分散到服务器和每个人的电脑中，这样可以避免项目被误删恢复不了的问题。</p>
+<p>今天心血来潮就在自己的mac上实践了一下，也是参考着网上的教程一步步配置的，记录在这里也算是对整个流程的一个总结吧。</p>
+<p>首先，mac下是自带svn的服务器端和客户端的，我们不需要安装第三方软件就可以操作它，只不过没有那么直观。</p>
+<hr>
+<h3 id="创建代码仓库，用于存储客户端上传的代码"><a href="#创建代码仓库，用于存储客户端上传的代码" class="headerlink" title="创建代码仓库，用于存储客户端上传的代码"></a>创建代码仓库，用于存储客户端上传的代码</h3><p>根据网上的教程是在终端输入下面的命令创建代码仓库，此时该路径下会多出一些文件。但是在此之前必须确保/Users/ljy/Desktop/svn/mycode已经存在。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">promote:~ ljy$ svnadmin create /Users/ljy/Desktop/svn/mycode</div><div class="line">promote:~ ljy$ cd /Users/ljy/Desktop/svn/mycode/</div><div class="line">promote:mycode ljy$ ls</div><div class="line">README.txt	db		hooks</div><div class="line">conf		format		locks</div></pre></td></tr></table></figure></p>
+<p><img src="http://upload-images.jianshu.io/upload_images/1605186-bc5963fe9b4dc984.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="目录结构.png"><br>
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/2017/10/19/mac环境下配置本地svn服务器/#more" rel="contents">
@@ -723,24 +700,17 @@ Installing AFNetworking (3.1.0)Installing AMTagListView (1.5.0)Installing BaiduM
       
         
           
-          有时我们在使用UITableView时，每个cell的高度不是定死的，它需要由每个cell里面的内容动态决定。之前我们都是通过计算每个cell里面每个空间的高度之和，然后在1- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath &#123;
-中返回每个index path对应cell的高度。
-通常计算UILabel的高度是使用：1- (CGRect)boundingRectWithSize:(CGSize)size options:(NSStringDrawingOptions)options attributes:(nullable NSDictionary&lt;NSString *, id&gt; *)attributes context:(nullable NSStringDrawingContext *)context NS_AVAILABLE(10_11, 7_0);
-但是在iOS8之后，我们可以使用更简单的方法实现。
-
-首先需要在xib或者SB中给cell中的元素添加top、bottom约束，然后通过设置：12self.tableview.estimatedRowHeight = 100.0;    self.tableview.rowHeight = UITableViewAutomaticDimension;
-
-
-来实现。
+            <p>有时我们在使用UITableView时，每个cell的高度不是定死的，它需要由每个cell里面的内容动态决定。<br>之前我们都是通过计算每个cell里面每个空间的高度之和，然后在<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath &#123;</div></pre></td></tr></table></figure></p>
+<p>中返回每个index path对应cell的高度。</p>
+<p>通常计算UILabel的高度是使用：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">- (CGRect)boundingRectWithSize:(CGSize)size options:(NSStringDrawingOptions)options attributes:(nullable NSDictionary&lt;NSString *, id&gt; *)attributes context:(nullable NSStringDrawingContext *)context NS_AVAILABLE(10_11, 7_0);</div></pre></td></tr></table></figure></p>
+<p>但是在iOS8之后，我们可以使用更简单的方法实现。</p>
+<ol>
+<li>首先需要在xib或者SB中给cell中的元素添加top、bottom约束，然后通过设置：<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">self.tableview.estimatedRowHeight = 100.0;</div><div class="line">    self.tableview.rowHeight = UITableViewAutomaticDimension;</div></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>来实现。</p>
 
           
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2017/10/19/UITableViewCell高度自适应/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
         
       
     </div>
@@ -858,17 +828,10 @@ Installing AFNetworking (3.1.0)Installing AMTagListView (1.5.0)Installing BaiduM
       
         
           
-          autoresizesSubviewsiOS有两大自动布局利器：autoresizing 和 autolayout（autolayout是IOS6以后新增）。autoresizing是UIView的属性，一直存在，使用也比较简单，但是没有autolayout那样强大。如果你的界面比较简单，要求的细节没有那么高，那么你完全可以使用autoresizing去进行自动布局。
-typedef NS_OPTIONS(NSUInteger, UIViewAutoresizing) {    UIViewAutoresizingNone                 = 0,    UIViewAutoresizingFlexibleLeftMargin   = 1 &lt;&lt; 0,    UIViewAutoresizingFlexibleWidth        = 1 &lt;&lt; 1,    UIViewAutoresizingFlexibleRightMargin  = 1 &lt;&lt; 2,    UIViewAutoresizingFlexibleTopMargin    = 1 &lt;&lt; 3,    UIViewAutoresizingFlexibleHeight       = 1 &lt;&lt; 4,    UIViewAutoresizingFlexibleBottomMargin = 1 &lt;&lt; 5};
+            <h2 id="autoresizesSubviews"><a href="#autoresizesSubviews" class="headerlink" title="autoresizesSubviews"></a>autoresizesSubviews</h2><p>iOS有两大自动布局利器：autoresizing 和 autolayout（autolayout是IOS6以后新增）。autoresizing是UIView的属性，一直存在，使用也比较简单，但是没有autolayout那样强大。如果你的界面比较简单，要求的细节没有那么高，那么你完全可以使用autoresizing去进行自动布局。</p>
+<p>typedef NS_OPTIONS(NSUInteger, UIViewAutoresizing) {<br>    UIViewAutoresizingNone                 = 0,<br>    UIViewAutoresizingFlexibleLeftMargin   = 1 &lt;&lt; 0,<br>    UIViewAutoresizingFlexibleWidth        = 1 &lt;&lt; 1,<br>    UIViewAutoresizingFlexibleRightMargin  = 1 &lt;&lt; 2,<br>    UIViewAutoresizingFlexibleTopMargin    = 1 &lt;&lt; 3,<br>    UIViewAutoresizingFlexibleHeight       = 1 &lt;&lt; 4,<br>    UIViewAutoresizingFlexibleBottomMargin = 1 &lt;&lt; 5<br>};</p>
 
           
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2017/10/19/uiview-autoresizesSubviews/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
         
       
     </div>
@@ -986,19 +949,12 @@ typedef NS_OPTIONS(NSUInteger, UIViewAutoresizing) {    UIViewAutoresizingNone  
       
         
           
-          layoutSubviews这个方法，默认没有做任何事情，需要子类进行重写 。 系统在很多时候会去调用这个方法：
-1.初始化不会触发layoutSubviews，但是如果设置了不为CGRectZero的frame的时候就会触发。2.addSubview会触发layoutSubviews3.设置view的Frame会触发layoutSubviews，当然前提是frame的值设置前后发生了变化4.滚动一个UIScrollView会触发layoutSubviews5.旋转Screen会触发父UIView上的layoutSubviews事件6.改变一个UIView大小的时候也会触发父UIView上的layoutSubviews事件
-setNeedsLayout标记为需要重新布局，不立即刷新，但layoutSubviews一定会被调用配合layoutIfNeeded立即更新
-layoutIfNeeded如果，有需要刷新的标记，立即调用layoutSubviews进行布局
+            <h2 id="layoutSubviews"><a href="#layoutSubviews" class="headerlink" title="layoutSubviews"></a>layoutSubviews</h2><p>这个方法，默认没有做任何事情，需要子类进行重写 。 系统在很多时候会去调用这个方法：</p>
+<p>1.初始化不会触发layoutSubviews，但是如果设置了不为CGRectZero的frame的时候就会触发。<br>2.addSubview会触发layoutSubviews<br>3.设置view的Frame会触发layoutSubviews，当然前提是frame的值设置前后发生了变化<br>4.滚动一个UIScrollView会触发layoutSubviews<br>5.旋转Screen会触发父UIView上的layoutSubviews事件<br>6.改变一个UIView大小的时候也会触发父UIView上的layoutSubviews事件</p>
+<h2 id="setNeedsLayout"><a href="#setNeedsLayout" class="headerlink" title="setNeedsLayout"></a>setNeedsLayout</h2><p>标记为需要重新布局，不立即刷新，但layoutSubviews一定会被调用<br>配合layoutIfNeeded立即更新</p>
+<h2 id="layoutIfNeeded"><a href="#layoutIfNeeded" class="headerlink" title="layoutIfNeeded"></a>layoutIfNeeded</h2><p>如果，有需要刷新的标记，立即调用layoutSubviews进行布局</p>
 
           
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2017/10/19/iOS-setNeedsLayout等布局方法/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
         
       
     </div>
@@ -1115,31 +1071,13 @@ layoutIfNeeded如果，有需要刷新的标记，立即调用layoutSubviews进�
 
       
         
-          
-          
-本学习记录参考OpenGL ES应用开发实践 指南iOS卷.pdf
-
-#3D渲染屏幕只有2维，想要在屏幕展示3D的效果，首先我们就需要一些3D效果的数据，然后将这些3D数据通过计算机的计算、渲染转化为2D的数据，从而迷惑人们的眼睛使其产生3D的效果。
-用3D数据生成一个2D图像的过程就是所谓的渲染。计算机中图片是有一个个像素构成的，当你把一张图片放大很多倍后你会发现它是由一个个小方格组成了一张图。每个小方格都有自己的颜色，如果一张图由很少的像素组成的话，就会很模糊、很方。
-OpenGL ES部分运行在cpu上，部分运行在gpu上。OpenGL ES横跨两个处理器之间。CPU负责提供3D数据，将计算好的数据提供给GPU渲染，但是由于计算机对于内存的访问较慢，且数据交换时会阻塞cpu运行。
-#缓存对于上面遇到的问题，OpenGL ES为两者的数据交换定义了缓存的概念。首先cpu将计算的数据放入换乘，然后就可以放弃对缓存的控制去处理其他事务，这是gpu就可以独自占有缓存的控制权。
-#####为缓存提供数据有七个步骤，并附上对应的C语言函数：
-
-生成（Generate）——请求OpenGL ES为缓存生成一个独一无二的缓存标识符。
-1glGenBuffers()
-
-绑定（Bind）——告诉OpenGL ES为接下来的运算使用一个缓存。                       
-1glBindBuffer()
-
-缓存数据（Buffer Data）——让OpenGL ES为当前绑定的缓存分配并初始化足够的连续内存（通常是从cpu控制的内存复制数据到分配的内存）ps.此处有点不明所以                              
-1glBufferData()
-
-启用（Enable）或者禁用（Disable）——告诉OpenGL ES在接下来的渲染中是否使用缓存中的数据
-1glEnableVertexAttribArray()
-
-设置指针（Set Pointers）——告诉OpenGL ES在缓存中的数据类型及所有要访问的数据的内存偏移值.
-123glVertexAttribPointer()```                                                         6. 绘图（Draw）——告诉OpenGL ES使
-          ...
+          <blockquote>
+<p>本学习记录参考OpenGL ES应用开发实践 指南iOS卷.pdf</p>
+</blockquote>
+<p>#3D渲染<br>屏幕只有2维，想要在屏幕展示3D的效果，首先我们就需要一些3D效果的数据，然后将这些3D数据通过计算机的计算、渲染转化为2D的数据，从而迷惑人们的眼睛使其产生3D的效果。</p>
+<p>用3D数据生成一个2D图像的过程就是所谓的渲染。计算机中图片是有一个个像素构成的，当你把一张图片放大很多倍后你会发现它是由一个个小方格组成了一张图。每个小方格都有自己的颜色，如果一张图由很少的像素组成的话，就会很模糊、很方。</p>
+<p>OpenGL ES部分运行在cpu上，部分运行在gpu上。OpenGL ES横跨两个处理器之间。<br>CPU负责提供3D数据，将计算好的数据提供给GPU渲染，但是由于计算机对于内存的访问较慢，且数据交换时会阻塞cpu运行。</p>
+<p>#缓存<br>对于上面遇到的问题，OpenGL ES为两者的数据交换定义了缓存的概念。首先cpu将计算的数据放入换乘，然后就可以放弃对缓存的控制去处理其他事务，这是gpu就可以独自占有缓存的控制权。<br>
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/2017/10/19/OpenGL-ES学习记录/#more" rel="contents">
@@ -1263,14 +1201,10 @@ OpenGL ES部分运行在cpu上，部分运行在gpu上。OpenGL ES横跨两个�
 
       
         
-          
-          #二叉树-你必须要懂！（二叉树相关算法实现-iOS）
-####http://www.cnblogs.com/manji/p/4903990.html原文链接这几天详细了解了下二叉树的相关算法，原因是看了唐boy的一篇博客（你会翻转二叉树吗？），还有一篇关于百度的校园招聘面试经历，深刻体会到二叉树的重要性。于是乎，从网上收集并整理了一些关于二叉树的资料，及相关算法的实现（主要是Objective-C的，但是算法思想是相通的），以便以后复习时查阅。
-##什么是二叉树？在计算机科学中，二叉树是每个节点最多有两个子树的树结构。通常子树被称作“左子树”和“右子树”，左子树和右子树同时也是二叉树。二叉树的子树有左右之分，并且次序不能任意颠倒。二叉树是递归定义的，所以一般二叉树的相关题目也都可以使用递归的思想来解决，当然也有一些可以使用非递归的思想解决，我下面列出的一些算法有些采用了递归，有些是非递归的。
-#什么是二叉排序树？二叉排序树又叫二叉查找树或者二叉搜索树，它首先是一个二叉树，而且必须满足下面的条件：1）若左子树不空，则左子树上所有结点的值均小于它的根节点的值；2）若右子树不空，则右子树上所有结点的值均大于它的根结点的值3）左、右子树也分别为二叉排序树4）没有键值相等的节点（？可能是因为不好处理键值相等的节点到底是左节点还是右节点吧）概念就介绍这么多，都是来自网上，下面主要看算法和具体实现代码。
-#二叉树节点定义采用单项链表的形式，只从根节点指向孩子节点，不保存父节点。12345678910111213141516171819/** *  二叉树节点 */@interface BinaryTreeNode : NSObject/** *  值 */@property (nonatomic, assign) NSInteger value;/** *  左节点 */@property (nonatomic, strong) BinaryTreeNode *leftNode;/** *  右节点 */@property (nonatomic, strong) BinaryTreeNode *rightNode;@end
-#创建二叉排序树二叉树中左右节点值本身没有大小之分，所以如果要创建二叉树，就需要考虑如何处理某个节点是左节点还是右节点，如何终止某个子树而切换到另一个子树。 
-          ...
+          <p>#二叉树-你必须要懂！（二叉树相关算法实现-iOS）</p>
+<p>####<a href="http://www.cnblogs.com/manji/p/4903990.html" target="_blank" rel="external">http://www.cnblogs.com/manji/p/4903990.html原文链接</a><br>这几天详细了解了下二叉树的相关算法，原因是看了唐boy的一篇博客（<a href="http://blog.devtang.com/blog/2015/06/16/talk-about-tech-interview/" target="_blank" rel="external">你会翻转二叉树吗？</a>），还有一篇关于<a href="http://www.cocoachina.com/programmer/20151015/13687.html" target="_blank" rel="external">百度的校园招聘面试经历</a>，深刻体会到二叉树的重要性。于是乎，从网上收集并整理了一些关于二叉树的资料，及相关算法的实现（主要是Objective-C的，但是算法思想是相通的），以便以后复习时查阅。</p>
+<p>##什么是二叉树？<br>在计算机科学中，二叉树是每个节点最多有两个子树的树结构。通常子树被称作“左子树”和“右子树”，左子树和右子树同时也是二叉树。二叉树的子树有左右之分，并且次序不能任意颠倒。二叉树是递归定义的，所以一般二叉树的相关题目也都可以使用递归的思想来解决，当然也有一些可以使用非递归的思想解决，我下面列出的一些算法有些采用了递归，有些是非递归的。</p>
+<p>#什么是二叉排序树？<br>二叉排序树又叫二叉查找树或者二叉搜索树，它首先是一个二叉树，而且必须满足下面的条件：<br>1）若左子树不空，则左子树上所有结点的值均小于它的根节点的值；<br>2）若右子树不空，则右子树上所有结点的值均大于它的根结点的值<br>3）左、右子树也分别为二叉排序树<br>4）没有键值相等的节点（？可能是因为不好处理键值相等的节点到底是左节点还是右节点吧）<br>概念就介绍这么多，都是来自网上，下面主要看算法和具体实现代码。<br>
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/2017/10/18/OC二叉树相关操作/#more" rel="contents">
