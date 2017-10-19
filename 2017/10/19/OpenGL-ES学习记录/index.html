@@ -79,18 +79,18 @@
 
 
 
-<meta name="description" content="本学习记录参考OpenGL ES应用开发实践 指南iOS卷.pdf  #3D渲染屏幕只有2维，想要在屏幕展示3D的效果，首先我们就需要一些3D效果的数据，然后将这些3D数据通过计算机的计算、渲染转化为2D的数据，从而迷惑人们的眼睛使其产生3D的效果。 用3D数据生成一个2D图像的过程就是所谓的渲染。计算机中图片是有一个个像素构成的，当你把一张图片放大很多倍后你会发现它是由一个个小方格组成了一张图">
+<meta name="description" content="本学习记录参考OpenGL ES应用开发实践 指南iOS卷.pdf  3D渲染屏幕只有2维，想要在屏幕展示3D的效果，首先我们就需要一些3D效果的数据，然后将这些3D数据通过计算机的计算、渲染转化为2D的数据，从而迷惑人们的眼睛使其产生3D的效果。 用3D数据生成一个2D图像的过程就是所谓的渲染。计算机中图片是有一个个像素构成的，当你把一张图片放大很多倍后你会发现它是由一个个小方格组成了一张图。">
 <meta name="keywords" content="iOS开发学习">
 <meta property="og:type" content="article">
 <meta property="og:title" content="OpenGL ES学习记录">
 <meta property="og:url" content="http://hanqiu.info/2017/10/19/OpenGL-ES学习记录/index.html">
 <meta property="og:site_name" content="汉秋城">
-<meta property="og:description" content="本学习记录参考OpenGL ES应用开发实践 指南iOS卷.pdf  #3D渲染屏幕只有2维，想要在屏幕展示3D的效果，首先我们就需要一些3D效果的数据，然后将这些3D数据通过计算机的计算、渲染转化为2D的数据，从而迷惑人们的眼睛使其产生3D的效果。 用3D数据生成一个2D图像的过程就是所谓的渲染。计算机中图片是有一个个像素构成的，当你把一张图片放大很多倍后你会发现它是由一个个小方格组成了一张图">
+<meta property="og:description" content="本学习记录参考OpenGL ES应用开发实践 指南iOS卷.pdf  3D渲染屏幕只有2维，想要在屏幕展示3D的效果，首先我们就需要一些3D效果的数据，然后将这些3D数据通过计算机的计算、渲染转化为2D的数据，从而迷惑人们的眼睛使其产生3D的效果。 用3D数据生成一个2D图像的过程就是所谓的渲染。计算机中图片是有一个个像素构成的，当你把一张图片放大很多倍后你会发现它是由一个个小方格组成了一张图。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-10-19T02:44:21.000Z">
+<meta property="og:updated_time" content="2017-10-19T02:55:08.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="OpenGL ES学习记录">
-<meta name="twitter:description" content="本学习记录参考OpenGL ES应用开发实践 指南iOS卷.pdf  #3D渲染屏幕只有2维，想要在屏幕展示3D的效果，首先我们就需要一些3D效果的数据，然后将这些3D数据通过计算机的计算、渲染转化为2D的数据，从而迷惑人们的眼睛使其产生3D的效果。 用3D数据生成一个2D图像的过程就是所谓的渲染。计算机中图片是有一个个像素构成的，当你把一张图片放大很多倍后你会发现它是由一个个小方格组成了一张图">
+<meta name="twitter:description" content="本学习记录参考OpenGL ES应用开发实践 指南iOS卷.pdf  3D渲染屏幕只有2维，想要在屏幕展示3D的效果，首先我们就需要一些3D效果的数据，然后将这些3D数据通过计算机的计算、渲染转化为2D的数据，从而迷惑人们的眼睛使其产生3D的效果。 用3D数据生成一个2D图像的过程就是所谓的渲染。计算机中图片是有一个个像素构成的，当你把一张图片放大很多倍后你会发现它是由一个个小方格组成了一张图。">
 
 
 
@@ -333,12 +333,11 @@
         <blockquote>
 <p>本学习记录参考OpenGL ES应用开发实践 指南iOS卷.pdf</p>
 </blockquote>
-<p>#3D渲染<br>屏幕只有2维，想要在屏幕展示3D的效果，首先我们就需要一些3D效果的数据，然后将这些3D数据通过计算机的计算、渲染转化为2D的数据，从而迷惑人们的眼睛使其产生3D的效果。</p>
+<h1 id="3D渲染"><a href="#3D渲染" class="headerlink" title="3D渲染"></a>3D渲染</h1><p>屏幕只有2维，想要在屏幕展示3D的效果，首先我们就需要一些3D效果的数据，然后将这些3D数据通过计算机的计算、渲染转化为2D的数据，从而迷惑人们的眼睛使其产生3D的效果。</p>
 <p>用3D数据生成一个2D图像的过程就是所谓的渲染。计算机中图片是有一个个像素构成的，当你把一张图片放大很多倍后你会发现它是由一个个小方格组成了一张图。每个小方格都有自己的颜色，如果一张图由很少的像素组成的话，就会很模糊、很方。</p>
 <p>OpenGL ES部分运行在cpu上，部分运行在gpu上。OpenGL ES横跨两个处理器之间。<br>CPU负责提供3D数据，将计算好的数据提供给GPU渲染，但是由于计算机对于内存的访问较慢，且数据交换时会阻塞cpu运行。</p>
-<p>#缓存<br>对于上面遇到的问题，OpenGL ES为两者的数据交换定义了缓存的概念。首先cpu将计算的数据放入换乘，然后就可以放弃对缓存的控制去处理其他事务，这是gpu就可以独自占有缓存的控制权。<br><a id="more"></a></p>
-<p>#####为缓存提供数据有七个步骤，并附上对应的C语言函数：</p>
-<ol>
+<h1 id="缓存"><a href="#缓存" class="headerlink" title="缓存"></a>缓存</h1><p>对于上面遇到的问题，OpenGL ES为两者的数据交换定义了缓存的概念。首先cpu将计算的数据放入换乘，然后就可以放弃对缓存的控制去处理其他事务，这是gpu就可以独自占有缓存的控制权。<br><a id="more"></a></p>
+<h5 id="为缓存提供数据有七个步骤，并附上对应的C语言函数："><a href="#为缓存提供数据有七个步骤，并附上对应的C语言函数：" class="headerlink" title="为缓存提供数据有七个步骤，并附上对应的C语言函数："></a>为缓存提供数据有七个步骤，并附上对应的C语言函数：</h5><ol>
 <li><p>生成（Generate）——请求OpenGL ES为缓存生成一个独一无二的缓存标识符。</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">glGenBuffers()</div></pre></td></tr></table></figure>
 </li>
@@ -357,11 +356,10 @@
 </ol>
 <p>glDrawArrays()<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">7. 删除（Delete）——告诉OpenGL ES删除以前生成的缓存  并释放相关资源。</div></pre></td></tr></table></figure></p>
 <p>glDeleteBuffers()<br>```</p>
-<p>#帧缓存<br>上面渲染出来的数据该放在什么地方？这里就讲到了帧缓存。接受渲染结果的缓冲区叫做帧缓存。程序会像任何其他种类的缓存一样生成、绑定、删除帧缓存。为啥它没有七个步骤呢？原来帧缓存不需要初始化，因为渲染指令会在适当的时候替换缓存中的内容。帧缓存会在被绑定的时候隐式开启，同时OpenGL ES会自动地根据特定平台的硬件配置来设置数据的类型和偏移。</p>
-<p>#OpenGL ES的上下文<br>OpenGL ES是一个状态机，在程序中设置的配置值会被封装到OpenGL ES上下文(context)中。</p>
-<p>#点、线、三角形<br>OpenGL ES使用顶点数据来定义点、线、三角形。OpenGL ES只渲染顶点、线段和三角形。</p>
-<p>#Core Animation</p>
-
+<h1 id="帧缓存"><a href="#帧缓存" class="headerlink" title="帧缓存"></a>帧缓存</h1><p>上面渲染出来的数据该放在什么地方？这里就讲到了帧缓存。接受渲染结果的缓冲区叫做帧缓存。程序会像任何其他种类的缓存一样生成、绑定、删除帧缓存。为啥它没有七个步骤呢？原来帧缓存不需要初始化，因为渲染指令会在适当的时候替换缓存中的内容。帧缓存会在被绑定的时候隐式开启，同时OpenGL ES会自动地根据特定平台的硬件配置来设置数据的类型和偏移。</p>
+<h1 id="OpenGL-ES的上下文"><a href="#OpenGL-ES的上下文" class="headerlink" title="OpenGL ES的上下文"></a>OpenGL ES的上下文</h1><p>OpenGL ES是一个状态机，在程序中设置的配置值会被封装到OpenGL ES上下文(context)中。</p>
+<h1 id="点、线、三角形"><a href="#点、线、三角形" class="headerlink" title="点、线、三角形"></a>点、线、三角形</h1><p>OpenGL ES使用顶点数据来定义点、线、三角形。OpenGL ES只渲染顶点、线段和三角形。</p>
+<h1 id="Core-Animation"><a href="#Core-Animation" class="headerlink" title="Core Animation"></a>Core Animation</h1>
       
     </div>
     
@@ -455,8 +453,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -521,6 +528,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#3D渲染"><span class="nav-number">1.</span> <span class="nav-text">3D渲染</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#缓存"><span class="nav-number">2.</span> <span class="nav-text">缓存</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#为缓存提供数据有七个步骤，并附上对应的C语言函数："><span class="nav-number">2.0.0.0.1.</span> <span class="nav-text">为缓存提供数据有七个步骤，并附上对应的C语言函数：</span></a></li></ol></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#帧缓存"><span class="nav-number">3.</span> <span class="nav-text">帧缓存</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#OpenGL-ES的上下文"><span class="nav-number">4.</span> <span class="nav-text">OpenGL ES的上下文</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#点、线、三角形"><span class="nav-number">5.</span> <span class="nav-text">点、线、三角形</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Core-Animation"><span class="nav-number">6.</span> <span class="nav-text">Core Animation</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
