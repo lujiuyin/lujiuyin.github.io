@@ -79,18 +79,22 @@
 
 
 
-<meta name="description" content="本学习记录参考OpenGL ES应用开发实践 指南iOS卷.pdf  #3D渲染屏幕只有2维，想要在屏幕展示3D的效果，首先我们就需要一些3D效果的数据，然后将这些3D数据通过计算机的计算、渲染转化为2D的数据，从而迷惑人们的眼睛使其产生3D的效果。 用3D数据生成一个2D图像的过程就是所谓的渲染。计算机中图片是有一个个像素构成的，当你把一张图片放大很多倍后你会发现它是由一个个小方格组成了一张图">
+<meta name="description" content="我们都知道在多人开发时，项目版本控制是非常必要的。好处就是每个人可以同时开发自己的模块，然后统一合入到svn仓库中去，只要我们处理好同时有两个人以上会接触到的文件的冲突问题，这样可以提高开发效率，还有就是使用svn我们把代码分散到服务器和每个人的电脑中，这样可以避免项目被误删恢复不了的问题。 今天心血来潮就在自己的mac上实践了一下，也是参考着网上的教程一步步配置的，记录在这里也算是对整个流程的一">
 <meta name="keywords" content="iOS开发学习">
 <meta property="og:type" content="article">
-<meta property="og:title" content="OpenGL ES学习记录">
-<meta property="og:url" content="http://hanqiu.info/2017/10/19/OpenGL-ES学习记录/index.html">
+<meta property="og:title" content="mac环境下配置本地svn服务器">
+<meta property="og:url" content="http://hanqiu.info/2017/10/19/mac环境下配置本地svn服务器/index.html">
 <meta property="og:site_name" content="汉秋城">
-<meta property="og:description" content="本学习记录参考OpenGL ES应用开发实践 指南iOS卷.pdf  #3D渲染屏幕只有2维，想要在屏幕展示3D的效果，首先我们就需要一些3D效果的数据，然后将这些3D数据通过计算机的计算、渲染转化为2D的数据，从而迷惑人们的眼睛使其产生3D的效果。 用3D数据生成一个2D图像的过程就是所谓的渲染。计算机中图片是有一个个像素构成的，当你把一张图片放大很多倍后你会发现它是由一个个小方格组成了一张图">
+<meta property="og:description" content="我们都知道在多人开发时，项目版本控制是非常必要的。好处就是每个人可以同时开发自己的模块，然后统一合入到svn仓库中去，只要我们处理好同时有两个人以上会接触到的文件的冲突问题，这样可以提高开发效率，还有就是使用svn我们把代码分散到服务器和每个人的电脑中，这样可以避免项目被误删恢复不了的问题。 今天心血来潮就在自己的mac上实践了一下，也是参考着网上的教程一步步配置的，记录在这里也算是对整个流程的一">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-10-19T02:16:18.000Z">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1605186-bc5963fe9b4dc984.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1605186-5f8d6ef622673e14.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1605186-feccb359f06de5da.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:updated_time" content="2017-10-19T02:23:02.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="OpenGL ES学习记录">
-<meta name="twitter:description" content="本学习记录参考OpenGL ES应用开发实践 指南iOS卷.pdf  #3D渲染屏幕只有2维，想要在屏幕展示3D的效果，首先我们就需要一些3D效果的数据，然后将这些3D数据通过计算机的计算、渲染转化为2D的数据，从而迷惑人们的眼睛使其产生3D的效果。 用3D数据生成一个2D图像的过程就是所谓的渲染。计算机中图片是有一个个像素构成的，当你把一张图片放大很多倍后你会发现它是由一个个小方格组成了一张图">
+<meta name="twitter:title" content="mac环境下配置本地svn服务器">
+<meta name="twitter:description" content="我们都知道在多人开发时，项目版本控制是非常必要的。好处就是每个人可以同时开发自己的模块，然后统一合入到svn仓库中去，只要我们处理好同时有两个人以上会接触到的文件的冲突问题，这样可以提高开发效率，还有就是使用svn我们把代码分散到服务器和每个人的电脑中，这样可以避免项目被误删恢复不了的问题。 今天心血来潮就在自己的mac上实践了一下，也是参考着网上的教程一步步配置的，记录在这里也算是对整个流程的一">
+<meta name="twitter:image" content="http://upload-images.jianshu.io/upload_images/1605186-bc5963fe9b4dc984.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 
 
 
@@ -120,13 +124,13 @@
 
 
 
-  <link rel="canonical" href="http://hanqiu.info/2017/10/19/OpenGL-ES学习记录/"/>
+  <link rel="canonical" href="http://hanqiu.info/2017/10/19/mac环境下配置本地svn服务器/"/>
 
 
 
 
 
-  <title>OpenGL ES学习记录 | 汉秋城</title>
+  <title>mac环境下配置本地svn服务器 | 汉秋城</title>
   
 
 
@@ -253,7 +257,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://hanqiu.info/2017/10/19/OpenGL-ES学习记录/">
+    <link itemprop="mainEntityOfPage" href="http://hanqiu.info/2017/10/19/mac环境下配置本地svn服务器/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="汉秋">
@@ -270,7 +274,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">OpenGL ES学习记录</h1>
+          <h1 class="post-title" itemprop="name headline">mac环境下配置本地svn服务器</h1>
         
 
         <div class="post-meta">
@@ -282,7 +286,7 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-10-19T10:14:31+08:00">
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-10-19T10:22:35+08:00">
                 2017-10-19
               </time>
             
@@ -320,37 +324,41 @@
       
 
       
-        <blockquote>
-<p>本学习记录参考OpenGL ES应用开发实践 指南iOS卷.pdf</p>
-</blockquote>
-<p>#3D渲染<br>屏幕只有2维，想要在屏幕展示3D的效果，首先我们就需要一些3D效果的数据，然后将这些3D数据通过计算机的计算、渲染转化为2D的数据，从而迷惑人们的眼睛使其产生3D的效果。</p>
-<p>用3D数据生成一个2D图像的过程就是所谓的渲染。计算机中图片是有一个个像素构成的，当你把一张图片放大很多倍后你会发现它是由一个个小方格组成了一张图。每个小方格都有自己的颜色，如果一张图由很少的像素组成的话，就会很模糊、很方。</p>
-<p>OpenGL ES部分运行在cpu上，部分运行在gpu上。OpenGL ES横跨两个处理器之间。<br>CPU负责提供3D数据，将计算好的数据提供给GPU渲染，但是由于计算机对于内存的访问较慢，且数据交换时会阻塞cpu运行。</p>
-<p>#缓存<br>对于上面遇到的问题，OpenGL ES为两者的数据交换定义了缓存的概念。首先cpu将计算的数据放入换乘，然后就可以放弃对缓存的控制去处理其他事务，这是gpu就可以独自占有缓存的控制权。</p>
-<p>#####为缓存提供数据有七个步骤，并附上对应的C语言函数：</p>
+        <p>我们都知道在多人开发时，项目版本控制是非常必要的。好处就是每个人可以同时开发自己的模块，然后统一合入到svn仓库中去，只要我们处理好同时有两个人以上会接触到的文件的冲突问题，这样可以提高开发效率，还有就是使用svn我们把代码分散到服务器和每个人的电脑中，这样可以避免项目被误删恢复不了的问题。</p>
+<p>今天心血来潮就在自己的mac上实践了一下，也是参考着网上的教程一步步配置的，记录在这里也算是对整个流程的一个总结吧。</p>
+<p>首先，mac下是自带svn的服务器端和客户端的，我们不需要安装第三方软件就可以操作它，只不过没有那么直观。</p>
+<hr>
+<h3 id="创建代码仓库，用于存储客户端上传的代码"><a href="#创建代码仓库，用于存储客户端上传的代码" class="headerlink" title="创建代码仓库，用于存储客户端上传的代码"></a>创建代码仓库，用于存储客户端上传的代码</h3><p>根据网上的教程是在终端输入下面的命令创建代码仓库，此时该路径下会多出一些文件。但是在此之前必须确保/Users/ljy/Desktop/svn/mycode已经存在。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">promote:~ ljy$ svnadmin create /Users/ljy/Desktop/svn/mycode</div><div class="line">promote:~ ljy$ cd /Users/ljy/Desktop/svn/mycode/</div><div class="line">promote:mycode ljy$ ls</div><div class="line">README.txt	db		hooks</div><div class="line">conf		format		locks</div></pre></td></tr></table></figure></p>
+<p><img src="http://upload-images.jianshu.io/upload_images/1605186-bc5963fe9b4dc984.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="目录结构.png"></p>
+<hr>
+<h3 id="配置svn用户权限"><a href="#配置svn用户权限" class="headerlink" title="配置svn用户权限"></a>配置svn用户权限</h3><p>配置svn用户权限涉及到conf文件夹下的三个文件authz、passws、svnserve.conf。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">promote:mycode ljy$ cd /Users/ljy/Desktop/svn/mycode/conf</div><div class="line">promote:conf ljy$ ls</div><div class="line">authz		passwd		svnserve.conf</div></pre></td></tr></table></figure></p>
 <ol>
-<li><p>生成（Generate）——请求OpenGL ES为缓存生成一个独一无二的缓存标识符。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">glGenBuffers()</div></pre></td></tr></table></figure>
-</li>
-<li><p>绑定（Bind）——告诉OpenGL ES为接下来的运算使用一个缓存。                       </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">glBindBuffer()</div></pre></td></tr></table></figure>
-</li>
-<li><p>缓存数据（Buffer Data）——让OpenGL ES为当前绑定的缓存分配并初始化足够的连续内存（通常是从cpu控制的内存复制数据到分配的内存）ps.此处有点不明所以                              </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">glBufferData()</div></pre></td></tr></table></figure>
-</li>
-<li><p>启用（Enable）或者禁用（Disable）——告诉OpenGL ES在接下来的渲染中是否使用缓存中的数据</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">glEnableVertexAttribArray()</div></pre></td></tr></table></figure>
-</li>
-<li><p>设置指针（Set Pointers）——告诉OpenGL ES在缓存中的数据类型及所有要访问的数据的内存偏移值.</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">glVertexAttribPointer()</div><div class="line">```                                                         </div><div class="line">6. 绘图（Draw）——告诉OpenGL ES使用当前绑定并启用的缓存数据去渲染整个场景或某个场景中的一部分。</div></pre></td></tr></table></figure>
+<li>首先打开svnserve.conf文件<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">promote:~ ljy$ cd /Users/ljy/Desktop/svn/mycode/conf</div><div class="line">promote:conf ljy$ ls</div><div class="line">authz		passwd		svnserve.conf</div><div class="line">promote:conf ljy$ vim svnserve.conf</div></pre></td></tr></table></figure>
 </li>
 </ol>
-<p>glDrawArrays()<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">7. 删除（Delete）——告诉OpenGL ES删除以前生成的缓存  并释放相关资源。</div></pre></td></tr></table></figure></p>
-<p>glDeleteBuffers()<br>```</p>
-<p>#帧缓存<br>上面渲染出来的数据该放在什么地方？这里就讲到了帧缓存。接受渲染结果的缓冲区叫做帧缓存。程序会像任何其他种类的缓存一样生成、绑定、删除帧缓存。为啥它没有七个步骤呢？原来帧缓存不需要初始化，因为渲染指令会在适当的时候替换缓存中的内容。帧缓存会在被绑定的时候隐式开启，同时OpenGL ES会自动地根据特定平台的硬件配置来设置数据的类型和偏移。</p>
-<p>#OpenGL ES的上下文<br>OpenGL ES是一个状态机，在程序中设置的配置值会被封装到OpenGL ES上下文(context)中。</p>
-<p>#点、线、三角形<br>OpenGL ES使用顶点数据来定义点、线、三角形。OpenGL ES只渲染顶点、线段和三角形。</p>
-<p>#Core Animation</p>
+<p>将里面所有以一个#开头的行的#和空格删掉(  <strong> 空格一定要注意 </strong>)，###开头的注释不需要处理。</p>
+<ol>
+<li>添加用户<br>打开 passed文件，在[users]下面添加用户名和密码，格式为username = password</li>
+<li>配置用户组和权限<ul>
+<li>打开author文件，在[groups]下面添加组名和组内用户名，格式为mygroup = username1, username2</li>
+<li>在[/]下面添加组的权限和用户的权限<br>组的权限格式@mygroup = rw<br>用户的权限格式username1 = rw</li>
+</ul>
+</li>
+</ol>
+<hr>
+<h3 id="启动和关闭svn"><a href="#启动和关闭svn" class="headerlink" title="启动和关闭svn"></a>启动和关闭svn</h3><ul>
+<li><p>启动svn<br>配置完上面的一系列流程之后，终端输入下面的命令启动svn，如果没有提示错误就说明svn启动成功。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">promote:conf ljy$ svnserve -d -r /Users/ljy/Desktop/svn</div></pre></td></tr></table></figure>
+</li>
+<li><p>关闭svn<br>需要关闭svn时，我们打开mac的Finder，在应用程序的实用工具中找到活动监视器，搜索框输入svn就可以找到，然后选中退出进程即可。<br><img src="http://upload-images.jianshu.io/upload_images/1605186-5f8d6ef622673e14.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="关闭svn.png"></p>
+</li>
+</ul>
+<hr>
+<p>至此，我们的svn就配置完毕了。我们可以通过终端命令向svn仓库导入工程以及其他更多操作。可以在网上找到很多教程。</p>
+<p>我是利用了第三方软件Versions来更直观的管理我的工程的。具体操作我去官网查询。</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/1605186-feccb359f06de5da.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="versions.png"></p>
+<hr>
+<p>参考链接<a href="http://blog.csdn.net/lys07962000/article/details/17917467" target="_blank" rel="external">http://blog.csdn.net/lys07962000/article/details/17917467</a></p>
 
       
     </div>
@@ -381,8 +389,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/10/18/OC二叉树相关操作/" rel="next" title="OC二叉树相关操作">
-                <i class="fa fa-chevron-left"></i> OC二叉树相关操作
+              <a href="/2017/10/19/UITableViewCell高度自适应/" rel="next" title="UITableViewCell高度自适应">
+                <i class="fa fa-chevron-left"></i> UITableViewCell高度自适应
               </a>
             
           </div>
@@ -391,8 +399,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2017/10/19/iOS-setNeedsLayout等布局方法/" rel="prev" title="iOS-setNeedsLayout等布局方法">
-                iOS-setNeedsLayout等布局方法 <i class="fa fa-chevron-right"></i>
+              <a href="/2017/10/19/UITableViewCell两种复用方式的区别/" rel="prev" title="UITableViewCell两种复用方式的区别">
+                UITableViewCell两种复用方式的区别 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -445,8 +453,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -511,6 +528,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#创建代码仓库，用于存储客户端上传的代码"><span class="nav-number">1.</span> <span class="nav-text">创建代码仓库，用于存储客户端上传的代码</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#配置svn用户权限"><span class="nav-number">2.</span> <span class="nav-text">配置svn用户权限</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#启动和关闭svn"><span class="nav-number">3.</span> <span class="nav-text">启动和关闭svn</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       

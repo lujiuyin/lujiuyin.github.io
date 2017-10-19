@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="iOS开发学习," />
 
 
 
@@ -79,14 +79,18 @@
 
 
 
-<meta property="og:type" content="website">
-<meta property="og:title" content="汉秋城">
-<meta property="og:url" content="http://hanqiu.info/404/index.html">
+<meta name="description" content="autoresizesSubviewsiOS有两大自动布局利器：autoresizing 和 autolayout（autolayout是IOS6以后新增）。autoresizing是UIView的属性，一直存在，使用也比较简单，但是没有autolayout那样强大。如果你的界面比较简单，要求的细节没有那么高，那么你完全可以使用autoresizing去进行自动布局。 typedef NS_OPT">
+<meta name="keywords" content="iOS开发学习">
+<meta property="og:type" content="article">
+<meta property="og:title" content="uiview autoresizesSubviews">
+<meta property="og:url" content="http://hanqiu.info/2017/10/19/uiview-autoresizesSubviews/index.html">
 <meta property="og:site_name" content="汉秋城">
+<meta property="og:description" content="autoresizesSubviewsiOS有两大自动布局利器：autoresizing 和 autolayout（autolayout是IOS6以后新增）。autoresizing是UIView的属性，一直存在，使用也比较简单，但是没有autolayout那样强大。如果你的界面比较简单，要求的细节没有那么高，那么你完全可以使用autoresizing去进行自动布局。 typedef NS_OPT">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-10-18T09:32:44.000Z">
+<meta property="og:updated_time" content="2017-10-19T02:21:42.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="汉秋城">
+<meta name="twitter:title" content="uiview autoresizesSubviews">
+<meta name="twitter:description" content="autoresizesSubviewsiOS有两大自动布局利器：autoresizing 和 autolayout（autolayout是IOS6以后新增）。autoresizing是UIView的属性，一直存在，使用也比较简单，但是没有autolayout那样强大。如果你的界面比较简单，要求的细节没有那么高，那么你完全可以使用autoresizing去进行自动布局。 typedef NS_OPT">
 
 
 
@@ -116,13 +120,13 @@
 
 
 
-  <link rel="canonical" href="http://hanqiu.info/404/"/>
+  <link rel="canonical" href="http://hanqiu.info/2017/10/19/uiview-autoresizesSubviews/"/>
 
 
 
 
 
-  <title> | 汉秋城</title>
+  <title>uiview autoresizesSubviews | 汉秋城</title>
   
 
 
@@ -237,42 +241,149 @@
 
   <div id="posts" class="posts-expand">
     
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://hanqiu.info/2017/10/19/uiview-autoresizesSubviews/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="汉秋">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="http://oanq2qjpp.bkt.clouddn.com/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="汉秋城">
+    </span>
+
     
-    
-    <div class="post-block page">
       <header class="post-header">
 
-	<h1 class="post-title" itemprop="name headline"></h1>
-
-
-
-</header>
-
-      
-      
-      
-      <div class="post-body">
         
         
-          <!DOCTYPE html>
-<html>
-<head>
-	<script type="text/javascript" src="//qzonestyle.gtimg.cn/qzone/hybrid/app/404/search_children.js" charset="utf-8"></script>
-	<title></title>
-</head>
-<body>
-
-</body>
-</html>
+          <h1 class="post-title" itemprop="name headline">uiview autoresizesSubviews</h1>
         
-      </div>
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-10-19T10:21:22+08:00">
+                2017-10-19
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
       
       
+
+      
+        <h2 id="autoresizesSubviews"><a href="#autoresizesSubviews" class="headerlink" title="autoresizesSubviews"></a>autoresizesSubviews</h2><p>iOS有两大自动布局利器：autoresizing 和 autolayout（autolayout是IOS6以后新增）。autoresizing是UIView的属性，一直存在，使用也比较简单，但是没有autolayout那样强大。如果你的界面比较简单，要求的细节没有那么高，那么你完全可以使用autoresizing去进行自动布局。</p>
+<p>typedef NS_OPTIONS(NSUInteger, UIViewAutoresizing) {<br>    UIViewAutoresizingNone                 = 0,<br>    UIViewAutoresizingFlexibleLeftMargin   = 1 &lt;&lt; 0,<br>    UIViewAutoresizingFlexibleWidth        = 1 &lt;&lt; 1,<br>    UIViewAutoresizingFlexibleRightMargin  = 1 &lt;&lt; 2,<br>    UIViewAutoresizingFlexibleTopMargin    = 1 &lt;&lt; 3,<br>    UIViewAutoresizingFlexibleHeight       = 1 &lt;&lt; 4,<br>    UIViewAutoresizingFlexibleBottomMargin = 1 &lt;&lt; 5<br>};</p>
+
       
     </div>
     
     
     
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/iOS开发学习/" rel="tag"># iOS开发学习</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/10/19/iOS-setNeedsLayout等布局方法/" rel="next" title="iOS-setNeedsLayout等布局方法">
+                <i class="fa fa-chevron-left"></i> iOS-setNeedsLayout等布局方法
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/10/19/UITableViewCell高度自适应/" rel="prev" title="UITableViewCell高度自适应">
+                UITableViewCell高度自适应 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
   </div>
 
 
@@ -305,8 +416,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -371,6 +491,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#autoresizesSubviews"><span class="nav-number">1.</span> <span class="nav-text">autoresizesSubviews</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       

@@ -252,6 +252,780 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://hanqiu.info/2017/10/19/🐂👃的第三方库/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="汉秋">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="http://oanq2qjpp.bkt.clouddn.com/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="汉秋城">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/10/19/🐂👃的第三方库/" itemprop="url">🐂👃的第三方库</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-10-19T10:24:31+08:00">
+                2017-10-19
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>iCarousel                  卡片切换<br>JSPatch                     js控制oc代码，修复线上bug<br>FoldingTabBar        q版tabbar<br>MMProgressHUD   各种动画的提示框<br>IQKeyboardManager     键盘问题</p>
+<p>Installing AFNetworking (3.1.0)<br>Installing AMTagListView (1.5.0)<br>Installing BaiduMapKit (3.2.1)<br>Installing FDFullscreenPopGesture (1.1)<br>Installing FMDB (2.6.2)<br>Installing FDFullscreenPopGesture (5.2.0)<br>Installing LFLiveKit (1.9.6)<br>Installing LTNavigationBar (2.1.9)<br>Installing MJExtension (3.0.13)<br>Installing MJRefresh (3.1.12)<br>Installing Masonry (1.0.2)<br>Installing ReactiveCocoa (4.1.0)<br>Installing Realm (2.4.3)<br>Installing Result (2.1.3)<br>Installing SDAutoLayout (2.1.7)<br>Installing SDWebImage (4.0.0)<br>Installing SVProgressHUD (2.1.2)<br>Installing UITableView+FDTemplateLayoutCell (1.4)<br>Installing UMengSocialCOM (5.2.1)<br>Installing WebViewJavascriptBridge (6.0.2)<br>Installing YYKit (1.0.9)<br>Installing pop (1.0.9)</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://hanqiu.info/2017/10/19/UITableViewCell两种复用方式的区别/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="汉秋">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="http://oanq2qjpp.bkt.clouddn.com/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="汉秋城">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/10/19/UITableViewCell两种复用方式的区别/" itemprop="url">UITableViewCell两种复用方式的区别</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-10-19T10:23:16+08:00">
+                2017-10-19
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="两种方式："><a href="#两种方式：" class="headerlink" title="两种方式："></a>两种方式：</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">- (nullable __kindof UITableViewCell *)dequeueReusableCellWithIdentifier:(NSString *)identifier;  </div><div class="line">- (__kindof UITableViewCell *)dequeueReusableCellWithIdentifier:(NSString *)identifier forIndexPath:(NSIndexPath *)indexPath NS_AVAILABLE_IOS(6_0);</div></pre></td></tr></table></figure>
+<p>那么这两种复用方式有什么区别呢？<br>从第二种方式的注释我们知道它是在iOS6上新增的，而且新增了一个参数indexpath。以前我们用第一种方式得到复用的cell一般是下面这样写的：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath &#123;</div><div class="line">    static NSString *reuseIdentifier = @&quot;reuseIdentifier&quot;;</div><div class="line">    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:reuseIdentifier];</div><div class="line">    if (!cell) &#123;</div><div class="line">        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:reuseIdentifier];</div><div class="line">    &#125;</div><div class="line">    return cell;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>因为第一种方式的返回值是nullable的，所以它可能为空，我们需要考虑在复用cell为空是创建一个cell。而使用第二种方式则不必考虑为空的情况，但是它也是有前提的，在获取复用cell之前，它必须先注册一个cell，注册的方式有以下两种：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">- (void)registerNib:(nullable UINib *)nib forCellReuseIdentifier:(NSString *)identifier NS_AVAILABLE_IOS(5_0);</div><div class="line">- (void)registerClass:(nullable Class)cellClass forCellReuseIdentifier:(NSString *)identifier NS_AVAILABLE_IOS(6_0);</div></pre></td></tr></table></figure>
+<ul>
+<li>当我们的cell是通过xib自定义的时候，调用<em>- (void)registerNib:(nullable UINib \</em>)nib forCellReuseIdentifier:(NSString *)identifier<em>注册，通过代码自定义的cell时，就调用</em>- (void)registerClass:(nullable Class)cellClass forCellReuseIdentifier:(NSString *)identifier*注册。</li>
+</ul>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://hanqiu.info/2017/10/19/mac环境下配置本地svn服务器/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="汉秋">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="http://oanq2qjpp.bkt.clouddn.com/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="汉秋城">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/10/19/mac环境下配置本地svn服务器/" itemprop="url">mac环境下配置本地svn服务器</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-10-19T10:22:35+08:00">
+                2017-10-19
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>我们都知道在多人开发时，项目版本控制是非常必要的。好处就是每个人可以同时开发自己的模块，然后统一合入到svn仓库中去，只要我们处理好同时有两个人以上会接触到的文件的冲突问题，这样可以提高开发效率，还有就是使用svn我们把代码分散到服务器和每个人的电脑中，这样可以避免项目被误删恢复不了的问题。</p>
+<p>今天心血来潮就在自己的mac上实践了一下，也是参考着网上的教程一步步配置的，记录在这里也算是对整个流程的一个总结吧。</p>
+<p>首先，mac下是自带svn的服务器端和客户端的，我们不需要安装第三方软件就可以操作它，只不过没有那么直观。</p>
+<hr>
+<h3 id="创建代码仓库，用于存储客户端上传的代码"><a href="#创建代码仓库，用于存储客户端上传的代码" class="headerlink" title="创建代码仓库，用于存储客户端上传的代码"></a>创建代码仓库，用于存储客户端上传的代码</h3><p>根据网上的教程是在终端输入下面的命令创建代码仓库，此时该路径下会多出一些文件。但是在此之前必须确保/Users/ljy/Desktop/svn/mycode已经存在。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">promote:~ ljy$ svnadmin create /Users/ljy/Desktop/svn/mycode</div><div class="line">promote:~ ljy$ cd /Users/ljy/Desktop/svn/mycode/</div><div class="line">promote:mycode ljy$ ls</div><div class="line">README.txt	db		hooks</div><div class="line">conf		format		locks</div></pre></td></tr></table></figure></p>
+<p><img src="http://upload-images.jianshu.io/upload_images/1605186-bc5963fe9b4dc984.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="目录结构.png"></p>
+<hr>
+<h3 id="配置svn用户权限"><a href="#配置svn用户权限" class="headerlink" title="配置svn用户权限"></a>配置svn用户权限</h3><p>配置svn用户权限涉及到conf文件夹下的三个文件authz、passws、svnserve.conf。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">promote:mycode ljy$ cd /Users/ljy/Desktop/svn/mycode/conf</div><div class="line">promote:conf ljy$ ls</div><div class="line">authz		passwd		svnserve.conf</div></pre></td></tr></table></figure></p>
+<ol>
+<li>首先打开svnserve.conf文件<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">promote:~ ljy$ cd /Users/ljy/Desktop/svn/mycode/conf</div><div class="line">promote:conf ljy$ ls</div><div class="line">authz		passwd		svnserve.conf</div><div class="line">promote:conf ljy$ vim svnserve.conf</div></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>将里面所有以一个#开头的行的#和空格删掉(  <strong> 空格一定要注意 </strong>)，###开头的注释不需要处理。</p>
+<ol>
+<li>添加用户<br>打开 passed文件，在[users]下面添加用户名和密码，格式为username = password</li>
+<li>配置用户组和权限<ul>
+<li>打开author文件，在[groups]下面添加组名和组内用户名，格式为mygroup = username1, username2</li>
+<li>在[/]下面添加组的权限和用户的权限<br>组的权限格式@mygroup = rw<br>用户的权限格式username1 = rw</li>
+</ul>
+</li>
+</ol>
+<hr>
+<h3 id="启动和关闭svn"><a href="#启动和关闭svn" class="headerlink" title="启动和关闭svn"></a>启动和关闭svn</h3><ul>
+<li><p>启动svn<br>配置完上面的一系列流程之后，终端输入下面的命令启动svn，如果没有提示错误就说明svn启动成功。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">promote:conf ljy$ svnserve -d -r /Users/ljy/Desktop/svn</div></pre></td></tr></table></figure>
+</li>
+<li><p>关闭svn<br>需要关闭svn时，我们打开mac的Finder，在应用程序的实用工具中找到活动监视器，搜索框输入svn就可以找到，然后选中退出进程即可。<br><img src="http://upload-images.jianshu.io/upload_images/1605186-5f8d6ef622673e14.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="关闭svn.png"></p>
+</li>
+</ul>
+<hr>
+<p>至此，我们的svn就配置完毕了。我们可以通过终端命令向svn仓库导入工程以及其他更多操作。可以在网上找到很多教程。</p>
+<p>我是利用了第三方软件Versions来更直观的管理我的工程的。具体操作我去官网查询。</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/1605186-feccb359f06de5da.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="versions.png"></p>
+<hr>
+<p>参考链接<a href="http://blog.csdn.net/lys07962000/article/details/17917467" target="_blank" rel="external">http://blog.csdn.net/lys07962000/article/details/17917467</a></p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://hanqiu.info/2017/10/19/UITableViewCell高度自适应/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="汉秋">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="http://oanq2qjpp.bkt.clouddn.com/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="汉秋城">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/10/19/UITableViewCell高度自适应/" itemprop="url">UITableViewCell高度自适应</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-10-19T10:21:55+08:00">
+                2017-10-19
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>有时我们在使用UITableView时，每个cell的高度不是定死的，它需要由每个cell里面的内容动态决定。<br>之前我们都是通过计算每个cell里面每个空间的高度之和，然后在<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath &#123;</div></pre></td></tr></table></figure></p>
+<p>中返回每个index path对应cell的高度。</p>
+<p>通常计算UILabel的高度是使用：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">- (CGRect)boundingRectWithSize:(CGSize)size options:(NSStringDrawingOptions)options attributes:(nullable NSDictionary&lt;NSString *, id&gt; *)attributes context:(nullable NSStringDrawingContext *)context NS_AVAILABLE(10_11, 7_0);</div></pre></td></tr></table></figure></p>
+<p>但是在iOS8之后，我们可以使用更简单的方法实现。</p>
+<ol>
+<li>首先需要在xib或者SB中给cell中的元素添加top、bottom约束，然后通过设置：<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">self.tableview.estimatedRowHeight = 100.0;</div><div class="line">    self.tableview.rowHeight = UITableViewAutomaticDimension;</div></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>来实现。</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://hanqiu.info/2017/10/19/uiview-autoresizesSubviews/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="汉秋">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="http://oanq2qjpp.bkt.clouddn.com/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="汉秋城">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/10/19/uiview-autoresizesSubviews/" itemprop="url">uiview autoresizesSubviews</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-10-19T10:21:22+08:00">
+                2017-10-19
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="autoresizesSubviews"><a href="#autoresizesSubviews" class="headerlink" title="autoresizesSubviews"></a>autoresizesSubviews</h2><p>iOS有两大自动布局利器：autoresizing 和 autolayout（autolayout是IOS6以后新增）。autoresizing是UIView的属性，一直存在，使用也比较简单，但是没有autolayout那样强大。如果你的界面比较简单，要求的细节没有那么高，那么你完全可以使用autoresizing去进行自动布局。</p>
+<p>typedef NS_OPTIONS(NSUInteger, UIViewAutoresizing) {<br>    UIViewAutoresizingNone                 = 0,<br>    UIViewAutoresizingFlexibleLeftMargin   = 1 &lt;&lt; 0,<br>    UIViewAutoresizingFlexibleWidth        = 1 &lt;&lt; 1,<br>    UIViewAutoresizingFlexibleRightMargin  = 1 &lt;&lt; 2,<br>    UIViewAutoresizingFlexibleTopMargin    = 1 &lt;&lt; 3,<br>    UIViewAutoresizingFlexibleHeight       = 1 &lt;&lt; 4,<br>    UIViewAutoresizingFlexibleBottomMargin = 1 &lt;&lt; 5<br>};</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://hanqiu.info/2017/10/19/iOS-setNeedsLayout等布局方法/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="汉秋">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="http://oanq2qjpp.bkt.clouddn.com/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="汉秋城">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/10/19/iOS-setNeedsLayout等布局方法/" itemprop="url">iOS-setNeedsLayout等布局方法</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-10-19T10:19:58+08:00">
+                2017-10-19
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="layoutSubviews"><a href="#layoutSubviews" class="headerlink" title="layoutSubviews"></a>layoutSubviews</h2><p>这个方法，默认没有做任何事情，需要子类进行重写 。 系统在很多时候会去调用这个方法：</p>
+<p>1.初始化不会触发layoutSubviews，但是如果设置了不为CGRectZero的frame的时候就会触发。<br>2.addSubview会触发layoutSubviews<br>3.设置view的Frame会触发layoutSubviews，当然前提是frame的值设置前后发生了变化<br>4.滚动一个UIScrollView会触发layoutSubviews<br>5.旋转Screen会触发父UIView上的layoutSubviews事件<br>6.改变一个UIView大小的时候也会触发父UIView上的layoutSubviews事件</p>
+<h2 id="setNeedsLayout"><a href="#setNeedsLayout" class="headerlink" title="setNeedsLayout"></a>setNeedsLayout</h2><p>标记为需要重新布局，不立即刷新，但layoutSubviews一定会被调用<br>配合layoutIfNeeded立即更新</p>
+<h2 id="layoutIfNeeded"><a href="#layoutIfNeeded" class="headerlink" title="layoutIfNeeded"></a>layoutIfNeeded</h2><p>如果，有需要刷新的标记，立即调用layoutSubviews进行布局</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://hanqiu.info/2017/10/19/OpenGL-ES学习记录/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -607,7 +1381,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">2</span>
+                  <span class="site-state-item-count">8</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
