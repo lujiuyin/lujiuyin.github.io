@@ -94,7 +94,7 @@
 <meta property="og:site_name" content="汉秋城">
 <meta property="og:description" content="两种方式：12- (nullable __kindof UITableViewCell *)dequeueReusableCellWithIdentifier:(NSString *)identifier;  - (__kindof UITableViewCell *)dequeueReusableCellWithIdentifier:(NSString *)identifier forIndex">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-10-19T03:16:07.000Z">
+<meta property="og:updated_time" content="2017-10-19T07:00:06.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="UITableViewCell两种复用方式的区别">
 <meta name="twitter:description" content="两种方式：12- (nullable __kindof UITableViewCell *)dequeueReusableCellWithIdentifier:(NSString *)identifier;  - (__kindof UITableViewCell *)dequeueReusableCellWithIdentifier:(NSString *)identifier forIndex">
@@ -362,6 +362,7 @@
         <h2 id="两种方式："><a href="#两种方式：" class="headerlink" title="两种方式："></a>两种方式：</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">- (nullable __kindof UITableViewCell *)dequeueReusableCellWithIdentifier:(NSString *)identifier;  </div><div class="line">- (__kindof UITableViewCell *)dequeueReusableCellWithIdentifier:(NSString *)identifier forIndexPath:(NSIndexPath *)indexPath NS_AVAILABLE_IOS(6_0);</div></pre></td></tr></table></figure>
 <p>那么这两种复用方式有什么区别呢？<br>从第二种方式的注释我们知道它是在iOS6上新增的，而且新增了一个参数indexpath。以前我们用第一种方式得到复用的cell一般是下面这样写的：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath &#123;</div><div class="line">    static NSString *reuseIdentifier = @&quot;reuseIdentifier&quot;;</div><div class="line">    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:reuseIdentifier];</div><div class="line">    if (!cell) &#123;</div><div class="line">        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:reuseIdentifier];</div><div class="line">    &#125;</div><div class="line">    return cell;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<a id="more"></a>
 <p>因为第一种方式的返回值是nullable的，所以它可能为空，我们需要考虑在复用cell为空是创建一个cell。而使用第二种方式则不必考虑为空的情况，但是它也是有前提的，在获取复用cell之前，它必须先注册一个cell，注册的方式有以下两种：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">- (void)registerNib:(nullable UINib *)nib forCellReuseIdentifier:(NSString *)identifier NS_AVAILABLE_IOS(5_0);</div><div class="line">- (void)registerClass:(nullable Class)cellClass forCellReuseIdentifier:(NSString *)identifier NS_AVAILABLE_IOS(6_0);</div></pre></td></tr></table></figure>
 <ul>
