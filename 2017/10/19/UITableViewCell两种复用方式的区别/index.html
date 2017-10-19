@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="iOS开发学习," />
+  <meta name="keywords" content="UIView," />
 
 
 
@@ -80,14 +80,14 @@
 
 
 <meta name="description" content="两种方式：12- (nullable __kindof UITableViewCell *)dequeueReusableCellWithIdentifier:(NSString *)identifier;  - (__kindof UITableViewCell *)dequeueReusableCellWithIdentifier:(NSString *)identifier forIndex">
-<meta name="keywords" content="iOS开发学习">
+<meta name="keywords" content="UIView">
 <meta property="og:type" content="article">
 <meta property="og:title" content="UITableViewCell两种复用方式的区别">
 <meta property="og:url" content="http://hanqiu.info/2017/10/19/UITableViewCell两种复用方式的区别/index.html">
 <meta property="og:site_name" content="汉秋城">
 <meta property="og:description" content="两种方式：12- (nullable __kindof UITableViewCell *)dequeueReusableCellWithIdentifier:(NSString *)identifier;  - (__kindof UITableViewCell *)dequeueReusableCellWithIdentifier:(NSString *)identifier forIndex">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-10-19T02:23:38.000Z">
+<meta property="og:updated_time" content="2017-10-19T03:16:07.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="UITableViewCell两种复用方式的区别">
 <meta name="twitter:description" content="两种方式：12- (nullable __kindof UITableViewCell *)dequeueReusableCellWithIdentifier:(NSString *)identifier;  - (__kindof UITableViewCell *)dequeueReusableCellWithIdentifier:(NSString *)identifier forIndex">
@@ -303,6 +303,28 @@
           </span>
 
           
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/iOS开发学习/" itemprop="url" rel="index">
+                    <span itemprop="name">iOS开发学习</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
 
           
             
@@ -336,8 +358,13 @@
 <p>因为第一种方式的返回值是nullable的，所以它可能为空，我们需要考虑在复用cell为空是创建一个cell。而使用第二种方式则不必考虑为空的情况，但是它也是有前提的，在获取复用cell之前，它必须先注册一个cell，注册的方式有以下两种：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">- (void)registerNib:(nullable UINib *)nib forCellReuseIdentifier:(NSString *)identifier NS_AVAILABLE_IOS(5_0);</div><div class="line">- (void)registerClass:(nullable Class)cellClass forCellReuseIdentifier:(NSString *)identifier NS_AVAILABLE_IOS(6_0);</div></pre></td></tr></table></figure>
 <ul>
-<li>当我们的cell是通过xib自定义的时候，调用<em>- (void)registerNib:(nullable UINib \</em>)nib forCellReuseIdentifier:(NSString *)identifier<em>注册，通过代码自定义的cell时，就调用</em>- (void)registerClass:(nullable Class)cellClass forCellReuseIdentifier:(NSString *)identifier*注册。</li>
+<li>当我们的cell是通过xib自定义的时候，调用</li>
+<li><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">- (void)registerNib:(nullable UINib *)nib forCellReuseIdentifier:(NSString *)identifier</div></pre></td></tr></table></figure>
+</li>
 </ul>
+<p>注册，通过代码自定义的cell时，就调用</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">- (void)registerClass:(nullable Class)cellClass forCellReuseIdentifier:(NSString *)identifier</div></pre></td></tr></table></figure>
+<p>注册。</p>
 
       
     </div>
@@ -355,7 +382,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/iOS开发学习/" rel="tag"># iOS开发学习</a>
+            <a href="/tags/UIView/" rel="tag"># UIView</a>
           
         </div>
       
@@ -461,12 +488,21 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">9</span>
+                  <span class="site-state-item-count">10</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
             
 
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">1</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
             
 
             
@@ -474,7 +510,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">2</span>
+                  <span class="site-state-item-count">6</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>

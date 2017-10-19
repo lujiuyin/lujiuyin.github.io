@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="iOS开发学习," />
+  <meta name="keywords" content="UIView," />
 
 
 
@@ -79,18 +79,18 @@
 
 
 
-<meta name="description" content="有时我们在使用UITableView时，每个cell的高度不是定死的，它需要由每个cell里面的内容动态决定。之前我们都是通过计算每个cell里面每个空间的高度之和，然后在1- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath &amp;#123; 中返回每个index">
-<meta name="keywords" content="iOS开发学习">
+<meta name="description" content="有时我们在使用UITableView时，每个cell的高度不是定死的，它需要由每个cell里面的内容动态决定。之前我们都是通过计算每个cell里面每个空间的高度之和，然后在 1- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath &amp;#123; 中返回每个index">
+<meta name="keywords" content="UIView">
 <meta property="og:type" content="article">
 <meta property="og:title" content="UITableViewCell高度自适应">
 <meta property="og:url" content="http://hanqiu.info/2017/10/19/UITableViewCell高度自适应/index.html">
 <meta property="og:site_name" content="汉秋城">
-<meta property="og:description" content="有时我们在使用UITableView时，每个cell的高度不是定死的，它需要由每个cell里面的内容动态决定。之前我们都是通过计算每个cell里面每个空间的高度之和，然后在1- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath &amp;#123; 中返回每个index">
+<meta property="og:description" content="有时我们在使用UITableView时，每个cell的高度不是定死的，它需要由每个cell里面的内容动态决定。之前我们都是通过计算每个cell里面每个空间的高度之和，然后在 1- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath &amp;#123; 中返回每个index">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-10-19T02:22:14.000Z">
+<meta property="og:updated_time" content="2017-10-19T03:13:44.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="UITableViewCell高度自适应">
-<meta name="twitter:description" content="有时我们在使用UITableView时，每个cell的高度不是定死的，它需要由每个cell里面的内容动态决定。之前我们都是通过计算每个cell里面每个空间的高度之和，然后在1- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath &amp;#123; 中返回每个index">
+<meta name="twitter:description" content="有时我们在使用UITableView时，每个cell的高度不是定死的，它需要由每个cell里面的内容动态决定。之前我们都是通过计算每个cell里面每个空间的高度之和，然后在 1- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath &amp;#123; 中返回每个index">
 
 
 
@@ -303,6 +303,28 @@
           </span>
 
           
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/iOS开发学习/" itemprop="url" rel="index">
+                    <span itemprop="name">iOS开发学习</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
 
           
             
@@ -330,14 +352,16 @@
       
 
       
-        <p>有时我们在使用UITableView时，每个cell的高度不是定死的，它需要由每个cell里面的内容动态决定。<br>之前我们都是通过计算每个cell里面每个空间的高度之和，然后在<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath &#123;</div></pre></td></tr></table></figure></p>
+        <p>有时我们在使用UITableView时，每个cell的高度不是定死的，它需要由每个cell里面的内容动态决定。<br>之前我们都是通过计算每个cell里面每个空间的高度之和，然后在</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath &#123;</div></pre></td></tr></table></figure>
 <p>中返回每个index path对应cell的高度。</p>
-<p>通常计算UILabel的高度是使用：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">- (CGRect)boundingRectWithSize:(CGSize)size options:(NSStringDrawingOptions)options attributes:(nullable NSDictionary&lt;NSString *, id&gt; *)attributes context:(nullable NSStringDrawingContext *)context NS_AVAILABLE(10_11, 7_0);</div></pre></td></tr></table></figure></p>
+<p>通常计算UILabel的高度是使用：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">- (CGRect)boundingRectWithSize:(CGSize)size </div><div class="line">                       options:(NSStringDrawingOptions)options </div><div class="line">                    attributes:(nullable NSDictionary&lt;NSString *, id&gt; *)attributes </div><div class="line">                       context:(nullable NSStringDrawingContext *)context NS_AVAILABLE(10_11, 7_0);</div></pre></td></tr></table></figure>
 <p>但是在iOS8之后，我们可以使用更简单的方法实现。</p>
 <ol>
-<li>首先需要在xib或者SB中给cell中的元素添加top、bottom约束，然后通过设置：<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">self.tableview.estimatedRowHeight = 100.0;</div><div class="line">    self.tableview.rowHeight = UITableViewAutomaticDimension;</div></pre></td></tr></table></figure>
-</li>
+<li>首先需要在xib或者SB中给cell中的元素添加top、bottom约束，然后通过设置：</li>
 </ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">self.tableview.estimatedRowHeight = 100.0;</div><div class="line">   self.tableview.rowHeight = UITableViewAutomaticDimension;</div></pre></td></tr></table></figure>
 <p>来实现。</p>
 
       
@@ -356,7 +380,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/iOS开发学习/" rel="tag"># iOS开发学习</a>
+            <a href="/tags/UIView/" rel="tag"># UIView</a>
           
         </div>
       
@@ -453,12 +477,21 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">9</span>
+                  <span class="site-state-item-count">10</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
             
 
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">1</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
             
 
             
@@ -466,7 +499,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">2</span>
+                  <span class="site-state-item-count">6</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>

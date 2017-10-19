@@ -262,6 +262,168 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://hanqiu.info/2017/10/19/proptery属性/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="汉秋">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="http://oanq2qjpp.bkt.clouddn.com/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="汉秋城">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/10/19/proptery属性/" itemprop="url">@proptery属性</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-10-19T11:04:02+08:00">
+                2017-10-19
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/iOS开发学习/" itemprop="url" rel="index">
+                    <span itemprop="name">iOS开发学习</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="实例变量"><a href="#实例变量" class="headerlink" title="实例变量"></a>实例变量</h1><p>Objective-C 通常是将类的数据保存在实例变量中，通过编写存取方法访问实力变量。其中读取方法（getter）用于获取变量，设置方法（setter）用户设置变量。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">@interface Person: NSObject &#123;</div><div class="line">@public</div><div class="line">      NSString *_firstName;</div><div class="line">      NSString *_secondName;</div><div class="line">@private</div><div class="line">&#125;</div><div class="line"></div><div class="line">- (NSString *)firstName;</div><div class="line">- (void)setFirstName:(NSString *)firstName;</div><div class="line">- (NSString *)secondName;</div><div class="line">- (void)setSecondName:(NSString *)secondName;</div></pre></td></tr></table></figure></p>
+<h1 id="属性"><a href="#属性" class="headerlink" title="属性"></a>属性</h1><p>属性这一特性引入一个新的点语法，开发者可以更好的依照类对象访问存放在其中的数据。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">@interface Person: NSObject &#123;</div><div class="line">@property NSString *firstName;</div><div class="line">@property NSString *secondName;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>要访问属性，可以直接使用“点语法”获取数据。此外，使用了属性，编译器会自动生成访问属性的所需的方法，此过程叫做“自动合成”。需要强调的是，这个过程是在编译期间执行的，所以编辑器里看不到这些“合成方法”的源代码。除了自动生成存取方法外，编译器还要自动向类中添加适当类型的实例变量，并且在属性名前加下划线，以此作为实例变量的名字。在上面的代码中，会生成两个实例变量_firstName、_secondName。可以在类的实现中通过@synthesize修改实例变量名字。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">@implementation</div><div class="line">@synthesize firstName = _myFirstName;</div><div class="line">@synthesize secondName = _mySecondName;</div><div class="line">@end</div></pre></td></tr></table></figure></p>
+<p>如果不想编译器自动生成存取方法，则可以自己重写存取方法，如果只实现了存取方法中的一个，另一个方法还是会自动生成。</p>
+<p>还有一种方法阻止编译器自动生成存取方法，就是使用@dynamic关键字。它会告诉编译器不再自动生成属性的实例变量以及存取方法</p>
+<h1 id="属性特质"><a href="#属性特质" class="headerlink" title="属性特质"></a>属性特质</h1><ul>
+<li>原子性<br>在默认情况下，由编译器所合成的方法都会通过锁定机制确保原子性。如果属性具备nonatomic特质，则不使用同步锁。</li>
+<li>读/写权限<ul>
+<li>具备readwrie（读写）特质的属性拥有“获取方法”（getter）与“设置方法”（setter）。若该属性由@sythesize实现，则编译器会自动生成这两个方法。</li>
+<li>具备readonly（只读）特质的属性仅拥有“获取方法”（getter），只有当属性由@sythesize实现时，编译器才会为其合成获取方法。</li>
+</ul>
+</li>
+<li>内存管理语义<br>属性用语封装数据，而数据则要有“具体的所有权语义”。下面这一组特质会影响“设置方法”。例如，用“设置方法”设定一个新值时，它是应该“保留”（retain）自此呢，还是只将其赋给底层实例变量就好？编译器在合成存取方法时需要根据此特质来决定所生成的代码。<ul>
+<li>assign “设置方法”只会执行针对“纯量类型”的简单赋值操作。</li>
+<li>strong 此特质表明该属性定义了一种“拥有关系”。为这种属性设置新值 时，设置方法会先保留新值，并释放旧值，然后再将新值设置上去。</li>
+<li>weak 此特质表明该属性定义了一种“非拥有关系”。为这个属性设置新值时，设置既不保留新值，也不释放旧值。此特质痛assign类型，然而在属性所指的对象遭到摧毁时，属性值也会清空。</li>
+<li>unsafe_unretained 此特质的语义和assign相同，但是它适用于对象类型，该特质表达一种“非拥有关系”，在属性所指的对象遭到摧毁时，属性值也不会清空。</li>
+<li>copy 此特质所表达的所属关系与strong类似。然而设置方法并不保留新值，而是将其“拷贝”（copy）。当属性类型为NSString *时，经常用此特质来保护其封装性，因为传递给设置方法的新值可能指向一个NSMutableString类的实例。</li>
+</ul>
+</li>
+</ul>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://hanqiu.info/2017/10/19/Effective-Objective-C-2-0笔记/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -432,6 +594,28 @@
           </span>
 
           
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/iOS开发学习/" itemprop="url" rel="index">
+                    <span itemprop="name">iOS开发学习</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
 
           
             
@@ -553,6 +737,28 @@
           </span>
 
           
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/iOS开发学习/" itemprop="url" rel="index">
+                    <span itemprop="name">iOS开发学习</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
 
           
             
@@ -588,8 +794,13 @@
 <p>因为第一种方式的返回值是nullable的，所以它可能为空，我们需要考虑在复用cell为空是创建一个cell。而使用第二种方式则不必考虑为空的情况，但是它也是有前提的，在获取复用cell之前，它必须先注册一个cell，注册的方式有以下两种：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">- (void)registerNib:(nullable UINib *)nib forCellReuseIdentifier:(NSString *)identifier NS_AVAILABLE_IOS(5_0);</div><div class="line">- (void)registerClass:(nullable Class)cellClass forCellReuseIdentifier:(NSString *)identifier NS_AVAILABLE_IOS(6_0);</div></pre></td></tr></table></figure>
 <ul>
-<li>当我们的cell是通过xib自定义的时候，调用<em>- (void)registerNib:(nullable UINib \</em>)nib forCellReuseIdentifier:(NSString *)identifier<em>注册，通过代码自定义的cell时，就调用</em>- (void)registerClass:(nullable Class)cellClass forCellReuseIdentifier:(NSString *)identifier*注册。</li>
+<li>当我们的cell是通过xib自定义的时候，调用</li>
+<li><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">- (void)registerNib:(nullable UINib *)nib forCellReuseIdentifier:(NSString *)identifier</div></pre></td></tr></table></figure>
+</li>
 </ul>
+<p>注册，通过代码自定义的cell时，就调用</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">- (void)registerClass:(nullable Class)cellClass forCellReuseIdentifier:(NSString *)identifier</div></pre></td></tr></table></figure>
+<p>注册。</p>
 
           
         
@@ -679,6 +890,28 @@
             
           </span>
 
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/iOS开发学习/" itemprop="url" rel="index">
+                    <span itemprop="name">iOS开发学习</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
           
 
           
@@ -809,6 +1042,28 @@
           </span>
 
           
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/iOS开发学习/" itemprop="url" rel="index">
+                    <span itemprop="name">iOS开发学习</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
 
           
             
@@ -838,14 +1093,16 @@
       
         
           
-            <p>有时我们在使用UITableView时，每个cell的高度不是定死的，它需要由每个cell里面的内容动态决定。<br>之前我们都是通过计算每个cell里面每个空间的高度之和，然后在<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath &#123;</div></pre></td></tr></table></figure></p>
+            <p>有时我们在使用UITableView时，每个cell的高度不是定死的，它需要由每个cell里面的内容动态决定。<br>之前我们都是通过计算每个cell里面每个空间的高度之和，然后在</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath &#123;</div></pre></td></tr></table></figure>
 <p>中返回每个index path对应cell的高度。</p>
-<p>通常计算UILabel的高度是使用：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">- (CGRect)boundingRectWithSize:(CGSize)size options:(NSStringDrawingOptions)options attributes:(nullable NSDictionary&lt;NSString *, id&gt; *)attributes context:(nullable NSStringDrawingContext *)context NS_AVAILABLE(10_11, 7_0);</div></pre></td></tr></table></figure></p>
+<p>通常计算UILabel的高度是使用：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">- (CGRect)boundingRectWithSize:(CGSize)size </div><div class="line">                       options:(NSStringDrawingOptions)options </div><div class="line">                    attributes:(nullable NSDictionary&lt;NSString *, id&gt; *)attributes </div><div class="line">                       context:(nullable NSStringDrawingContext *)context NS_AVAILABLE(10_11, 7_0);</div></pre></td></tr></table></figure>
 <p>但是在iOS8之后，我们可以使用更简单的方法实现。</p>
 <ol>
-<li>首先需要在xib或者SB中给cell中的元素添加top、bottom约束，然后通过设置：<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">self.tableview.estimatedRowHeight = 100.0;</div><div class="line">    self.tableview.rowHeight = UITableViewAutomaticDimension;</div></pre></td></tr></table></figure>
-</li>
+<li>首先需要在xib或者SB中给cell中的元素添加top、bottom约束，然后通过设置：</li>
 </ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">self.tableview.estimatedRowHeight = 100.0;</div><div class="line">   self.tableview.rowHeight = UITableViewAutomaticDimension;</div></pre></td></tr></table></figure>
 <p>来实现。</p>
 
           
@@ -937,6 +1194,28 @@
           </span>
 
           
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/iOS开发学习/" itemprop="url" rel="index">
+                    <span itemprop="name">iOS开发学习</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
 
           
             
@@ -967,8 +1246,7 @@
         
           
             <h2 id="autoresizesSubviews"><a href="#autoresizesSubviews" class="headerlink" title="autoresizesSubviews"></a>autoresizesSubviews</h2><p>iOS有两大自动布局利器：autoresizing 和 autolayout（autolayout是IOS6以后新增）。autoresizing是UIView的属性，一直存在，使用也比较简单，但是没有autolayout那样强大。如果你的界面比较简单，要求的细节没有那么高，那么你完全可以使用autoresizing去进行自动布局。</p>
-<p>typedef NS_OPTIONS(NSUInteger, UIViewAutoresizing) {<br>    UIViewAutoresizingNone                 = 0,<br>    UIViewAutoresizingFlexibleLeftMargin   = 1 &lt;&lt; 0,<br>    UIViewAutoresizingFlexibleWidth        = 1 &lt;&lt; 1,<br>    UIViewAutoresizingFlexibleRightMargin  = 1 &lt;&lt; 2,<br>    UIViewAutoresizingFlexibleTopMargin    = 1 &lt;&lt; 3,<br>    UIViewAutoresizingFlexibleHeight       = 1 &lt;&lt; 4,<br>    UIViewAutoresizingFlexibleBottomMargin = 1 &lt;&lt; 5<br>};</p>
-
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">typedef NS_OPTIONS(NSUInteger, UIViewAutoresizing) &#123;</div><div class="line">    UIViewAutoresizingNone                 = 0,</div><div class="line">    UIViewAutoresizingFlexibleLeftMargin   = 1 &lt;&lt; 0,</div><div class="line">    UIViewAutoresizingFlexibleWidth        = 1 &lt;&lt; 1,</div><div class="line">    UIViewAutoresizingFlexibleRightMargin  = 1 &lt;&lt; 2,</div><div class="line">    UIViewAutoresizingFlexibleTopMargin    = 1 &lt;&lt; 3,</div><div class="line">    UIViewAutoresizingFlexibleHeight       = 1 &lt;&lt; 4,</div><div class="line">    UIViewAutoresizingFlexibleBottomMargin = 1 &lt;&lt; 5</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
           
         
       
@@ -1057,6 +1335,28 @@
             
           </span>
 
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/iOS开发学习/" itemprop="url" rel="index">
+                    <span itemprop="name">iOS开发学习</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
           
 
           
@@ -1180,6 +1480,28 @@
             
           </span>
 
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/iOS开发学习/" itemprop="url" rel="index">
+                    <span itemprop="name">iOS开发学习</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
           
 
           
@@ -1311,6 +1633,28 @@
           </span>
 
           
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/iOS开发学习/" itemprop="url" rel="index">
+                    <span itemprop="name">iOS开发学习</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
 
           
             
@@ -1432,12 +1776,21 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">9</span>
+                  <span class="site-state-item-count">10</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
             
 
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">1</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
             
 
             
@@ -1445,7 +1798,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">2</span>
+                  <span class="site-state-item-count">6</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
