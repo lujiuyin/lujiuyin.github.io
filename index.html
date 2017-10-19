@@ -323,7 +323,8 @@
       
         
           
-          iCarousel                  卡片切换JSPatch                     js控制oc代码，修复线上bugFoldingTabBar        q版tabbarMMProgressHUD   各种动画的提示框IQKeyboardManager     
+          iCarousel                  卡片切换JSPatch                     js控制oc代码，修复线上bugFoldingTabBar        q版tabbarMMProgressHUD   各种动画的提示框IQKeyboardManager     键盘问题
+Installing AFNetworking (3.1.0)Installing AMTagListView (1.5.0)Installing BaiduMapKit (3.2.1)Installing FDFullscreenPopGesture (1.1)Installing FM
           ...
           <!--noindex-->
           <div class="post-button text-center">
@@ -449,7 +450,8 @@
       
         
           
-          两种方式：12- (nullable __kindof UITableViewCell *)dequeueReusableCellWithIdentifier:(NSString *)identifier;  - (__kindof UITableViewCell *)dequeueReusable
+          两种方式：12- (nullable __kindof UITableViewCell *)dequeueReusableCellWithIdentifier:(NSString *)identifier;  - (__kindof UITableViewCell *)dequeueReusableCellWithIdentifier:(NSString *)identifier forIndexPath:(NSIndexPath *)indexPath NS_AVAILABLE_IOS(6_0);
+那么这两种复用方式有什么区别呢？从第二种方式的注释我们知道它是在iOS6上新增的，而且新增了一
           ...
           <!--noindex-->
           <div class="post-button text-center">
@@ -576,7 +578,10 @@
         
           
           我们都知道在多人开发时，项目版本控制是非常必要的。好处就是每个人可以同时开发自己的模块，然后统一合入到svn仓库中去，只要我们处理好同时有两个人以上会接触到的文件的冲突问题，这样可以提高开发效率，还有就是使用svn我们把代码分散到服务器和每个人的电脑中，这样可以避免项目被误删恢复不了的问题。
-今天心
+今天心血来潮就在自己的mac上实践了一下，也是参考着网上的教程一步步配置的，记录在这里也算是对整个流程的一个总结吧。
+首先，mac下是自带svn的服务器端和客户端的，我们不需要安装第三方软件就可以操作它，只不过没有那么直观。
+
+创建代码仓库，用于存储客户端上传的代码根据网上的教程是在终端输入下面的命令创建
           ...
           <!--noindex-->
           <div class="post-button text-center">
@@ -702,7 +707,9 @@
       
         
           
-          有时我们在使用UITableView时，每个cell的高度不是定死的，它需要由每个cell里面的内容动态决定。之前我们都是通过计算每个cell里面每个空间的高度之和，然后在1- (CGFloat)tableView:(UITableView *)tableView heightForRowAtInd
+          有时我们在使用UITableView时，每个cell的高度不是定死的，它需要由每个cell里面的内容动态决定。之前我们都是通过计算每个cell里面每个空间的高度之和，然后在1- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath &#123;
+中返回每个index path对应cell的高度。
+通常计算UILabel的高度是使用：1- (CGRect)boundingRectWithSize:(CGSize)size options:(NSStringDrawi
           ...
           <!--noindex-->
           <div class="post-button text-center">
@@ -828,7 +835,8 @@
       
         
           
-          autoresizesSubviewsiOS有两大自动布局利器：autoresizing 和 autolayout（autolayout是IOS6以后新增）。autoresizing是UIView的属性，一直存在，使用也比较简单，但是没有autolayout那样强大。如果你的界面比较简单，要求的细节
+          autoresizesSubviewsiOS有两大自动布局利器：autoresizing 和 autolayout（autolayout是IOS6以后新增）。autoresizing是UIView的属性，一直存在，使用也比较简单，但是没有autolayout那样强大。如果你的界面比较简单，要求的细节没有那么高，那么你完全可以使用autoresizing去进行自动布局。
+typedef NS_OPTIONS(NSUInteger, UIViewAutoresizing) {    UIViewAutoresizingNone                 = 0,    UIViewAutor
           ...
           <!--noindex-->
           <div class="post-button text-center">
@@ -955,7 +963,7 @@
         
           
           layoutSubviews这个方法，默认没有做任何事情，需要子类进行重写 。 系统在很多时候会去调用这个方法：
-1.初始化不会触发layoutSubviews，但是如果设置了不为CGRectZero的frame的时候就会触发。2.addSubview会触发layoutSubviews3.设置vie
+1.初始化不会触发layoutSubviews，但是如果设置了不为CGRectZero的frame的时候就会触发。2.addSubview会触发layoutSubviews3.设置view的Frame会触发layoutSubviews，当然前提是frame的值设置前后发生了变化4.滚动一个UIScrollView会触发layoutSubviews5.旋转Screen会触发父UIView上的layoutSubviews事件6.改变一个UIView大小的时候也会触发父UIView上的l
           ...
           <!--noindex-->
           <div class="post-button text-center">
@@ -1085,7 +1093,8 @@
 本学习记录参考OpenGL ES应用开发实践 指南iOS卷.pdf
 
 #3D渲染屏幕只有2维，想要在屏幕展示3D的效果，首先我们就需要一些3D效果的数据，然后将这些3D数据通过计算机的计算、渲染转化为2D的数据，从而迷惑人们的眼睛使其产生3D的效果。
-用3D数据生成一个2D图像的过程就是所谓的渲染
+用3D数据生成一个2D图像的过程就是所谓的渲染。计算机中图片是有一个个像素构成的，当你把一张图片放大很多倍后你会发现它是由一个个小方格组成了一张图。每个小方格都有自己的颜色，如果一张图由很少的像素组成的话，就会很模糊、很方。
+OpenGL ES部分运行在cpu上，部分运行在gpu上。OpenGL ES横跨两个处理器之间。CPU负责提供3D数据，
           ...
           <!--noindex-->
           <div class="post-button text-center">
@@ -1212,7 +1221,8 @@
         
           
           #二叉树-你必须要懂！（二叉树相关算法实现-iOS）
-####http://www.cnblogs.com/manji/p/4903990.html原文链接这几天详细了解了下二叉树的相关算法，原因是看了唐boy的一篇博客（你会翻转二叉树吗？），还有一篇关于百度的校园招聘面试经历，深刻体会到二叉树的重
+####http://www.cnblogs.com/manji/p/4903990.html原文链接这几天详细了解了下二叉树的相关算法，原因是看了唐boy的一篇博客（你会翻转二叉树吗？），还有一篇关于百度的校园招聘面试经历，深刻体会到二叉树的重要性。于是乎，从网上收集并整理了一些关于二叉树的资料，及相关算法的实现（主要是Objective-C的，但是算法思想是相通的），以便以后复习时查阅。
+##什么是二叉树？在计算机科学中，二叉树是每个节点最多有两个子树的树结构。通常子树被称作“左子树”和“右子树”，左子树和右子树同时也是二叉树。二叉树的
           ...
           <!--noindex-->
           <div class="post-button text-center">
