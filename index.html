@@ -1,1 +1,2044 @@
-<!DOCTYPE html><html class="theme-next gemini use-motion" lang="zh-Hans"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1"><meta name="theme-color" content="#222"><script src="/lib/pace/pace.min.js?v=1.0.2"></script><link href="/lib/pace/pace-theme-minimal.min.css?v=1.0.2" rel="stylesheet"><meta http-equiv="Cache-Control" content="no-transform"><meta http-equiv="Cache-Control" content="no-siteapp"><link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css"><link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css"><link href="/css/main.css?v=5.1.3" rel="stylesheet" type="text/css"><link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.3"><link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.3"><link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.3"><link rel="mask-icon" href="/images/logo.svg?v=5.1.3" color="#222"><meta name="keywords" content="Hexo, NexT"><meta name="description" content="天下事有难易乎？为之，则难者亦易矣；不为，则易者亦难矣。"><meta property="og:type" content="website"><meta property="og:title" content="汉秋城"><meta property="og:url" content="http://hanqiu.info/index.html"><meta property="og:site_name" content="汉秋城"><meta property="og:description" content="天下事有难易乎？为之，则难者亦易矣；不为，则易者亦难矣。"><meta property="og:locale" content="zh-Hans"><meta name="twitter:card" content="summary"><meta name="twitter:title" content="汉秋城"><meta name="twitter:description" content="天下事有难易乎？为之，则难者亦易矣；不为，则易者亦难矣。"><script type="text/javascript" id="hexo.configurations">var NexT=window.NexT||{},CONFIG={root:"/",scheme:"Gemini",version:"5.1.3",sidebar:{position:"left",display:"post",offset:12,b2t:!1,scrollpercent:!1,onmobile:!1},fancybox:!0,tabs:!0,motion:{enable:!0,async:!1,transition:{post_block:"fadeIn",post_header:"slideDownIn",post_body:"slideDownIn",coll_header:"slideLeftIn",sidebar:"slideUpIn"}},duoshuo:{userId:"0",author:"博主"},algolia:{applicationID:"",apiKey:"",indexName:"",hits:{per_page:10},labels:{input_placeholder:"Search for Posts",hits_empty:"We didn't find any results for the search: ${query}",hits_stats:"${hits} results found in ${time} ms"}}}</script><link rel="canonical" href="http://hanqiu.info/"><title>汉秋城</title></head><body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans"><div class="container sidebar-position-left page-home"><div class="headband"></div><header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="header-inner"><div class="site-brand-wrapper"><div class="site-meta"><div class="custom-logo-site-title"><a href="/" class="brand" rel="start"><span class="logo-line-before"><i></i></span> <span class="site-title">汉秋城</span><span class="logo-line-after"><i></i></span></a></div><p class="site-subtitle">天下事有难易乎？为之，则难者亦易矣；不为，则易者亦难矣。</p></div><div class="site-nav-toggle"> <button><span class="btn-bar"></span><span class="btn-bar"></span><span class="btn-bar"></span></button></div></div><nav class="site-nav"><ul id="menu" class="menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i><br> 首页</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="menu-item-icon fa fa-fw fa-user"></i><br> 关于</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i><br> 标签</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i><br> 分类</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i><br> 归档</a></li></ul></nav></div></header><main id="main" class="main"><div class="main-inner"><div class="content-wrap"><div id="content" class="content"><section id="posts" class="posts-expand"><article class="post post-type-normal" itemscope itemtype="http://schema.org/Article"><div class="post-block"><link itemprop="mainEntityOfPage" href="http://hanqiu.info/2017/10/20/学习RxSwift记录/"><span hidden itemprop="author" itemscope itemtype="http://schema.org/Person"><meta itemprop="name" content="汉秋"><meta itemprop="description" content=""><meta itemprop="image" content="http://oanq2qjpp.bkt.clouddn.com/avatar.jpg"></span><span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization"><meta itemprop="name" content="汉秋城"></span><header class="post-header"><h1 class="post-title" itemprop="name headline"> <a class="post-title-link" href="/2017/10/20/学习RxSwift记录/" itemprop="url">学习RxSwift记录</a></h1><div class="post-meta"><span class="post-time"><span class="post-meta-item-icon"><i class="fa fa-calendar-o"></i></span> <span class="post-meta-item-text">发表于</span> <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-10-20T18:01:07+08:00">2017-10-20</time></span> <span class="post-category"><span class="post-meta-divider">|</span><span class="post-meta-item-icon"><i class="fa fa-folder-o"></i></span> <span class="post-meta-item-text">分类于</span> <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/iOS开发学习/" itemprop="url" rel="index"><span itemprop="name">iOS开发学习</span></a></span></span></div></header><div class="post-body" itemprop="articleBody"><h1 id="学习RxSwift记录"><a href="#学习RxSwift记录" class="headerlink" title="学习RxSwift记录"></a>学习RxSwift记录</h1><h2 id="Operators"><a href="#Operators" class="headerlink" title="Operators"></a>Operators</h2><h3 id="1-Create-Observables"><a href="#1-Create-Observables" class="headerlink" title="1. Create Observables"></a>1. Create Observables</h3><h4 id="Create"><a href="#Create" class="headerlink" title="Create"></a>Create</h4><p>![]<br>(<a href="http://oanq2qjpp.bkt.clouddn.com/create.png" target="_blank" rel="external">http://oanq2qjpp.bkt.clouddn.com/create.png</a>)</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">let source = Observable&lt;Any&gt;.create &#123; observer in</div><div class="line">            for i in 1...5 &#123;</div><div class="line">                observer.on(.next(i))</div><div class="line">            &#125;</div><div class="line">            observer.on(.completed)</div><div class="line"></div><div class="line">            return Disposables.create &#123;</div><div class="line">                print(&quot;disposed&quot;)</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        source.subscribe &#123;</div><div class="line">            print($0)</div><div class="line">        &#125;</div></pre></td></tr></table></figure><p>输出：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">next(1)</div><div class="line">next(2)</div><div class="line">next(3)</div><div class="line">next(4)</div><div class="line">next(5)</div><div class="line">completed</div><div class="line">disposed</div></pre></td></tr></table></figure><div class="post-button text-center"> <a class="btn" href="/2017/10/20/学习RxSwift记录/#more" rel="contents">阅读全文 &raquo;</a></div></div><footer class="post-footer"><div class="post-eof"></div></footer></div></article><article class="post post-type-normal" itemscope itemtype="http://schema.org/Article"><div class="post-block"><link itemprop="mainEntityOfPage" href="http://hanqiu.info/2017/10/19/App开发图标素材/"><span hidden itemprop="author" itemscope itemtype="http://schema.org/Person"><meta itemprop="name" content="汉秋"><meta itemprop="description" content=""><meta itemprop="image" content="http://oanq2qjpp.bkt.clouddn.com/avatar.jpg"></span><span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization"><meta itemprop="name" content="汉秋城"></span><header class="post-header"><h1 class="post-title" itemprop="name headline"> <a class="post-title-link" href="/2017/10/19/App开发图标素材/" itemprop="url">App开发图标素材</a></h1><div class="post-meta"><span class="post-time"><span class="post-meta-item-icon"><i class="fa fa-calendar-o"></i></span> <span class="post-meta-item-text">发表于</span> <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-10-19T16:29:24+08:00">2017-10-19</time></span> <span class="post-category"><span class="post-meta-divider">|</span><span class="post-meta-item-icon"><i class="fa fa-folder-o"></i></span> <span class="post-meta-item-text">分类于</span> <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/iOS开发学习/" itemprop="url" rel="index"><span itemprop="name">iOS开发学习</span></a></span></span></div></header><div class="post-body" itemprop="articleBody"><ol><li><a href="http://fa2png.io" target="_blank" rel="external">Convert Icon Fonts To PNG</a></li><li><a href="https://github.com/JoanZapata/android-iconify" target="_blank" rel="external">GitHub - JoanZapata/android-iconify</a></li><li><a href="http://fontawesome.io/cheatsheet/" target="_blank" rel="external">Font Awesome Cheatsheet</a></li><li><a href="http://www.entypo.com" target="_blank" rel="external">Entypo</a></li><li><a href="http://s-ings.com/typicons/" target="_blank" rel="external">Typicons</a></li><li><a href="http://www.stpatsfc.com/assets/plugins/line-icons/" target="_blank" rel="external">Simple Line Icons</a></li><li><a href="http://ionicons.com" target="_blank" rel="external">Ionicons: The premium icon font for Ionic Framework</a></li></ol></div><footer class="post-footer"><div class="post-eof"></div></footer></div></article><article class="post post-type-normal" itemscope itemtype="http://schema.org/Article"><div class="post-block"><link itemprop="mainEntityOfPage" href="http://hanqiu.info/2017/10/19/proptery属性/"><span hidden itemprop="author" itemscope itemtype="http://schema.org/Person"><meta itemprop="name" content="汉秋"><meta itemprop="description" content=""><meta itemprop="image" content="http://oanq2qjpp.bkt.clouddn.com/avatar.jpg"></span><span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization"><meta itemprop="name" content="汉秋城"></span><header class="post-header"><h1 class="post-title" itemprop="name headline"> <a class="post-title-link" href="/2017/10/19/proptery属性/" itemprop="url">@proptery属性</a></h1><div class="post-meta"><span class="post-time"><span class="post-meta-item-icon"><i class="fa fa-calendar-o"></i></span> <span class="post-meta-item-text">发表于</span> <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-10-19T11:04:02+08:00">2017-10-19</time></span> <span class="post-category"><span class="post-meta-divider">|</span><span class="post-meta-item-icon"><i class="fa fa-folder-o"></i></span> <span class="post-meta-item-text">分类于</span> <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/iOS开发学习/" itemprop="url" rel="index"><span itemprop="name">iOS开发学习</span></a></span></span></div></header><div class="post-body" itemprop="articleBody"><h1 id="实例变量"><a href="#实例变量" class="headerlink" title="实例变量"></a>实例变量</h1><p>Objective-C 通常是将类的数据保存在实例变量中，通过编写存取方法访问实力变量。其中读取方法（getter）用于获取变量，设置方法（setter）用户设置变量。</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">@interface Person: NSObject &#123;</div><div class="line">@public</div><div class="line">      NSString *_firstName;</div><div class="line">      NSString *_secondName;</div><div class="line">@private</div><div class="line">&#125;</div><div class="line"></div><div class="line">- (NSString *)firstName;</div><div class="line">- (void)setFirstName:(NSString *)firstName;</div><div class="line">- (NSString *)secondName;</div><div class="line">- (void)setSecondName:(NSString *)secondName;</div></pre></td></tr></table></figure><h1 id="属性"><a href="#属性" class="headerlink" title="属性"></a>属性</h1><p>属性这一特性引入一个新的点语法，开发者可以更好的依照类对象访问存放在其中的数据。</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">@interface Person: NSObject &#123;</div><div class="line">@property NSString *firstName;</div><div class="line">@property NSString *secondName;</div><div class="line">&#125;</div></pre></td></tr></table></figure><div class="post-button text-center"> <a class="btn" href="/2017/10/19/proptery属性/#more" rel="contents">阅读全文 &raquo;</a></div></div><footer class="post-footer"><div class="post-eof"></div></footer></div></article><article class="post post-type-normal" itemscope itemtype="http://schema.org/Article"><div class="post-block"><link itemprop="mainEntityOfPage" href="http://hanqiu.info/2017/10/19/Effective-Objective-C-2-0笔记/"><span hidden itemprop="author" itemscope itemtype="http://schema.org/Person"><meta itemprop="name" content="汉秋"><meta itemprop="description" content=""><meta itemprop="image" content="http://oanq2qjpp.bkt.clouddn.com/avatar.jpg"></span><span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization"><meta itemprop="name" content="汉秋城"></span><header class="post-header"><h1 class="post-title" itemprop="name headline"> <a class="post-title-link" href="/2017/10/19/Effective-Objective-C-2-0笔记/" itemprop="url">Effective Objective-C 2.0笔记</a></h1><div class="post-meta"><span class="post-time"><span class="post-meta-item-icon"><i class="fa fa-calendar-o"></i></span> <span class="post-meta-item-text">发表于</span> <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-10-19T11:00:04+08:00">2017-10-19</time></span></div></header><div class="post-body" itemprop="articleBody"><h1 id="多用类型常量，少用-define预处理指令"><a href="#多用类型常量，少用-define预处理指令" class="headerlink" title="多用类型常量，少用#define预处理指令"></a>多用类型常量，少用#define预处理指令</h1><p>编写代码时经常要定义常量。例如，要写一个页面的动画，我们需要定义一个动画时间常量。也许我们是这样写的</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">#define ANIMATION_DURATIION 0.3</div></pre></td></tr></table></figure><p>上述的预处理指令会把源码中的所有ANIMATION_DURATION字符串替换成0.3。这种方式是可行的，但是这样定义出来的常量没有类型信息。此外，如果如果这个指令声明在头文件中，并且被其他文件应用，那么其ANIMATION_DURATION都会被替换为0.3。</p><p>要解决上面的问题，我们有一个比预处理指令更好的方法</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">static const NSTimeInterval kAnimationDuration = 0.3;</div></pre></td></tr></table></figure><div class="post-button text-center"> <a class="btn" href="/2017/10/19/Effective-Objective-C-2-0笔记/#more" rel="contents">阅读全文 &raquo;</a></div></div><footer class="post-footer"><div class="post-eof"></div></footer></div></article><article class="post post-type-normal" itemscope itemtype="http://schema.org/Article"><div class="post-block"><link itemprop="mainEntityOfPage" href="http://hanqiu.info/2017/10/19/🐂👃的第三方库/"><span hidden itemprop="author" itemscope itemtype="http://schema.org/Person"><meta itemprop="name" content="汉秋"><meta itemprop="description" content=""><meta itemprop="image" content="http://oanq2qjpp.bkt.clouddn.com/avatar.jpg"></span><span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization"><meta itemprop="name" content="汉秋城"></span><header class="post-header"><h1 class="post-title" itemprop="name headline"> <a class="post-title-link" href="/2017/10/19/🐂👃的第三方库/" itemprop="url">🐂👃的第三方库</a></h1><div class="post-meta"><span class="post-time"><span class="post-meta-item-icon"><i class="fa fa-calendar-o"></i></span> <span class="post-meta-item-text">发表于</span> <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-10-19T10:24:31+08:00">2017-10-19</time></span> <span class="post-category"><span class="post-meta-divider">|</span><span class="post-meta-item-icon"><i class="fa fa-folder-o"></i></span> <span class="post-meta-item-text">分类于</span> <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/iOS开发学习/" itemprop="url" rel="index"><span itemprop="name">iOS开发学习</span></a></span></span></div></header><div class="post-body" itemprop="articleBody"><p>iCarousel 卡片切换<br>JSPatch js控制oc代码，修复线上bug<br>FoldingTabBar q版tabbar<br>MMProgressHUD 各种动画的提示框<br>IQKeyboardManager 键盘问题<br></p><div class="post-button text-center"> <a class="btn" href="/2017/10/19/🐂👃的第三方库/#more" rel="contents">阅读全文 &raquo;</a></div></div><footer class="post-footer"><div class="post-eof"></div></footer></div></article><article class="post post-type-normal" itemscope itemtype="http://schema.org/Article"><div class="post-block"><link itemprop="mainEntityOfPage" href="http://hanqiu.info/2017/10/19/UITableViewCell两种复用方式的区别/"><span hidden itemprop="author" itemscope itemtype="http://schema.org/Person"><meta itemprop="name" content="汉秋"><meta itemprop="description" content=""><meta itemprop="image" content="http://oanq2qjpp.bkt.clouddn.com/avatar.jpg"></span><span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization"><meta itemprop="name" content="汉秋城"></span><header class="post-header"><h1 class="post-title" itemprop="name headline"> <a class="post-title-link" href="/2017/10/19/UITableViewCell两种复用方式的区别/" itemprop="url">UITableViewCell两种复用方式的区别</a></h1><div class="post-meta"><span class="post-time"><span class="post-meta-item-icon"><i class="fa fa-calendar-o"></i></span> <span class="post-meta-item-text">发表于</span> <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-10-19T10:23:16+08:00">2017-10-19</time></span> <span class="post-category"><span class="post-meta-divider">|</span><span class="post-meta-item-icon"><i class="fa fa-folder-o"></i></span> <span class="post-meta-item-text">分类于</span> <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/iOS开发学习/" itemprop="url" rel="index"><span itemprop="name">iOS开发学习</span></a></span></span></div></header><div class="post-body" itemprop="articleBody"><h2 id="两种方式："><a href="#两种方式：" class="headerlink" title="两种方式："></a>两种方式：</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">- (nullable __kindof UITableViewCell *)dequeueReusableCellWithIdentifier:(NSString *)identifier;  </div><div class="line">- (__kindof UITableViewCell *)dequeueReusableCellWithIdentifier:(NSString *)identifier forIndexPath:(NSIndexPath *)indexPath NS_AVAILABLE_IOS(6_0);</div></pre></td></tr></table></figure><p>那么这两种复用方式有什么区别呢？<br>从第二种方式的注释我们知道它是在iOS6上新增的，而且新增了一个参数indexpath。以前我们用第一种方式得到复用的cell一般是下面这样写的：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath &#123;</div><div class="line">    static NSString *reuseIdentifier = @&quot;reuseIdentifier&quot;;</div><div class="line">    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:reuseIdentifier];</div><div class="line">    if (!cell) &#123;</div><div class="line">        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:reuseIdentifier];</div><div class="line">    &#125;</div><div class="line">    return cell;</div><div class="line">&#125;</div></pre></td></tr></table></figure><div class="post-button text-center"> <a class="btn" href="/2017/10/19/UITableViewCell两种复用方式的区别/#more" rel="contents">阅读全文 &raquo;</a></div></div><footer class="post-footer"><div class="post-eof"></div></footer></div></article><article class="post post-type-normal" itemscope itemtype="http://schema.org/Article"><div class="post-block"><link itemprop="mainEntityOfPage" href="http://hanqiu.info/2017/10/19/mac环境下配置本地svn服务器/"><span hidden itemprop="author" itemscope itemtype="http://schema.org/Person"><meta itemprop="name" content="汉秋"><meta itemprop="description" content=""><meta itemprop="image" content="http://oanq2qjpp.bkt.clouddn.com/avatar.jpg"></span><span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization"><meta itemprop="name" content="汉秋城"></span><header class="post-header"><h1 class="post-title" itemprop="name headline"> <a class="post-title-link" href="/2017/10/19/mac环境下配置本地svn服务器/" itemprop="url">mac环境下配置本地svn服务器</a></h1><div class="post-meta"><span class="post-time"><span class="post-meta-item-icon"><i class="fa fa-calendar-o"></i></span> <span class="post-meta-item-text">发表于</span> <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-10-19T10:22:35+08:00">2017-10-19</time></span> <span class="post-category"><span class="post-meta-divider">|</span><span class="post-meta-item-icon"><i class="fa fa-folder-o"></i></span> <span class="post-meta-item-text">分类于</span> <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/iOS开发学习/" itemprop="url" rel="index"><span itemprop="name">iOS开发学习</span></a></span></span></div></header><div class="post-body" itemprop="articleBody"><p>我们都知道在多人开发时，项目版本控制是非常必要的。好处就是每个人可以同时开发自己的模块，然后统一合入到svn仓库中去，只要我们处理好同时有两个人以上会接触到的文件的冲突问题，这样可以提高开发效率，还有就是使用svn我们把代码分散到服务器和每个人的电脑中，这样可以避免项目被误删恢复不了的问题。</p><p>今天心血来潮就在自己的mac上实践了一下，也是参考着网上的教程一步步配置的，记录在这里也算是对整个流程的一个总结吧。</p><p>首先，mac下是自带svn的服务器端和客户端的，我们不需要安装第三方软件就可以操作它，只不过没有那么直观。</p><hr><h3 id="创建代码仓库，用于存储客户端上传的代码"><a href="#创建代码仓库，用于存储客户端上传的代码" class="headerlink" title="创建代码仓库，用于存储客户端上传的代码"></a>创建代码仓库，用于存储客户端上传的代码</h3><p>根据网上的教程是在终端输入下面的命令创建代码仓库，此时该路径下会多出一些文件。但是在此之前必须确保/Users/ljy/Desktop/svn/mycode已经存在。<br></p><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">promote:~ ljy$ svnadmin create /Users/ljy/Desktop/svn/mycode</div><div class="line">promote:~ ljy$ cd /Users/ljy/Desktop/svn/mycode/</div><div class="line">promote:mycode ljy$ ls</div><div class="line">README.txt	db		hooks</div><div class="line">conf		format		locks</div></pre></td></tr></table></figure><p></p><div class="post-button text-center"> <a class="btn" href="/2017/10/19/mac环境下配置本地svn服务器/#more" rel="contents">阅读全文 &raquo;</a></div></div><footer class="post-footer"><div class="post-eof"></div></footer></div></article><article class="post post-type-normal" itemscope itemtype="http://schema.org/Article"><div class="post-block"><link itemprop="mainEntityOfPage" href="http://hanqiu.info/2017/10/19/UITableViewCell高度自适应/"><span hidden itemprop="author" itemscope itemtype="http://schema.org/Person"><meta itemprop="name" content="汉秋"><meta itemprop="description" content=""><meta itemprop="image" content="http://oanq2qjpp.bkt.clouddn.com/avatar.jpg"></span><span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization"><meta itemprop="name" content="汉秋城"></span><header class="post-header"><h1 class="post-title" itemprop="name headline"> <a class="post-title-link" href="/2017/10/19/UITableViewCell高度自适应/" itemprop="url">UITableViewCell高度自适应</a></h1><div class="post-meta"><span class="post-time"><span class="post-meta-item-icon"><i class="fa fa-calendar-o"></i></span> <span class="post-meta-item-text">发表于</span> <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-10-19T10:21:55+08:00">2017-10-19</time></span> <span class="post-category"><span class="post-meta-divider">|</span><span class="post-meta-item-icon"><i class="fa fa-folder-o"></i></span> <span class="post-meta-item-text">分类于</span> <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/iOS开发学习/" itemprop="url" rel="index"><span itemprop="name">iOS开发学习</span></a></span></span></div></header><div class="post-body" itemprop="articleBody"><p>有时我们在使用UITableView时，每个cell的高度不是定死的，它需要由每个cell里面的内容动态决定。<br>之前我们都是通过计算每个cell里面每个空间的高度之和，然后在</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath &#123;</div></pre></td></tr></table></figure><p>中返回每个index path对应cell的高度。</p><p>通常计算UILabel的高度是使用：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">- (CGRect)boundingRectWithSize:(CGSize)size </div><div class="line">                       options:(NSStringDrawingOptions)options </div><div class="line">                    attributes:(nullable NSDictionary&lt;NSString *, id&gt; *)attributes </div><div class="line">                       context:(nullable NSStringDrawingContext *)context NS_AVAILABLE(10_11, 7_0);</div></pre></td></tr></table></figure><p>但是在iOS8之后，我们可以使用更简单的方法实现。</p><ol><li>首先需要在xib或者SB中给cell中的元素添加top、bottom约束，然后通过设置：</li></ol><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">self.tableview.estimatedRowHeight = 100.0;</div><div class="line">   self.tableview.rowHeight = UITableViewAutomaticDimension;</div></pre></td></tr></table></figure><p>来实现。</p></div><footer class="post-footer"><div class="post-eof"></div></footer></div></article><article class="post post-type-normal" itemscope itemtype="http://schema.org/Article"><div class="post-block"><link itemprop="mainEntityOfPage" href="http://hanqiu.info/2017/10/19/uiview-autoresizesSubviews/"><span hidden itemprop="author" itemscope itemtype="http://schema.org/Person"><meta itemprop="name" content="汉秋"><meta itemprop="description" content=""><meta itemprop="image" content="http://oanq2qjpp.bkt.clouddn.com/avatar.jpg"></span><span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization"><meta itemprop="name" content="汉秋城"></span><header class="post-header"><h1 class="post-title" itemprop="name headline"> <a class="post-title-link" href="/2017/10/19/uiview-autoresizesSubviews/" itemprop="url">uiview autoresizesSubviews</a></h1><div class="post-meta"><span class="post-time"><span class="post-meta-item-icon"><i class="fa fa-calendar-o"></i></span> <span class="post-meta-item-text">发表于</span> <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-10-19T10:21:22+08:00">2017-10-19</time></span> <span class="post-category"><span class="post-meta-divider">|</span><span class="post-meta-item-icon"><i class="fa fa-folder-o"></i></span> <span class="post-meta-item-text">分类于</span> <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/iOS开发学习/" itemprop="url" rel="index"><span itemprop="name">iOS开发学习</span></a></span></span></div></header><div class="post-body" itemprop="articleBody"><h2 id="autoresizesSubviews"><a href="#autoresizesSubviews" class="headerlink" title="autoresizesSubviews"></a>autoresizesSubviews</h2><p>iOS有两大自动布局利器：autoresizing 和 autolayout（autolayout是IOS6以后新增）。autoresizing是UIView的属性，一直存在，使用也比较简单，但是没有autolayout那样强大。如果你的界面比较简单，要求的细节没有那么高，那么你完全可以使用autoresizing去进行自动布局。</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">typedef NS_OPTIONS(NSUInteger, UIViewAutoresizing) &#123;</div><div class="line">    UIViewAutoresizingNone                 = 0,</div><div class="line">    UIViewAutoresizingFlexibleLeftMargin   = 1 &lt;&lt; 0,</div><div class="line">    UIViewAutoresizingFlexibleWidth        = 1 &lt;&lt; 1,</div><div class="line">    UIViewAutoresizingFlexibleRightMargin  = 1 &lt;&lt; 2,</div><div class="line">    UIViewAutoresizingFlexibleTopMargin    = 1 &lt;&lt; 3,</div><div class="line">    UIViewAutoresizingFlexibleHeight       = 1 &lt;&lt; 4,</div><div class="line">    UIViewAutoresizingFlexibleBottomMargin = 1 &lt;&lt; 5</div><div class="line">&#125;;</div></pre></td></tr></table></figure></div><footer class="post-footer"><div class="post-eof"></div></footer></div></article><article class="post post-type-normal" itemscope itemtype="http://schema.org/Article"><div class="post-block"><link itemprop="mainEntityOfPage" href="http://hanqiu.info/2017/10/19/iOS-setNeedsLayout等布局方法/"><span hidden itemprop="author" itemscope itemtype="http://schema.org/Person"><meta itemprop="name" content="汉秋"><meta itemprop="description" content=""><meta itemprop="image" content="http://oanq2qjpp.bkt.clouddn.com/avatar.jpg"></span><span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization"><meta itemprop="name" content="汉秋城"></span><header class="post-header"><h1 class="post-title" itemprop="name headline"> <a class="post-title-link" href="/2017/10/19/iOS-setNeedsLayout等布局方法/" itemprop="url">iOS-setNeedsLayout等布局方法</a></h1><div class="post-meta"><span class="post-time"><span class="post-meta-item-icon"><i class="fa fa-calendar-o"></i></span> <span class="post-meta-item-text">发表于</span> <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-10-19T10:19:58+08:00">2017-10-19</time></span> <span class="post-category"><span class="post-meta-divider">|</span><span class="post-meta-item-icon"><i class="fa fa-folder-o"></i></span> <span class="post-meta-item-text">分类于</span> <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/iOS开发学习/" itemprop="url" rel="index"><span itemprop="name">iOS开发学习</span></a></span></span></div></header><div class="post-body" itemprop="articleBody"><h2 id="layoutSubviews"><a href="#layoutSubviews" class="headerlink" title="layoutSubviews"></a>layoutSubviews</h2><p>这个方法，默认没有做任何事情，需要子类进行重写 。 系统在很多时候会去调用这个方法：</p><p>1.初始化不会触发layoutSubviews，但是如果设置了不为CGRectZero的frame的时候就会触发。<br>2.addSubview会触发layoutSubviews<br>3.设置view的Frame会触发layoutSubviews，当然前提是frame的值设置前后发生了变化<br>4.滚动一个UIScrollView会触发layoutSubviews<br>5.旋转Screen会触发父UIView上的layoutSubviews事件<br>6.改变一个UIView大小的时候也会触发父UIView上的layoutSubviews事件</p><h2 id="setNeedsLayout"><a href="#setNeedsLayout" class="headerlink" title="setNeedsLayout"></a>setNeedsLayout</h2><p>标记为需要重新布局，不立即刷新，但layoutSubviews一定会被调用<br>配合layoutIfNeeded立即更新<br></p><div class="post-button text-center"> <a class="btn" href="/2017/10/19/iOS-setNeedsLayout等布局方法/#more" rel="contents">阅读全文 &raquo;</a></div></div><footer class="post-footer"><div class="post-eof"></div></footer></div></article></section><nav class="pagination"> <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right"></i></a></nav></div></div><div class="sidebar-toggle"><div class="sidebar-toggle-line-wrap"><span class="sidebar-toggle-line sidebar-toggle-line-first"></span><span class="sidebar-toggle-line sidebar-toggle-line-middle"></span><span class="sidebar-toggle-line sidebar-toggle-line-last"></span></div></div><aside id="sidebar" class="sidebar"><div class="sidebar-inner"><section class="site-overview-wrap sidebar-panel sidebar-panel-active"><div class="site-overview"><div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person"> <img class="site-author-image" itemprop="image" src="http://oanq2qjpp.bkt.clouddn.com/avatar.jpg" alt="汉秋"><p class="site-author-name" itemprop="name">汉秋</p><p class="site-description motion-element" itemprop="description">天下事有难易乎？为之，则难者亦易矣；不为，则易者亦难矣。</p></div><nav class="site-state motion-element"><div class="site-state-item site-state-posts"> <a href="/archives/"><span class="site-state-item-count">12</span> <span class="site-state-item-name">日志</span></a></div><div class="site-state-item site-state-categories"> <a href="/categories/index.html"><span class="site-state-item-count">1</span> <span class="site-state-item-name">分类</span></a></div><div class="site-state-item site-state-tags"> <a href="/tags/index.html"><span class="site-state-item-count">8</span> <span class="site-state-item-name">标签</span></a></div></nav><div class="links-of-author motion-element"><span class="links-of-author-item"><a href="https://github.com/lujiuyin" target="_blank" title="GitHub"><i class="fa fa-fw fa-github"></i> GitHub</a></span><span class="links-of-author-item"><a href="http://www.jianshu.com/u/43a0f514c047" target="_blank" title="简书"><i class="fa fa-fw fa-qq"></i> 简书</a></span></div></div></section></div></aside></div></main><footer id="footer" class="footer"><div class="footer-inner"><div class="copyright">&copy; <span itemprop="copyrightYear">2017</span><span class="with-love"><i class="fa fa-user"></i></span> <span class="author" itemprop="copyrightHolder">汉秋</span></div><div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div> <span class="post-meta-divider">|</span><div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.3</div></div></footer><div class="back-to-top"><i class="fa fa-arrow-up"></i></div></div><script type="text/javascript">"[object Function]"!==Object.prototype.toString.call(window.Promise)&&(window.Promise=null)</script><script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script><script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script><script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script><script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script><script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script><script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script><script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script><script type="text/javascript" src="/js/src/utils.js?v=5.1.3"></script><script type="text/javascript" src="/js/src/motion.js?v=5.1.3"></script><script type="text/javascript" src="/js/src/affix.js?v=5.1.3"></script><script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.3"></script><script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.3"></script></body></html>
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-minimal.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.3" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.3">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.3" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="天下事有难易乎？为之，则难者亦易矣；不为，则易者亦难矣。">
+<meta property="og:type" content="website">
+<meta property="og:title" content="汉秋城">
+<meta property="og:url" content="http://hanqiu.info/index.html">
+<meta property="og:site_name" content="汉秋城">
+<meta property="og:description" content="天下事有难易乎？为之，则难者亦易矣；不为，则易者亦难矣。">
+<meta property="og:locale" content="zh-Hans">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="汉秋城">
+<meta name="twitter:description" content="天下事有难易乎？为之，则难者亦易矣；不为，则易者亦难矣。">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.3',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://hanqiu.info/"/>
+
+
+
+
+
+  <title>汉秋城</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left 
+  page-home">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">汉秋城</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">天下事有难易乎？为之，则难者亦易矣；不为，则易者亦难矣。</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+  <section id="posts" class="posts-expand">
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://hanqiu.info/2017/10/20/学习RxSwift记录Operators之Create Observables/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="汉秋">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="http://oanq2qjpp.bkt.clouddn.com/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="汉秋城">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/10/20/学习RxSwift记录Operators之Create Observables/" itemprop="url">学习RxSwift记录Operators之Create Observables</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-10-20T18:01:07+08:00">
+                2017-10-20
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/iOS开发学习/" itemprop="url" rel="index">
+                    <span itemprop="name">iOS开发学习</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h1 id="学习RxSwift记录Operators之Create-Observables"><a href="#学习RxSwift记录Operators之Create-Observables" class="headerlink" title="学习RxSwift记录Operators之Create Observables"></a>学习RxSwift记录Operators之Create Observables</h1><h3 id="Create"><a href="#Create" class="headerlink" title="Create"></a>Create</h3><p><img src="http://oanq2qjpp.bkt.clouddn.com/create.png" alt=""></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">let source = Observable&lt;Any&gt;.create &#123; observer in</div><div class="line">            for i in 1...5 &#123;</div><div class="line">                observer.on(.next(i))</div><div class="line">            &#125;</div><div class="line">            observer.on(.completed)</div><div class="line"></div><div class="line">            return Disposables.create &#123;</div><div class="line">                print(&quot;disposed&quot;)</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        source.subscribe &#123;</div><div class="line">            print($0)</div><div class="line">        &#125;</div></pre></td></tr></table></figure>
+<p>输出：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">next(1)</div><div class="line">next(2)</div><div class="line">next(3)</div><div class="line">next(4)</div><div class="line">next(5)</div><div class="line">completed</div><div class="line">disposed</div></pre></td></tr></table></figure>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2017/10/20/学习RxSwift记录Operators之Create Observables/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://hanqiu.info/2017/10/19/App开发图标素材/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="汉秋">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="http://oanq2qjpp.bkt.clouddn.com/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="汉秋城">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/10/19/App开发图标素材/" itemprop="url">App开发图标素材</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-10-19T16:29:24+08:00">
+                2017-10-19
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/iOS开发学习/" itemprop="url" rel="index">
+                    <span itemprop="name">iOS开发学习</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <ol>
+<li><a href="http://fa2png.io" target="_blank" rel="external">Convert Icon Fonts To PNG</a></li>
+<li><a href="https://github.com/JoanZapata/android-iconify" target="_blank" rel="external">GitHub - JoanZapata/android-iconify</a></li>
+<li><a href="http://fontawesome.io/cheatsheet/" target="_blank" rel="external">Font Awesome Cheatsheet</a></li>
+<li><a href="http://www.entypo.com" target="_blank" rel="external">Entypo</a></li>
+<li><a href="http://s-ings.com/typicons/" target="_blank" rel="external">Typicons</a></li>
+<li><a href="http://www.stpatsfc.com/assets/plugins/line-icons/" target="_blank" rel="external">Simple Line Icons</a></li>
+<li><a href="http://ionicons.com" target="_blank" rel="external">Ionicons: The premium icon font for Ionic Framework</a></li>
+</ol>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://hanqiu.info/2017/10/19/proptery属性/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="汉秋">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="http://oanq2qjpp.bkt.clouddn.com/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="汉秋城">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/10/19/proptery属性/" itemprop="url">@proptery属性</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-10-19T11:04:02+08:00">
+                2017-10-19
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/iOS开发学习/" itemprop="url" rel="index">
+                    <span itemprop="name">iOS开发学习</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h1 id="实例变量"><a href="#实例变量" class="headerlink" title="实例变量"></a>实例变量</h1><p>Objective-C 通常是将类的数据保存在实例变量中，通过编写存取方法访问实力变量。其中读取方法（getter）用于获取变量，设置方法（setter）用户设置变量。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">@interface Person: NSObject &#123;</div><div class="line">@public</div><div class="line">      NSString *_firstName;</div><div class="line">      NSString *_secondName;</div><div class="line">@private</div><div class="line">&#125;</div><div class="line"></div><div class="line">- (NSString *)firstName;</div><div class="line">- (void)setFirstName:(NSString *)firstName;</div><div class="line">- (NSString *)secondName;</div><div class="line">- (void)setSecondName:(NSString *)secondName;</div></pre></td></tr></table></figure>
+<h1 id="属性"><a href="#属性" class="headerlink" title="属性"></a>属性</h1><p>属性这一特性引入一个新的点语法，开发者可以更好的依照类对象访问存放在其中的数据。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">@interface Person: NSObject &#123;</div><div class="line">@property NSString *firstName;</div><div class="line">@property NSString *secondName;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2017/10/19/proptery属性/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://hanqiu.info/2017/10/19/Effective-Objective-C-2-0笔记/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="汉秋">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="http://oanq2qjpp.bkt.clouddn.com/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="汉秋城">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/10/19/Effective-Objective-C-2-0笔记/" itemprop="url">Effective Objective-C 2.0笔记</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-10-19T11:00:04+08:00">
+                2017-10-19
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h1 id="多用类型常量，少用-define预处理指令"><a href="#多用类型常量，少用-define预处理指令" class="headerlink" title="多用类型常量，少用#define预处理指令"></a>多用类型常量，少用#define预处理指令</h1><p>编写代码时经常要定义常量。例如，要写一个页面的动画，我们需要定义一个动画时间常量。也许我们是这样写的</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">#define ANIMATION_DURATIION 0.3</div></pre></td></tr></table></figure>
+<p>上述的预处理指令会把源码中的所有ANIMATION_DURATION字符串替换成0.3。这种方式是可行的，但是这样定义出来的常量没有类型信息。此外，如果如果这个指令声明在头文件中，并且被其他文件应用，那么其ANIMATION_DURATION都会被替换为0.3。</p>
+<p>要解决上面的问题，我们有一个比预处理指令更好的方法</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">static const NSTimeInterval kAnimationDuration = 0.3;</div></pre></td></tr></table></figure>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2017/10/19/Effective-Objective-C-2-0笔记/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://hanqiu.info/2017/10/19/🐂👃的第三方库/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="汉秋">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="http://oanq2qjpp.bkt.clouddn.com/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="汉秋城">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/10/19/🐂👃的第三方库/" itemprop="url">🐂👃的第三方库</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-10-19T10:24:31+08:00">
+                2017-10-19
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/iOS开发学习/" itemprop="url" rel="index">
+                    <span itemprop="name">iOS开发学习</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <p>iCarousel                  卡片切换<br>JSPatch                     js控制oc代码，修复线上bug<br>FoldingTabBar        q版tabbar<br>MMProgressHUD   各种动画的提示框<br>IQKeyboardManager     键盘问题<br>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2017/10/19/🐂👃的第三方库/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://hanqiu.info/2017/10/19/UITableViewCell两种复用方式的区别/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="汉秋">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="http://oanq2qjpp.bkt.clouddn.com/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="汉秋城">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/10/19/UITableViewCell两种复用方式的区别/" itemprop="url">UITableViewCell两种复用方式的区别</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-10-19T10:23:16+08:00">
+                2017-10-19
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/iOS开发学习/" itemprop="url" rel="index">
+                    <span itemprop="name">iOS开发学习</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h2 id="两种方式："><a href="#两种方式：" class="headerlink" title="两种方式："></a>两种方式：</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">- (nullable __kindof UITableViewCell *)dequeueReusableCellWithIdentifier:(NSString *)identifier;  </div><div class="line">- (__kindof UITableViewCell *)dequeueReusableCellWithIdentifier:(NSString *)identifier forIndexPath:(NSIndexPath *)indexPath NS_AVAILABLE_IOS(6_0);</div></pre></td></tr></table></figure>
+<p>那么这两种复用方式有什么区别呢？<br>从第二种方式的注释我们知道它是在iOS6上新增的，而且新增了一个参数indexpath。以前我们用第一种方式得到复用的cell一般是下面这样写的：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath &#123;</div><div class="line">    static NSString *reuseIdentifier = @&quot;reuseIdentifier&quot;;</div><div class="line">    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:reuseIdentifier];</div><div class="line">    if (!cell) &#123;</div><div class="line">        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:reuseIdentifier];</div><div class="line">    &#125;</div><div class="line">    return cell;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2017/10/19/UITableViewCell两种复用方式的区别/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://hanqiu.info/2017/10/19/mac环境下配置本地svn服务器/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="汉秋">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="http://oanq2qjpp.bkt.clouddn.com/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="汉秋城">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/10/19/mac环境下配置本地svn服务器/" itemprop="url">mac环境下配置本地svn服务器</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-10-19T10:22:35+08:00">
+                2017-10-19
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/iOS开发学习/" itemprop="url" rel="index">
+                    <span itemprop="name">iOS开发学习</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <p>我们都知道在多人开发时，项目版本控制是非常必要的。好处就是每个人可以同时开发自己的模块，然后统一合入到svn仓库中去，只要我们处理好同时有两个人以上会接触到的文件的冲突问题，这样可以提高开发效率，还有就是使用svn我们把代码分散到服务器和每个人的电脑中，这样可以避免项目被误删恢复不了的问题。</p>
+<p>今天心血来潮就在自己的mac上实践了一下，也是参考着网上的教程一步步配置的，记录在这里也算是对整个流程的一个总结吧。</p>
+<p>首先，mac下是自带svn的服务器端和客户端的，我们不需要安装第三方软件就可以操作它，只不过没有那么直观。</p>
+<hr>
+<h3 id="创建代码仓库，用于存储客户端上传的代码"><a href="#创建代码仓库，用于存储客户端上传的代码" class="headerlink" title="创建代码仓库，用于存储客户端上传的代码"></a>创建代码仓库，用于存储客户端上传的代码</h3><p>根据网上的教程是在终端输入下面的命令创建代码仓库，此时该路径下会多出一些文件。但是在此之前必须确保/Users/ljy/Desktop/svn/mycode已经存在。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">promote:~ ljy$ svnadmin create /Users/ljy/Desktop/svn/mycode</div><div class="line">promote:~ ljy$ cd /Users/ljy/Desktop/svn/mycode/</div><div class="line">promote:mycode ljy$ ls</div><div class="line">README.txt	db		hooks</div><div class="line">conf		format		locks</div></pre></td></tr></table></figure></p>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2017/10/19/mac环境下配置本地svn服务器/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://hanqiu.info/2017/10/19/UITableViewCell高度自适应/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="汉秋">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="http://oanq2qjpp.bkt.clouddn.com/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="汉秋城">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/10/19/UITableViewCell高度自适应/" itemprop="url">UITableViewCell高度自适应</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-10-19T10:21:55+08:00">
+                2017-10-19
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/iOS开发学习/" itemprop="url" rel="index">
+                    <span itemprop="name">iOS开发学习</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>有时我们在使用UITableView时，每个cell的高度不是定死的，它需要由每个cell里面的内容动态决定。<br>之前我们都是通过计算每个cell里面每个空间的高度之和，然后在</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath &#123;</div></pre></td></tr></table></figure>
+<p>中返回每个index path对应cell的高度。</p>
+<p>通常计算UILabel的高度是使用：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">- (CGRect)boundingRectWithSize:(CGSize)size </div><div class="line">                       options:(NSStringDrawingOptions)options </div><div class="line">                    attributes:(nullable NSDictionary&lt;NSString *, id&gt; *)attributes </div><div class="line">                       context:(nullable NSStringDrawingContext *)context NS_AVAILABLE(10_11, 7_0);</div></pre></td></tr></table></figure>
+<p>但是在iOS8之后，我们可以使用更简单的方法实现。</p>
+<ol>
+<li>首先需要在xib或者SB中给cell中的元素添加top、bottom约束，然后通过设置：</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">self.tableview.estimatedRowHeight = 100.0;</div><div class="line">   self.tableview.rowHeight = UITableViewAutomaticDimension;</div></pre></td></tr></table></figure>
+<p>来实现。</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://hanqiu.info/2017/10/19/uiview-autoresizesSubviews/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="汉秋">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="http://oanq2qjpp.bkt.clouddn.com/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="汉秋城">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/10/19/uiview-autoresizesSubviews/" itemprop="url">uiview autoresizesSubviews</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-10-19T10:21:22+08:00">
+                2017-10-19
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/iOS开发学习/" itemprop="url" rel="index">
+                    <span itemprop="name">iOS开发学习</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="autoresizesSubviews"><a href="#autoresizesSubviews" class="headerlink" title="autoresizesSubviews"></a>autoresizesSubviews</h2><p>iOS有两大自动布局利器：autoresizing 和 autolayout（autolayout是IOS6以后新增）。autoresizing是UIView的属性，一直存在，使用也比较简单，但是没有autolayout那样强大。如果你的界面比较简单，要求的细节没有那么高，那么你完全可以使用autoresizing去进行自动布局。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">typedef NS_OPTIONS(NSUInteger, UIViewAutoresizing) &#123;</div><div class="line">    UIViewAutoresizingNone                 = 0,</div><div class="line">    UIViewAutoresizingFlexibleLeftMargin   = 1 &lt;&lt; 0,</div><div class="line">    UIViewAutoresizingFlexibleWidth        = 1 &lt;&lt; 1,</div><div class="line">    UIViewAutoresizingFlexibleRightMargin  = 1 &lt;&lt; 2,</div><div class="line">    UIViewAutoresizingFlexibleTopMargin    = 1 &lt;&lt; 3,</div><div class="line">    UIViewAutoresizingFlexibleHeight       = 1 &lt;&lt; 4,</div><div class="line">    UIViewAutoresizingFlexibleBottomMargin = 1 &lt;&lt; 5</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://hanqiu.info/2017/10/19/iOS-setNeedsLayout等布局方法/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="汉秋">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="http://oanq2qjpp.bkt.clouddn.com/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="汉秋城">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/10/19/iOS-setNeedsLayout等布局方法/" itemprop="url">iOS-setNeedsLayout等布局方法</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-10-19T10:19:58+08:00">
+                2017-10-19
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/iOS开发学习/" itemprop="url" rel="index">
+                    <span itemprop="name">iOS开发学习</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h2 id="layoutSubviews"><a href="#layoutSubviews" class="headerlink" title="layoutSubviews"></a>layoutSubviews</h2><p>这个方法，默认没有做任何事情，需要子类进行重写 。 系统在很多时候会去调用这个方法：</p>
+<p>1.初始化不会触发layoutSubviews，但是如果设置了不为CGRectZero的frame的时候就会触发。<br>2.addSubview会触发layoutSubviews<br>3.设置view的Frame会触发layoutSubviews，当然前提是frame的值设置前后发生了变化<br>4.滚动一个UIScrollView会触发layoutSubviews<br>5.旋转Screen会触发父UIView上的layoutSubviews事件<br>6.改变一个UIView大小的时候也会触发父UIView上的layoutSubviews事件</p>
+<h2 id="setNeedsLayout"><a href="#setNeedsLayout" class="headerlink" title="setNeedsLayout"></a>setNeedsLayout</h2><p>标记为需要重新布局，不立即刷新，但layoutSubviews一定会被调用<br>配合layoutIfNeeded立即更新<br>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2017/10/19/iOS-setNeedsLayout等布局方法/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+  </section>
+
+  
+  <nav class="pagination">
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right"></i></a>
+  </nav>
+
+
+
+          </div>
+          
+
+
+          
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+
+      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="http://oanq2qjpp.bkt.clouddn.com/avatar.jpg"
+                alt="汉秋" />
+            
+              <p class="site-author-name" itemprop="name">汉秋</p>
+              <p class="site-description motion-element" itemprop="description">天下事有难易乎？为之，则难者亦易矣；不为，则易者亦难矣。</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">12</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">1</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">8</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          <div class="links-of-author motion-element">
+            
+              
+                <span class="links-of-author-item">
+                  <a href="https://github.com/lujiuyin" target="_blank" title="GitHub">
+                    
+                      <i class="fa fa-fw fa-github"></i>GitHub</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="http://www.jianshu.com/u/43a0f514c047" target="_blank" title="简书">
+                    
+                      <i class="fa fa-fw fa-qq"></i>简书</a>
+                </span>
+              
+            
+          </div>
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">汉秋</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.3</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.3"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.3"></script>
+
+
+
+  
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
