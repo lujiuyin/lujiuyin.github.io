@@ -269,6 +269,454 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://hanqiu.info/2017/10/23/学习RxSwift记录之Subject/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="汉秋">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="http://oanq2qjpp.bkt.clouddn.com/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="汉秋城">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/10/23/学习RxSwift记录之Subject/" itemprop="url">学习RxSwift记录之Subject</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-10-23T15:09:23+08:00">
+                2017-10-23
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/iOS开发学习/" itemprop="url" rel="index">
+                    <span itemprop="name">iOS开发学习</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="Subject"><a href="#Subject" class="headerlink" title="Subject"></a>Subject</h3><p>在RxSwift中的Subject同时扮演着<strong>Observer</strong>和<strong>Observable</strong>的角色。作为订阅者subscriber一个或多个<strong>Observables</strong>，作为<strong>Observable</strong>它可以传递它所观察的事件。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">extension ObservableType &#123;</div><div class="line">    func addObserver(_ id: String) -&gt; Disposable &#123;</div><div class="line">        return subscribe &#123; print(&quot;Subscription:&quot;, id, &quot;Event&quot;, $0) &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="PublicSubject"><a href="#PublicSubject" class="headerlink" title="PublicSubject"></a>PublicSubject</h3><p>自订阅时间起，新事件会广播给订阅了这个Observable的所有Observer。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">let disposeBag = DisposeBag()</div><div class="line">   let subject = PublishSubject&lt;String&gt;()</div><div class="line">   </div><div class="line">   subject.addObserver(&quot;1&quot;).disposed(by: disposeBag)</div><div class="line">   subject.onNext(&quot;🐶&quot;)</div><div class="line">   subject.onNext(&quot;🐱&quot;)</div><div class="line">   </div><div class="line">   subject.addObserver(&quot;2&quot;).disposed(by: disposeBag)</div><div class="line">   subject.onNext(&quot;🅰️&quot;)</div><div class="line">   subject.onNext(&quot;🅱️&quot;)</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">Subscription: 1 Event: next(🐶)</div><div class="line">Subscription: 1 Event: next(🐱)</div><div class="line">Subscription: 1 Event: next(🅰️)</div><div class="line">Subscription: 2 Event: next(🅰️)</div><div class="line">Subscription: 1 Event: next(🅱️)</div><div class="line">Subscription: 2 Event: next(🅱️)</div></pre></td></tr></table></figure>
+<h3 id="ReplaySubject"><a href="#ReplaySubject" class="headerlink" title="ReplaySubject"></a>ReplaySubject</h3><p>新事件会广播给订阅了这个Observable的所有Observer，此外还会将此前缓存的指定个数的事件广播给订阅者。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">let disposeBag = DisposeBag()</div><div class="line">let subject = ReplaySubject&lt;String&gt;.create(bufferSize: 1)</div><div class="line"></div><div class="line">subject.addObserver(&quot;1&quot;).disposed(by: disposeBag)</div><div class="line">subject.onNext(&quot;🐶&quot;)</div><div class="line">subject.onNext(&quot;🐱&quot;)</div><div class="line"></div><div class="line">subject.addObserver(&quot;2&quot;).disposed(by: disposeBag)</div><div class="line">subject.onNext(&quot;🅰️&quot;)</div><div class="line">subject.onNext(&quot;🅱️&quot;)</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">Subscription: 1 Event: next(🐶)</div><div class="line">Subscription: 1 Event: next(🐱)</div><div class="line">Subscription: 2 Event: next(🐱)</div><div class="line">Subscription: 1 Event: next(🅰️)</div><div class="line">Subscription: 2 Event: next(🅰️)</div><div class="line">Subscription: 1 Event: next(🅱️)</div><div class="line">Subscription: 2 Event: next(🅱️)</div></pre></td></tr></table></figure>
+<h3 id="BehaviorSubject"><a href="#BehaviorSubject" class="headerlink" title="BehaviorSubject"></a>BehaviorSubject</h3><p>与ReplaySubject类似，只是会在订阅后补发一条信号。如果是第一个则补发预设的默认值。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">let disposeBag = DisposeBag()</div><div class="line">   let subject = BehaviorSubject(value: &quot;🔴&quot;)</div><div class="line">   </div><div class="line">   subject.addObserver(&quot;1&quot;).disposed(by: disposeBag)</div><div class="line">   subject.onNext(&quot;🐶&quot;)</div><div class="line">   subject.onNext(&quot;🐱&quot;)</div><div class="line">   </div><div class="line">   subject.addObserver(&quot;2&quot;).disposed(by: disposeBag)</div><div class="line">   subject.onNext(&quot;🅰️&quot;)</div><div class="line">   subject.onNext(&quot;🅱️&quot;)</div><div class="line">   </div><div class="line">   subject.addObserver(&quot;3&quot;).disposed(by: disposeBag)</div><div class="line">   subject.onNext(&quot;🍐&quot;)</div><div class="line">   subject.onNext(&quot;🍊&quot;)</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">Subscription: 1 Event: next(🔴)</div><div class="line">Subscription: 1 Event: next(🐶)</div><div class="line">Subscription: 1 Event: next(🐱)</div><div class="line">Subscription: 2 Event: next(🐱)</div><div class="line">Subscription: 1 Event: next(🅰️)</div><div class="line">Subscription: 2 Event: next(🅰️)</div><div class="line">Subscription: 1 Event: next(🅱️)</div><div class="line">Subscription: 2 Event: next(🅱️)</div><div class="line">Subscription: 3 Event: next(🅱️)</div><div class="line">Subscription: 1 Event: next(🍐)</div><div class="line">Subscription: 2 Event: next(🍐)</div><div class="line">Subscription: 3 Event: next(🍐)</div><div class="line">Subscription: 1 Event: next(🍊)</div><div class="line">Subscription: 2 Event: next(🍊)</div><div class="line">Subscription: 3 Event: next(🍊)</div></pre></td></tr></table></figure>
+<h3 id="Variable"><a href="#Variable" class="headerlink" title="Variable"></a>Variable</h3><p>内部实质跟BehaviorSubject一样，同时它还维持着当前值的状态。Variable不会发出error事件，并且会自动发出completed事 and terminate on deinit.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">let disposeBag = DisposeBag()</div><div class="line"></div><div class="line">      let variable = Variable(&quot;🔴&quot;)</div><div class="line">      variable.asObservable().addObserver(&quot;1&quot;).disposed(by: disposeBag)</div><div class="line">      variable.value = &quot;🐶&quot;</div><div class="line">      variable.value = &quot;🐱&quot;</div><div class="line">      </div><div class="line">      variable.asObservable().addObserver(&quot;2&quot;).disposed(by: disposeBag)</div><div class="line">      variable.value = &quot;🅰️&quot;</div><div class="line">      variable.value = &quot;🅱️&quot;</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">Subscription: 1 Event: next(🔴)</div><div class="line">Subscription: 1 Event: next(🐶)</div><div class="line">Subscription: 1 Event: next(🐱)</div><div class="line">Subscription: 2 Event: next(🐱)</div><div class="line">Subscription: 1 Event: next(🅰️)</div><div class="line">Subscription: 2 Event: next(🅰️)</div><div class="line">Subscription: 1 Event: next(🅱️)</div><div class="line">Subscription: 2 Event: next(🅱️)</div><div class="line">Subscription: 1 Event: completed</div><div class="line">Subscription: 2 Event: completed</div></pre></td></tr></table></figure>
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://hanqiu.info/2017/10/23/学习RxSwift记录Operators之Filtering-Observables/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="汉秋">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="http://oanq2qjpp.bkt.clouddn.com/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="汉秋城">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/10/23/学习RxSwift记录Operators之Filtering-Observables/" itemprop="url">学习RxSwift记录Operators之Filtering Observables</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-10-23T11:19:31+08:00">
+                2017-10-23
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/iOS开发学习/" itemprop="url" rel="index">
+                    <span itemprop="name">iOS开发学习</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="Debounce"><a href="#Debounce" class="headerlink" title="Debounce"></a>Debounce</h3><p>当一个信号在给定的时间之后没有再次传递信号才会被换地出去。<br><img src="http://oanq2qjpp.bkt.clouddn.com/debounce.png" alt=""></p>
+<h3 id="Distinct"><a href="#Distinct" class="headerlink" title="Distinct"></a>Distinct</h3><p>限制重复信号发射<br><img src="http://oanq2qjpp.bkt.clouddn.com/distinct.png" alt=""></p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://hanqiu.info/2017/10/23/学习RxSwift记录Operators之Transforming-Observables/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="汉秋">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="http://oanq2qjpp.bkt.clouddn.com/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="汉秋城">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/10/23/学习RxSwift记录Operators之Transforming-Observables/" itemprop="url">学习RxSwift记录Operators之Transforming Observables</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-10-23T09:55:46+08:00">
+                2017-10-23
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/iOS开发学习/" itemprop="url" rel="index">
+                    <span itemprop="name">iOS开发学习</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="Buffer"><a href="#Buffer" class="headerlink" title="Buffer"></a>Buffer</h3><p>将序列中的事件缓存起来。总体来说就是在一定时间，将一定个数的事件组合成数组，一起处理。<br><img src="http://oanq2qjpp.bkt.clouddn.com/Buffer.png" alt=""></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">let source = Observable.repeatElement(3).buffer(timeSpan: 10, count: 5, scheduler: MainScheduler.instance)</div><div class="line">    </div><div class="line">source.subscribe &#123;</div><div class="line">    print($0)</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">next([3, 3, 3, 3, 3])</div><div class="line">next([3, 3, 3, 3, 3])</div><div class="line">next([3, 3, 3, 3, 3])</div><div class="line">next([3, 3, 3, 3, 3])</div><div class="line">...</div></pre></td></tr></table></figure>
+<h3 id="FlatMap"><a href="#FlatMap" class="headerlink" title="FlatMap"></a>FlatMap</h3><p>起到平铺的作用<br><img src="http://oanq2qjpp.bkt.clouddn.com/flatMap.c.png" alt=""></p>
+<h3 id="GroupBy"><a href="#GroupBy" class="headerlink" title="GroupBy"></a>GroupBy</h3><p><img src="http://oanq2qjpp.bkt.clouddn.com/groupBy.c.png" alt=""></p>
+<h3 id="Map"><a href="#Map" class="headerlink" title="Map"></a>Map</h3><p><img src="http://oanq2qjpp.bkt.clouddn.com/map.png" alt=""></p>
+<h3 id="Scan"><a href="#Scan" class="headerlink" title="Scan"></a>Scan</h3><p><img src="http://oanq2qjpp.bkt.clouddn.com/scan.png" alt=""></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">let source = Observable.generate(initialState: 1, condition: &#123; $0 &lt; 6 &#125;, iterate: &#123; $0 + 1 &#125;).scan(0) &#123; (a, b) -&gt; Int in</div><div class="line">            return a + b</div><div class="line">        &#125;</div><div class="line">        </div><div class="line">        source.subscribe &#123;</div><div class="line">            print($0)</div><div class="line">        &#125;</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">next(1)</div><div class="line">next(3)</div><div class="line">next(6)</div><div class="line">next(10)</div><div class="line">next(15)</div><div class="line">completed</div></pre></td></tr></table></figure>
+<h3 id="Window"><a href="#Window" class="headerlink" title="Window"></a>Window</h3><p><img src="http://oanq2qjpp.bkt.clouddn.com/window.C.png" alt=""></p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://hanqiu.info/2017/10/20/学习RxSwift记录Operators之Create Observables/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1276,448 +1724,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://hanqiu.info/2017/10/19/UITableViewCell高度自适应/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="汉秋">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="http://oanq2qjpp.bkt.clouddn.com/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="汉秋城">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2017/10/19/UITableViewCell高度自适应/" itemprop="url">UITableViewCell高度自适应</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-10-19T10:21:55+08:00">
-                2017-10-19
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/iOS开发学习/" itemprop="url" rel="index">
-                    <span itemprop="name">iOS开发学习</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>有时我们在使用UITableView时，每个cell的高度不是定死的，它需要由每个cell里面的内容动态决定。<br>之前我们都是通过计算每个cell里面每个空间的高度之和，然后在</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath &#123;</div></pre></td></tr></table></figure>
-<p>中返回每个index path对应cell的高度。</p>
-<p>通常计算UILabel的高度是使用：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">- (CGRect)boundingRectWithSize:(CGSize)size </div><div class="line">                       options:(NSStringDrawingOptions)options </div><div class="line">                    attributes:(nullable NSDictionary&lt;NSString *, id&gt; *)attributes </div><div class="line">                       context:(nullable NSStringDrawingContext *)context NS_AVAILABLE(10_11, 7_0);</div></pre></td></tr></table></figure>
-<p>但是在iOS8之后，我们可以使用更简单的方法实现。</p>
-<ol>
-<li>首先需要在xib或者SB中给cell中的元素添加top、bottom约束，然后通过设置：</li>
-</ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">self.tableview.estimatedRowHeight = 100.0;</div><div class="line">   self.tableview.rowHeight = UITableViewAutomaticDimension;</div></pre></td></tr></table></figure>
-<p>来实现。</p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://hanqiu.info/2017/10/19/uiview-autoresizesSubviews/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="汉秋">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="http://oanq2qjpp.bkt.clouddn.com/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="汉秋城">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2017/10/19/uiview-autoresizesSubviews/" itemprop="url">uiview autoresizesSubviews</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-10-19T10:21:22+08:00">
-                2017-10-19
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/iOS开发学习/" itemprop="url" rel="index">
-                    <span itemprop="name">iOS开发学习</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="autoresizesSubviews"><a href="#autoresizesSubviews" class="headerlink" title="autoresizesSubviews"></a>autoresizesSubviews</h2><p>iOS有两大自动布局利器：autoresizing 和 autolayout（autolayout是IOS6以后新增）。autoresizing是UIView的属性，一直存在，使用也比较简单，但是没有autolayout那样强大。如果你的界面比较简单，要求的细节没有那么高，那么你完全可以使用autoresizing去进行自动布局。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">typedef NS_OPTIONS(NSUInteger, UIViewAutoresizing) &#123;</div><div class="line">    UIViewAutoresizingNone                 = 0,</div><div class="line">    UIViewAutoresizingFlexibleLeftMargin   = 1 &lt;&lt; 0,</div><div class="line">    UIViewAutoresizingFlexibleWidth        = 1 &lt;&lt; 1,</div><div class="line">    UIViewAutoresizingFlexibleRightMargin  = 1 &lt;&lt; 2,</div><div class="line">    UIViewAutoresizingFlexibleTopMargin    = 1 &lt;&lt; 3,</div><div class="line">    UIViewAutoresizingFlexibleHeight       = 1 &lt;&lt; 4,</div><div class="line">    UIViewAutoresizingFlexibleBottomMargin = 1 &lt;&lt; 5</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://hanqiu.info/2017/10/19/iOS-setNeedsLayout等布局方法/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="汉秋">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="http://oanq2qjpp.bkt.clouddn.com/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="汉秋城">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2017/10/19/iOS-setNeedsLayout等布局方法/" itemprop="url">iOS-setNeedsLayout等布局方法</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-10-19T10:19:58+08:00">
-                2017-10-19
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/iOS开发学习/" itemprop="url" rel="index">
-                    <span itemprop="name">iOS开发学习</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h2 id="layoutSubviews"><a href="#layoutSubviews" class="headerlink" title="layoutSubviews"></a>layoutSubviews</h2><p>这个方法，默认没有做任何事情，需要子类进行重写 。 系统在很多时候会去调用这个方法：</p>
-<p>1.初始化不会触发layoutSubviews，但是如果设置了不为CGRectZero的frame的时候就会触发。<br>2.addSubview会触发layoutSubviews<br>3.设置view的Frame会触发layoutSubviews，当然前提是frame的值设置前后发生了变化<br>4.滚动一个UIScrollView会触发layoutSubviews<br>5.旋转Screen会触发父UIView上的layoutSubviews事件<br>6.改变一个UIView大小的时候也会触发父UIView上的layoutSubviews事件</p>
-<h2 id="setNeedsLayout"><a href="#setNeedsLayout" class="headerlink" title="setNeedsLayout"></a>setNeedsLayout</h2><p>标记为需要重新布局，不立即刷新，但layoutSubviews一定会被调用<br>配合layoutIfNeeded立即更新<br>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2017/10/19/iOS-setNeedsLayout等布局方法/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -1772,7 +1778,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">12</span>
+                  <span class="site-state-item-count">15</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>

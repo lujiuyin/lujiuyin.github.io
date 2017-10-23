@@ -75,7 +75,7 @@
 
 
 
-  <meta name="keywords" content="Objective-C," />
+  <meta name="keywords" content="RxSwift," />
 
 
 
@@ -86,18 +86,18 @@
 
 
 
-<meta name="description" content="实例变量Objective-C 通常是将类的数据保存在实例变量中，通过编写存取方法访问实力变量。其中读取方法（getter）用于获取变量，设置方法（setter）用户设置变量。 1234567891011@interface Person: NSObject &amp;#123;@public      NSString *_firstName;      NSString *_secondName;@p">
-<meta name="keywords" content="Objective-C">
+<meta name="description" content="Subject在RxSwift中的Subject同时扮演着Observer和Observable的角色。作为订阅者subscriber一个或多个Observables，作为Observable它可以传递它所观察的事件。 12345extension ObservableType &amp;#123;    func addObserver(_ id: String) -&amp;gt; Disposable &amp;#">
+<meta name="keywords" content="RxSwift">
 <meta property="og:type" content="article">
-<meta property="og:title" content="@proptery属性">
-<meta property="og:url" content="http://hanqiu.info/2017/10/19/proptery属性/index.html">
+<meta property="og:title" content="学习RxSwift记录之Subject">
+<meta property="og:url" content="http://hanqiu.info/2017/10/23/学习RxSwift记录之Subject/index.html">
 <meta property="og:site_name" content="汉秋城">
-<meta property="og:description" content="实例变量Objective-C 通常是将类的数据保存在实例变量中，通过编写存取方法访问实力变量。其中读取方法（getter）用于获取变量，设置方法（setter）用户设置变量。 1234567891011@interface Person: NSObject &amp;#123;@public      NSString *_firstName;      NSString *_secondName;@p">
+<meta property="og:description" content="Subject在RxSwift中的Subject同时扮演着Observer和Observable的角色。作为订阅者subscriber一个或多个Observables，作为Observable它可以传递它所观察的事件。 12345extension ObservableType &amp;#123;    func addObserver(_ id: String) -&amp;gt; Disposable &amp;#">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-10-19T06:59:28.000Z">
+<meta property="og:updated_time" content="2017-10-23T07:49:49.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="@proptery属性">
-<meta name="twitter:description" content="实例变量Objective-C 通常是将类的数据保存在实例变量中，通过编写存取方法访问实力变量。其中读取方法（getter）用于获取变量，设置方法（setter）用户设置变量。 1234567891011@interface Person: NSObject &amp;#123;@public      NSString *_firstName;      NSString *_secondName;@p">
+<meta name="twitter:title" content="学习RxSwift记录之Subject">
+<meta name="twitter:description" content="Subject在RxSwift中的Subject同时扮演着Observer和Observable的角色。作为订阅者subscriber一个或多个Observables，作为Observable它可以传递它所观察的事件。 12345extension ObservableType &amp;#123;    func addObserver(_ id: String) -&amp;gt; Disposable &amp;#">
 
 
 
@@ -127,13 +127,13 @@
 
 
 
-  <link rel="canonical" href="http://hanqiu.info/2017/10/19/proptery属性/"/>
+  <link rel="canonical" href="http://hanqiu.info/2017/10/23/学习RxSwift记录之Subject/"/>
 
 
 
 
 
-  <title>@proptery属性 | 汉秋城</title>
+  <title>学习RxSwift记录之Subject | 汉秋城</title>
   
 
 
@@ -270,7 +270,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://hanqiu.info/2017/10/19/proptery属性/">
+    <link itemprop="mainEntityOfPage" href="http://hanqiu.info/2017/10/23/学习RxSwift记录之Subject/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="汉秋">
@@ -287,7 +287,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">@proptery属性</h1>
+          <h1 class="post-title" itemprop="name headline">学习RxSwift记录之Subject</h1>
         
 
         <div class="post-meta">
@@ -299,8 +299,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-10-19T11:04:02+08:00">
-                2017-10-19
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-10-23T15:09:23+08:00">
+                2017-10-23
               </time>
             
 
@@ -359,32 +359,20 @@
       
 
       
-        <h1 id="实例变量"><a href="#实例变量" class="headerlink" title="实例变量"></a>实例变量</h1><p>Objective-C 通常是将类的数据保存在实例变量中，通过编写存取方法访问实力变量。其中读取方法（getter）用于获取变量，设置方法（setter）用户设置变量。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">@interface Person: NSObject &#123;</div><div class="line">@public</div><div class="line">      NSString *_firstName;</div><div class="line">      NSString *_secondName;</div><div class="line">@private</div><div class="line">&#125;</div><div class="line"></div><div class="line">- (NSString *)firstName;</div><div class="line">- (void)setFirstName:(NSString *)firstName;</div><div class="line">- (NSString *)secondName;</div><div class="line">- (void)setSecondName:(NSString *)secondName;</div></pre></td></tr></table></figure>
-<h1 id="属性"><a href="#属性" class="headerlink" title="属性"></a>属性</h1><p>属性这一特性引入一个新的点语法，开发者可以更好的依照类对象访问存放在其中的数据。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">@interface Person: NSObject &#123;</div><div class="line">@property NSString *firstName;</div><div class="line">@property NSString *secondName;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<a id="more"></a>
-<p>要访问属性，可以直接使用“点语法”获取数据。此外，使用了属性，编译器会自动生成访问属性的所需的方法，此过程叫做“自动合成”。需要强调的是，这个过程是在编译期间执行的，所以编辑器里看不到这些“合成方法”的源代码。除了自动生成存取方法外，编译器还要自动向类中添加适当类型的实例变量，并且在属性名前加下划线，以此作为实例变量的名字。在上面的代码中，会生成两个实例变量_firstName、_secondName。可以在类的实现中通过@synthesize修改实例变量名字。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">@implementation</div><div class="line">@synthesize firstName = _myFirstName;</div><div class="line">@synthesize secondName = _mySecondName;</div><div class="line">@end</div></pre></td></tr></table></figure>
-<p>如果不想编译器自动生成存取方法，则可以自己重写存取方法，如果只实现了存取方法中的一个，另一个方法还是会自动生成。</p>
-<p>还有一种方法阻止编译器自动生成存取方法，就是使用@dynamic关键字。它会告诉编译器不再自动生成属性的实例变量以及存取方法</p>
-<h1 id="属性特质"><a href="#属性特质" class="headerlink" title="属性特质"></a>属性特质</h1><ul>
-<li>原子性<br>在默认情况下，由编译器所合成的方法都会通过锁定机制确保原子性。如果属性具备nonatomic特质，则不使用同步锁。</li>
-<li>读/写权限<ul>
-<li>具备readwrie（读写）特质的属性拥有“获取方法”（getter）与“设置方法”（setter）。若该属性由@sythesize实现，则编译器会自动生成这两个方法。</li>
-<li>具备readonly（只读）特质的属性仅拥有“获取方法”（getter），只有当属性由@sythesize实现时，编译器才会为其合成获取方法。</li>
-</ul>
-</li>
-<li>内存管理语义<br>属性用语封装数据，而数据则要有“具体的所有权语义”。下面这一组特质会影响“设置方法”。例如，用“设置方法”设定一个新值时，它是应该“保留”（retain）自此呢，还是只将其赋给底层实例变量就好？编译器在合成存取方法时需要根据此特质来决定所生成的代码。<ul>
-<li>assign “设置方法”只会执行针对“纯量类型”的简单赋值操作。</li>
-<li>strong 此特质表明该属性定义了一种“拥有关系”。为这种属性设置新值 时，设置方法会先保留新值，并释放旧值，然后再将新值设置上去。</li>
-<li>weak 此特质表明该属性定义了一种“非拥有关系”。为这个属性设置新值时，设置既不保留新值，也不释放旧值。此特质痛assign类型，然而在属性所指的对象遭到摧毁时，属性值也会清空。</li>
-<li>unsafe_unretained 此特质的语义和assign相同，但是它适用于对象类型，该特质表达一种“非拥有关系”，在属性所指的对象遭到摧毁时，属性值也不会清空。</li>
-<li>copy 此特质所表达的所属关系与strong类似。然而设置方法并不保留新值，而是将其“拷贝”（copy）。当属性类型为NSString *时，经常用此特质来保护其封装性，因为传递给设置方法的新值可能指向一个NSMutableString类的实例。</li>
-</ul>
-</li>
-</ul>
-
+        <h3 id="Subject"><a href="#Subject" class="headerlink" title="Subject"></a>Subject</h3><p>在RxSwift中的Subject同时扮演着<strong>Observer</strong>和<strong>Observable</strong>的角色。作为订阅者subscriber一个或多个<strong>Observables</strong>，作为<strong>Observable</strong>它可以传递它所观察的事件。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">extension ObservableType &#123;</div><div class="line">    func addObserver(_ id: String) -&gt; Disposable &#123;</div><div class="line">        return subscribe &#123; print(&quot;Subscription:&quot;, id, &quot;Event&quot;, $0) &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="PublicSubject"><a href="#PublicSubject" class="headerlink" title="PublicSubject"></a>PublicSubject</h3><p>自订阅时间起，新事件会广播给订阅了这个Observable的所有Observer。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">let disposeBag = DisposeBag()</div><div class="line">   let subject = PublishSubject&lt;String&gt;()</div><div class="line">   </div><div class="line">   subject.addObserver(&quot;1&quot;).disposed(by: disposeBag)</div><div class="line">   subject.onNext(&quot;🐶&quot;)</div><div class="line">   subject.onNext(&quot;🐱&quot;)</div><div class="line">   </div><div class="line">   subject.addObserver(&quot;2&quot;).disposed(by: disposeBag)</div><div class="line">   subject.onNext(&quot;🅰️&quot;)</div><div class="line">   subject.onNext(&quot;🅱️&quot;)</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">Subscription: 1 Event: next(🐶)</div><div class="line">Subscription: 1 Event: next(🐱)</div><div class="line">Subscription: 1 Event: next(🅰️)</div><div class="line">Subscription: 2 Event: next(🅰️)</div><div class="line">Subscription: 1 Event: next(🅱️)</div><div class="line">Subscription: 2 Event: next(🅱️)</div></pre></td></tr></table></figure>
+<h3 id="ReplaySubject"><a href="#ReplaySubject" class="headerlink" title="ReplaySubject"></a>ReplaySubject</h3><p>新事件会广播给订阅了这个Observable的所有Observer，此外还会将此前缓存的指定个数的事件广播给订阅者。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">let disposeBag = DisposeBag()</div><div class="line">let subject = ReplaySubject&lt;String&gt;.create(bufferSize: 1)</div><div class="line"></div><div class="line">subject.addObserver(&quot;1&quot;).disposed(by: disposeBag)</div><div class="line">subject.onNext(&quot;🐶&quot;)</div><div class="line">subject.onNext(&quot;🐱&quot;)</div><div class="line"></div><div class="line">subject.addObserver(&quot;2&quot;).disposed(by: disposeBag)</div><div class="line">subject.onNext(&quot;🅰️&quot;)</div><div class="line">subject.onNext(&quot;🅱️&quot;)</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">Subscription: 1 Event: next(🐶)</div><div class="line">Subscription: 1 Event: next(🐱)</div><div class="line">Subscription: 2 Event: next(🐱)</div><div class="line">Subscription: 1 Event: next(🅰️)</div><div class="line">Subscription: 2 Event: next(🅰️)</div><div class="line">Subscription: 1 Event: next(🅱️)</div><div class="line">Subscription: 2 Event: next(🅱️)</div></pre></td></tr></table></figure>
+<h3 id="BehaviorSubject"><a href="#BehaviorSubject" class="headerlink" title="BehaviorSubject"></a>BehaviorSubject</h3><p>与ReplaySubject类似，只是会在订阅后补发一条信号。如果是第一个则补发预设的默认值。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">let disposeBag = DisposeBag()</div><div class="line">   let subject = BehaviorSubject(value: &quot;🔴&quot;)</div><div class="line">   </div><div class="line">   subject.addObserver(&quot;1&quot;).disposed(by: disposeBag)</div><div class="line">   subject.onNext(&quot;🐶&quot;)</div><div class="line">   subject.onNext(&quot;🐱&quot;)</div><div class="line">   </div><div class="line">   subject.addObserver(&quot;2&quot;).disposed(by: disposeBag)</div><div class="line">   subject.onNext(&quot;🅰️&quot;)</div><div class="line">   subject.onNext(&quot;🅱️&quot;)</div><div class="line">   </div><div class="line">   subject.addObserver(&quot;3&quot;).disposed(by: disposeBag)</div><div class="line">   subject.onNext(&quot;🍐&quot;)</div><div class="line">   subject.onNext(&quot;🍊&quot;)</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">Subscription: 1 Event: next(🔴)</div><div class="line">Subscription: 1 Event: next(🐶)</div><div class="line">Subscription: 1 Event: next(🐱)</div><div class="line">Subscription: 2 Event: next(🐱)</div><div class="line">Subscription: 1 Event: next(🅰️)</div><div class="line">Subscription: 2 Event: next(🅰️)</div><div class="line">Subscription: 1 Event: next(🅱️)</div><div class="line">Subscription: 2 Event: next(🅱️)</div><div class="line">Subscription: 3 Event: next(🅱️)</div><div class="line">Subscription: 1 Event: next(🍐)</div><div class="line">Subscription: 2 Event: next(🍐)</div><div class="line">Subscription: 3 Event: next(🍐)</div><div class="line">Subscription: 1 Event: next(🍊)</div><div class="line">Subscription: 2 Event: next(🍊)</div><div class="line">Subscription: 3 Event: next(🍊)</div></pre></td></tr></table></figure>
+<h3 id="Variable"><a href="#Variable" class="headerlink" title="Variable"></a>Variable</h3><p>内部实质跟BehaviorSubject一样，同时它还维持着当前值的状态。Variable不会发出error事件，并且会自动发出completed事 and terminate on deinit.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">let disposeBag = DisposeBag()</div><div class="line"></div><div class="line">      let variable = Variable(&quot;🔴&quot;)</div><div class="line">      variable.asObservable().addObserver(&quot;1&quot;).disposed(by: disposeBag)</div><div class="line">      variable.value = &quot;🐶&quot;</div><div class="line">      variable.value = &quot;🐱&quot;</div><div class="line">      </div><div class="line">      variable.asObservable().addObserver(&quot;2&quot;).disposed(by: disposeBag)</div><div class="line">      variable.value = &quot;🅰️&quot;</div><div class="line">      variable.value = &quot;🅱️&quot;</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">Subscription: 1 Event: next(🔴)</div><div class="line">Subscription: 1 Event: next(🐶)</div><div class="line">Subscription: 1 Event: next(🐱)</div><div class="line">Subscription: 2 Event: next(🐱)</div><div class="line">Subscription: 1 Event: next(🅰️)</div><div class="line">Subscription: 2 Event: next(🅰️)</div><div class="line">Subscription: 1 Event: next(🅱️)</div><div class="line">Subscription: 2 Event: next(🅱️)</div><div class="line">Subscription: 1 Event: completed</div><div class="line">Subscription: 2 Event: completed</div></pre></td></tr></table></figure>
       
     </div>
     
@@ -401,7 +389,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/Objective-C/" rel="tag"><i class="fa fa-tag"></i> Objective-C</a>
+            <a href="/tags/RxSwift/" rel="tag"><i class="fa fa-tag"></i> RxSwift</a>
           
         </div>
       
@@ -414,8 +402,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/10/19/Effective-Objective-C-2-0笔记/" rel="next" title="Effective Objective-C 2.0笔记">
-                <i class="fa fa-chevron-left"></i> Effective Objective-C 2.0笔记
+              <a href="/2017/10/23/学习RxSwift记录Operators之Filtering-Observables/" rel="next" title="学习RxSwift记录Operators之Filtering Observables">
+                <i class="fa fa-chevron-left"></i> 学习RxSwift记录Operators之Filtering Observables
               </a>
             
           </div>
@@ -423,10 +411,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2017/10/19/App开发图标素材/" rel="prev" title="App开发图标素材">
-                App开发图标素材 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -578,7 +562,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#实例变量"><span class="nav-number">1.</span> <span class="nav-text">实例变量</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#属性"><span class="nav-number">2.</span> <span class="nav-text">属性</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#属性特质"><span class="nav-number">3.</span> <span class="nav-text">属性特质</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Subject"><span class="nav-number">1.</span> <span class="nav-text">Subject</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#PublicSubject"><span class="nav-number">2.</span> <span class="nav-text">PublicSubject</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ReplaySubject"><span class="nav-number">3.</span> <span class="nav-text">ReplaySubject</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#BehaviorSubject"><span class="nav-number">4.</span> <span class="nav-text">BehaviorSubject</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Variable"><span class="nav-number">5.</span> <span class="nav-text">Variable</span></a></li></ol></div>
             
 
           </div>
