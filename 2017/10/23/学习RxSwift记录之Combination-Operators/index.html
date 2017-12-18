@@ -95,7 +95,7 @@
 <meta property="og:description" content="StartWith在被观察者发出的信号前面增加一些信号，这些信号会在原被观察者发出的信号之前发出，且后添加的会被先传递出来(last-in-first-out) 12345678let disposeBag = DisposeBag()Observable.of(&amp;quot;🐶&amp;quot;, &amp;quot;🐱&amp;quot;, &amp;quot;🐭&amp;quot;, &amp;quot;🐹&amp;quot;)    .">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://oanq2qjpp.bkt.clouddn.com/switch.c.png">
-<meta property="og:updated_time" content="2017-10-23T12:13:04.000Z">
+<meta property="og:updated_time" content="2017-12-18T06:35:42.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="学习RxSwift记录之Combination Operators">
 <meta name="twitter:description" content="StartWith在被观察者发出的信号前面增加一些信号，这些信号会在原被观察者发出的信号之前发出，且后添加的会被先传递出来(last-in-first-out) 12345678let disposeBag = DisposeBag()Observable.of(&amp;quot;🐶&amp;quot;, &amp;quot;🐱&amp;quot;, &amp;quot;🐭&amp;quot;, &amp;quot;🐹&amp;quot;)    .">
@@ -364,6 +364,7 @@
         <h3 id="StartWith"><a href="#StartWith" class="headerlink" title="StartWith"></a>StartWith</h3><p>在被观察者发出的信号前面增加一些信号，这些信号会在原被观察者发出的信号之前发出，且后添加的会被先传递出来(last-in-first-out)</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">let disposeBag = DisposeBag()</div><div class="line"></div><div class="line">Observable.of(&quot;🐶&quot;, &quot;🐱&quot;, &quot;🐭&quot;, &quot;🐹&quot;)</div><div class="line">    .startWith(&quot;1️⃣&quot;)</div><div class="line">    .startWith(&quot;2️⃣&quot;)</div><div class="line">    .startWith(&quot;3️⃣&quot;, &quot;🅰️&quot;, &quot;🅱️&quot;)</div><div class="line">    .subscribe(onNext: &#123; print($0) &#125;)</div><div class="line">    .disposed(by: disposeBag)</div></pre></td></tr></table></figure>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">3️⃣</div><div class="line">🅰️</div><div class="line">🅱️</div><div class="line">2️⃣</div><div class="line">1️⃣</div><div class="line">🐶</div><div class="line">🐱</div><div class="line">🐭</div><div class="line">🐹</div></pre></td></tr></table></figure>
+<a id="more"></a>
 <h3 id="Merge"><a href="#Merge" class="headerlink" title="Merge"></a>Merge</h3><p>merge就是将多个被观察对象的消息整合在一起，不管哪一个被观察者有新的事件发出都会拦截到。</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line">let disposeBag = DisposeBag()</div><div class="line">   </div><div class="line">   let subject1 = PublishSubject&lt;String&gt;()</div><div class="line">   let subject2 = PublishSubject&lt;String&gt;()</div><div class="line">   </div><div class="line">   Observable.of(subject1, subject2)</div><div class="line">       .merge()</div><div class="line">       .subscribe(onNext: &#123; print($0) &#125;)</div><div class="line">       .disposed(by: disposeBag)</div><div class="line">   </div><div class="line">   subject1.onNext(&quot;🅰️&quot;)</div><div class="line">   </div><div class="line">   subject1.onNext(&quot;🅱️&quot;)</div><div class="line">   </div><div class="line">   subject2.onNext(&quot;①&quot;)</div><div class="line">   </div><div class="line">   subject2.onNext(&quot;②&quot;)</div><div class="line">   </div><div class="line">   subject1.onNext(&quot;🆎&quot;)</div><div class="line">   </div><div class="line">   subject2.onNext(&quot;③&quot;)</div></pre></td></tr></table></figure>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">🅰️</div><div class="line">🅱️</div><div class="line">①</div><div class="line">②</div><div class="line">🆎</div><div class="line">③</div></pre></td></tr></table></figure>
@@ -502,7 +503,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">18</span>
+                  <span class="site-state-item-count">19</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -524,7 +525,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">9</span>
+                  <span class="site-state-item-count">10</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>

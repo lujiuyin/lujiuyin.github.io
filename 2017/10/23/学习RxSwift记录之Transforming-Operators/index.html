@@ -94,7 +94,7 @@
 <meta property="og:site_name" content="汉秋城">
 <meta property="og:description" content="Transforming Operators这些操作用来转换那些被观察序列释放出来的next事件元素。 Mapmap类似swift中的map，提供一个转换closure，在发出的事件上都调用一遍才发出去。 123456let disposeBag = DisposeBag()    Observable.of(1,2,3)    .map &amp;#123; $0 * $0 &amp;#125;    .sub">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-10-24T02:35:34.000Z">
+<meta property="og:updated_time" content="2017-12-18T06:35:23.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="学习RxSwift记录之Transforming Operators">
 <meta name="twitter:description" content="Transforming Operators这些操作用来转换那些被观察序列释放出来的next事件元素。 Mapmap类似swift中的map，提供一个转换closure，在发出的事件上都调用一遍才发出去。 123456let disposeBag = DisposeBag()    Observable.of(1,2,3)    .map &amp;#123; $0 * $0 &amp;#125;    .sub">
@@ -363,6 +363,7 @@
 <h3 id="Map"><a href="#Map" class="headerlink" title="Map"></a>Map</h3><p>map类似swift中的map，提供一个转换closure，在发出的事件上都调用一遍才发出去。</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">let disposeBag = DisposeBag()</div><div class="line">    </div><div class="line">Observable.of(1,2,3)</div><div class="line">    .map &#123; $0 * $0 &#125;</div><div class="line">    .subscribe(onNext: &#123;print($0)&#125;)</div><div class="line">    .disposed(by: disposeBag)</div></pre></td></tr></table></figure>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">1</div><div class="line">4</div><div class="line">9</div></pre></td></tr></table></figure>
+<a id="more"></a>
 <h3 id="FlatMap-FlatMapLatest"><a href="#FlatMap-FlatMapLatest" class="headerlink" title="FlatMap/FlatMapLatest"></a>FlatMap/FlatMapLatest</h3><ul>
 <li>FlatMap<br>  就是把emit出来的元素放到多个观察序列中，然后在把所有观察序列中发出的事件merge在一条观察序列中。不管哪一个观察序列中有新事件到来都会被观察到。</li>
 </ul>
@@ -498,7 +499,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">18</span>
+                  <span class="site-state-item-count">19</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -520,7 +521,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">9</span>
+                  <span class="site-state-item-count">10</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>

@@ -1,0 +1,808 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-minimal.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.3" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.3">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.3" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="gcd," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="iOS开发中gcd使用的个人理解首先当然是一些术语的介绍: 同步&amp;amp;异步:同步即在当前线程执行任务,异步即新开一个线程执行任务. 串行&amp;amp;并行:串行即任务有顺序的一个执行完了之后再去执行下一个,并行即多个任务一起执行. 多线程中队列有: 串行队列、并行队列、全局队列、主队列 队列是包含一系列任务的队列,队列运行在线程中.">
+<meta name="keywords" content="gcd">
+<meta property="og:type" content="article">
+<meta property="og:title" content="GCD使用总结">
+<meta property="og:url" content="http://hanqiu.info/2017/12/18/GCD使用总结/index.html">
+<meta property="og:site_name" content="汉秋城">
+<meta property="og:description" content="iOS开发中gcd使用的个人理解首先当然是一些术语的介绍: 同步&amp;amp;异步:同步即在当前线程执行任务,异步即新开一个线程执行任务. 串行&amp;amp;并行:串行即任务有顺序的一个执行完了之后再去执行下一个,并行即多个任务一起执行. 多线程中队列有: 串行队列、并行队列、全局队列、主队列 队列是包含一系列任务的队列,队列运行在线程中.">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2017-12-18T06:37:27.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="GCD使用总结">
+<meta name="twitter:description" content="iOS开发中gcd使用的个人理解首先当然是一些术语的介绍: 同步&amp;amp;异步:同步即在当前线程执行任务,异步即新开一个线程执行任务. 串行&amp;amp;并行:串行即任务有顺序的一个执行完了之后再去执行下一个,并行即多个任务一起执行. 多线程中队列有: 串行队列、并行队列、全局队列、主队列 队列是包含一系列任务的队列,队列运行在线程中.">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.3',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://hanqiu.info/2017/12/18/GCD使用总结/"/>
+
+
+
+
+
+  <title>GCD使用总结 | 汉秋城</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">汉秋城</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">天下事有难易乎？为之，则难者亦易矣；不为，则易者亦难矣。</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://hanqiu.info/2017/12/18/GCD使用总结/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="汉秋">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="http://oanq2qjpp.bkt.clouddn.com/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="汉秋城">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">GCD使用总结</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-12-18T10:14:35+08:00">
+                2017-12-18
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/iOS开发学习/" itemprop="url" rel="index">
+                    <span itemprop="name">iOS开发学习</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="iOS开发中gcd使用的个人理解"><a href="#iOS开发中gcd使用的个人理解" class="headerlink" title="iOS开发中gcd使用的个人理解"></a>iOS开发中gcd使用的个人理解</h1><p>首先当然是一些术语的介绍:</p>
+<p><strong>同步&amp;异步</strong>:同步即在当前线程执行任务,异步即新开一个线程执行任务.</p>
+<p><strong>串行&amp;并行</strong>:串行即任务有顺序的一个执行完了之后再去执行下一个,并行即多个任务一起执行.</p>
+<p>多线程中队列有: <strong>串行队列、并行队列、全局队列、主队列</strong></p>
+<p>队列是包含一系列任务的队列,队列运行在线程中.</p>
+<a id="more"></a>
+<h4 id="下面通过代码来演示排列组合的不同情况"><a href="#下面通过代码来演示排列组合的不同情况" class="headerlink" title="下面通过代码来演示排列组合的不同情况"></a>下面通过代码来演示排列组合的不同情况</h4><p>1、首先是<strong>串行队列、同步</strong>执行任务</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">NSLog(@&quot;Thread:%@ gcd start&quot;,[NSThread currentThread]);</div><div class="line"></div><div class="line">dispatch_queue_t queue = dispatch_queue_create(&quot;SerialQueue&quot;, NULL);</div><div class="line">for (int i = 0; i&lt;10; i++) &#123;</div><div class="line">    dispatch_sync(queue, ^&#123;</div><div class="line">        NSLog(@&quot;Thread:%@ i:%d&quot;,[NSThread currentThread],i);</div><div class="line">    &#125;);</div><div class="line">&#125;</div><div class="line">NSLog(@&quot;Thread:%@ gcd end&quot;,[NSThread currentThread]);</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">[1330:79769] Thread:&lt;NSThread: 0x6040000728c0&gt;&#123;number = 1, name = main&#125; gcd start</div><div class="line">[1330:79769] Thread:&lt;NSThread: 0x6040000728c0&gt;&#123;number = 1, name = main&#125; i:0</div><div class="line">[1330:79769] Thread:&lt;NSThread: 0x6040000728c0&gt;&#123;number = 1, name = main&#125; i:1</div><div class="line">[1330:79769] Thread:&lt;NSThread: 0x6040000728c0&gt;&#123;number = 1, name = main&#125; i:2</div><div class="line">[1330:79769] Thread:&lt;NSThread: 0x6040000728c0&gt;&#123;number = 1, name = main&#125; i:3</div><div class="line">[1330:79769] Thread:&lt;NSThread: 0x6040000728c0&gt;&#123;number = 1, name = main&#125; i:4</div><div class="line">[1330:79769] Thread:&lt;NSThread: 0x6040000728c0&gt;&#123;number = 1, name = main&#125; i:5</div><div class="line">[1330:79769] Thread:&lt;NSThread: 0x6040000728c0&gt;&#123;number = 1, name = main&#125; i:6</div><div class="line">[1330:79769] Thread:&lt;NSThread: 0x6040000728c0&gt;&#123;number = 1, name = main&#125; i:7</div><div class="line">[1330:79769] Thread:&lt;NSThread: 0x6040000728c0&gt;&#123;number = 1, name = main&#125; i:8</div><div class="line">[1330:79769] Thread:&lt;NSThread: 0x6040000728c0&gt;&#123;number = 1, name = main&#125; i:9</div><div class="line">[1330:79769] Thread:&lt;NSThread: 0x6040000728c0&gt;&#123;number = 1, name = main&#125; gcd end</div></pre></td></tr></table></figure>
+<p>通过输出日志可以看出,我们的任务是顺序执行的,并且都是在当前主线程中.只有队列中的所有任务都执行完之后才会执行到最后的end.</p>
+<p>2、<strong>串行队列、异步</strong>执行任务</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">NSLog(@&quot;Thread:%@ gcd start&quot;,[NSThread currentThread]);</div><div class="line"></div><div class="line">dispatch_queue_t queue = dispatch_queue_create(&quot;SerialQueue&quot;, NULL);</div><div class="line">for (int i = 0; i&lt;10; i++) &#123;</div><div class="line">    dispatch_async(queue, ^&#123;</div><div class="line">        NSLog(@&quot;Thread:%@ i:%d&quot;,[NSThread currentThread],i);</div><div class="line">    &#125;);</div><div class="line">&#125;</div><div class="line">NSLog(@&quot;Thread:%@ gcd end&quot;,[NSThread currentThread]);</div></pre></td></tr></table></figure>
+<p>这里先预测一下结果.队列中的任务还是按照顺序执行任务,但是最后的end可能不是等到队列中的任务完成之后最后输出.</p>
+<p>下面贴上输出日志</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">[1348:80644] Thread:&lt;NSThread: 0x60c000067380&gt;&#123;number = 1, name = main&#125; gcd start</div><div class="line">[1348:80644] Thread:&lt;NSThread: 0x60c000067380&gt;&#123;number = 1, name = main&#125; gcd end</div><div class="line">[1348:80691] Thread:&lt;NSThread: 0x604000068e00&gt;&#123;number = 3, name = (null)&#125; i:0</div><div class="line">[1348:80691] Thread:&lt;NSThread: 0x604000068e00&gt;&#123;number = 3, name = (null)&#125; i:1</div><div class="line">[1348:80691] Thread:&lt;NSThread: 0x604000068e00&gt;&#123;number = 3, name = (null)&#125; i:2</div><div class="line">[1348:80691] Thread:&lt;NSThread: 0x604000068e00&gt;&#123;number = 3, name = (null)&#125; i:3</div><div class="line">[1348:80691] Thread:&lt;NSThread: 0x604000068e00&gt;&#123;number = 3, name = (null)&#125; i:4</div><div class="line">[1348:80691] Thread:&lt;NSThread: 0x604000068e00&gt;&#123;number = 3, name = (null)&#125; i:5</div><div class="line">[1348:80691] Thread:&lt;NSThread: 0x604000068e00&gt;&#123;number = 3, name = (null)&#125; i:6</div><div class="line">[1348:80691] Thread:&lt;NSThread: 0x604000068e00&gt;&#123;number = 3, name = (null)&#125; i:7</div><div class="line">[1348:80691] Thread:&lt;NSThread: 0x604000068e00&gt;&#123;number = 3, name = (null)&#125; i:8</div><div class="line">[1348:80691] Thread:&lt;NSThread: 0x604000068e00&gt;&#123;number = 3, name = (null)&#125; i:9</div></pre></td></tr></table></figure>
+<p>结果跟我们预测的一致,可以看出异步执行新开了一个线程3,队列中的任务全部在这个线程中执行.</p>
+<p>3、<strong>并行队列、同步</strong>执行任务</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">NSLog(@&quot;Thread:%@ gcd start&quot;,[NSThread currentThread]);</div><div class="line"></div><div class="line">dispatch_queue_t queue = dispatch_queue_create(&quot;ConcurrentQueue&quot;, DISPATCH_QUEUE_CONCURRENT);</div><div class="line"></div><div class="line">for (int i = 0; i&lt;10; i++) &#123;</div><div class="line">    dispatch_sync(queue, ^&#123;</div><div class="line">        NSLog(@&quot;Thread:%@ i:%d&quot;,[NSThread currentThread],i);</div><div class="line">    &#125;);</div><div class="line">&#125;</div><div class="line">NSLog(@&quot;Thread:%@ gcd end&quot;,[NSThread currentThread]);</div></pre></td></tr></table></figure>
+<p>由于是同步执行,所以只能在当前线程进行任务,就不能实现真正的并行.任务还是按照顺序的在当前队列中执行.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">[1411:90686] Thread:&lt;NSThread: 0x60400006f540&gt;&#123;number = 1, name = main&#125; gcd start</div><div class="line">[1411:90686] Thread:&lt;NSThread: 0x60400006f540&gt;&#123;number = 1, name = main&#125; i:0</div><div class="line">[1411:90686] Thread:&lt;NSThread: 0x60400006f540&gt;&#123;number = 1, name = main&#125; i:1</div><div class="line">[1411:90686] Thread:&lt;NSThread: 0x60400006f540&gt;&#123;number = 1, name = main&#125; i:2</div><div class="line">[1411:90686] Thread:&lt;NSThread: 0x60400006f540&gt;&#123;number = 1, name = main&#125; i:3</div><div class="line">[1411:90686] Thread:&lt;NSThread: 0x60400006f540&gt;&#123;number = 1, name = main&#125; i:4</div><div class="line">[1411:90686] Thread:&lt;NSThread: 0x60400006f540&gt;&#123;number = 1, name = main&#125; i:5</div><div class="line">[1411:90686] Thread:&lt;NSThread: 0x60400006f540&gt;&#123;number = 1, name = main&#125; i:6</div><div class="line">[1411:90686] Thread:&lt;NSThread: 0x60400006f540&gt;&#123;number = 1, name = main&#125; i:7</div><div class="line">[1411:90686] Thread:&lt;NSThread: 0x60400006f540&gt;&#123;number = 1, name = main&#125; i:8</div><div class="line">[1411:90686] Thread:&lt;NSThread: 0x60400006f540&gt;&#123;number = 1, name = main&#125; i:9</div><div class="line">[1411:90686] Thread:&lt;NSThread: 0x60400006f540&gt;&#123;number = 1, name = main&#125; gcd end</div></pre></td></tr></table></figure>
+<p>3、<strong>并行队列、异步</strong>执行任务</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">NSLog(@&quot;Thread:%@ gcd start&quot;,[NSThread currentThread]);</div><div class="line"></div><div class="line">dispatch_queue_t queue = dispatch_queue_create(&quot;ConcurrentQueue&quot;, DISPATCH_QUEUE_CONCURRENT);</div><div class="line"></div><div class="line">for (int i = 0; i&lt;10; i++) &#123;</div><div class="line">    dispatch_async(queue, ^&#123;</div><div class="line">        NSLog(@&quot;Thread:%@ i:%d&quot;,[NSThread currentThread],i);</div><div class="line">    &#125;);</div><div class="line">&#125;</div><div class="line">NSLog(@&quot;Thread:%@ gcd end&quot;,[NSThread currentThread]);</div></pre></td></tr></table></figure>
+<p>异步执行会新开线程执行,并行异步可能会新开多个线程执行任务,系统最多可以新开66个线程(算上主线程和number为2的线程)</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">[1437:97142] Thread:&lt;NSThread: 0x608000069bc0&gt;&#123;number = 1, name = main&#125; gcd start</div><div class="line">[1437:97175] Thread:&lt;NSThread: 0x604000067e00&gt;&#123;number = 3, name = (null)&#125; i:0</div><div class="line">[1437:97178] Thread:&lt;NSThread: 0x60800026a3c0&gt;&#123;number = 5, name = (null)&#125; i:2</div><div class="line">[1437:97176] Thread:&lt;NSThread: 0x60c000076300&gt;&#123;number = 6, name = (null)&#125; i:3</div><div class="line">[1437:97174] Thread:&lt;NSThread: 0x60c000075780&gt;&#123;number = 4, name = (null)&#125; i:1</div><div class="line">[1437:97142] Thread:&lt;NSThread: 0x608000069bc0&gt;&#123;number = 1, name = main&#125; gcd end</div><div class="line">[1437:97175] Thread:&lt;NSThread: 0x604000067e00&gt;&#123;number = 3, name = (null)&#125; i:4</div><div class="line">[1437:97178] Thread:&lt;NSThread: 0x60800026a3c0&gt;&#123;number = 5, name = (null)&#125; i:5</div><div class="line">[1437:97176] Thread:&lt;NSThread: 0x60c000076300&gt;&#123;number = 6, name = (null)&#125; i:6</div><div class="line">[1437:97177] Thread:&lt;NSThread: 0x60000007de00&gt;&#123;number = 7, name = (null)&#125; i:7</div><div class="line">[1437:97174] Thread:&lt;NSThread: 0x60c000075780&gt;&#123;number = 4, name = (null)&#125; i:9</div><div class="line">[1437:97195] Thread:&lt;NSThread: 0x604000074280&gt;&#123;number = 8, name = (null)&#125; i:8</div></pre></td></tr></table></figure>
+<p>从输出日志可以看出,gcd为并行队列中的每一个任务都新开了一个单独的线程来执行里面的任务.队列中任务的执行顺序也是随机的.</p>
+<h4 id="下面介绍主队列的各种场景"><a href="#下面介绍主队列的各种场景" class="headerlink" title="下面介绍主队列的各种场景"></a>下面介绍主队列的各种场景</h4><p>1、 主队列、同步执行</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">NSLog(@&quot;Thread:%@ gcd start&quot;,[NSThread currentThread]);</div><div class="line"></div><div class="line">dispatch_queue_t queue = dispatch_get_main_queue();</div><div class="line"></div><div class="line">for (int i = 0; i&lt;200; i++) &#123;</div><div class="line">    dispatch_sync(queue, ^&#123;</div><div class="line">        NSLog(@&quot;Thread:%@ i:%d&quot;,[NSThread currentThread],i);</div><div class="line">    &#125;);</div><div class="line">&#125;</div><div class="line">NSLog(@&quot;Thread:%@ gcd end&quot;,[NSThread currentThread]);</div></pre></td></tr></table></figure>
+<p>这种情况是会崩溃的.原因是主队列中的任务会等到主线程中的任务执行完之后才会执行,而主队列现在也在主线程中,因而主线程也在等待主队列中的任务执行完成.形成了循环等待.</p>
+<p>2、主队列、异步执行</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">NSLog(@&quot;Thread:%@ gcd start&quot;,[NSThread currentThread]);</div><div class="line"></div><div class="line">dispatch_queue_t queue = dispatch_get_main_queue();</div><div class="line"></div><div class="line">for (int i = 0; i&lt;10; i++) &#123;</div><div class="line">    dispatch_async(queue, ^&#123;</div><div class="line">        NSLog(@&quot;Thread:%@ i:%d&quot;,[NSThread currentThread],i);</div><div class="line">    &#125;);</div><div class="line">&#125;</div><div class="line">[NSThread sleepForTimeInterval:2.0];</div><div class="line">NSLog(@&quot;Thread:%@ gcd end&quot;,[NSThread currentThread]);</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">[3676:187897] Thread:&lt;NSThread: 0x600000077300&gt;&#123;number = 1, name = main&#125; gcd start</div><div class="line">[3676:187897] Thread:&lt;NSThread: 0x600000077300&gt;&#123;number = 1, name = main&#125; gcd end</div><div class="line">[3676:187897] Thread:&lt;NSThread: 0x600000077300&gt;&#123;number = 1, name = main&#125; i:0</div><div class="line">[3676:187897] Thread:&lt;NSThread: 0x600000077300&gt;&#123;number = 1, name = main&#125; i:1</div><div class="line">[3676:187897] Thread:&lt;NSThread: 0x600000077300&gt;&#123;number = 1, name = main&#125; i:2</div><div class="line">[3676:187897] Thread:&lt;NSThread: 0x600000077300&gt;&#123;number = 1, name = main&#125; i:3</div><div class="line">[3676:187897] Thread:&lt;NSThread: 0x600000077300&gt;&#123;number = 1, name = main&#125; i:4</div><div class="line">[3676:187897] Thread:&lt;NSThread: 0x600000077300&gt;&#123;number = 1, name = main&#125; i:5</div><div class="line">[3676:187897] Thread:&lt;NSThread: 0x600000077300&gt;&#123;number = 1, name = main&#125; i:6</div><div class="line">[3676:187897] Thread:&lt;NSThread: 0x600000077300&gt;&#123;number = 1, name = main&#125; i:7</div><div class="line">[3676:187897] Thread:&lt;NSThread: 0x600000077300&gt;&#123;number = 1, name = main&#125; i:8</div><div class="line">[3676:187897] Thread:&lt;NSThread: 0x600000077300&gt;&#123;number = 1, name = main&#125; i:9</div></pre></td></tr></table></figure>
+<p>从日志看出,主队列中的任务只有在主线程中的任务执行完之后才会被执行.并且是在主线程中执行,没有新开线程.</p>
+<h4 id="同步任务的使用场景"><a href="#同步任务的使用场景" class="headerlink" title="同步任务的使用场景"></a>同步任务的使用场景</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">dispatch_queue_t q = dispatch_queue_create(&quot;dantesx&quot;, DISPATCH_QUEUE_CONCURRENT);</div><div class="line">// 1. 用户登录，必须要第一个执行</div><div class="line">dispatch_sync(q, ^&#123;</div><div class="line">    [NSThread sleepForTimeInterval:2.0];</div><div class="line">    NSLog(@&quot;用户登录 %@&quot;, [NSThread currentThread]);</div><div class="line">&#125;);</div><div class="line">// 2. 扣费</div><div class="line">dispatch_async(q, ^&#123;</div><div class="line">    NSLog(@&quot;扣费 %@&quot;, [NSThread currentThread]);</div><div class="line">&#125;);</div><div class="line">// 3. 下载</div><div class="line">dispatch_async(q, ^&#123;</div><div class="line">    NSLog(@&quot;下载 %@&quot;, [NSThread currentThread]);</div><div class="line">&#125;);</div><div class="line">NSLog(@&quot;come here&quot;);</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">[3709:196426] 用户登录 &lt;NSThread: 0x600000260040&gt;&#123;number = 1, name = main&#125;</div><div class="line">[3709:196426] come here</div><div class="line">[3709:196542] 扣费 &lt;NSThread: 0x60800007ef80&gt;&#123;number = 3, name = (null)&#125;</div><div class="line">[3709:196544] 下载 &lt;NSThread: 0x60c000266500&gt;&#123;number = 4, name = (null)&#125;</div></pre></td></tr></table></figure>
+<p>后面的操作需要依赖前面的任务执行情况时,前面的任务就可以使用同步方式执行,这样可以确保后续必要前提得到执行,不管这个同步任务需要执行多久,后面的依赖于它的异步请求都要等待.</p>
+<h4 id="下面介绍全局队列"><a href="#下面介绍全局队列" class="headerlink" title="下面介绍全局队列"></a>下面介绍全局队列</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">NSLog(@&quot;Thread:%@ gcd start&quot;,[NSThread currentThread]);</div><div class="line"></div><div class="line">dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);</div><div class="line"></div><div class="line">for (int i = 0; i&lt;10; i++) &#123;</div><div class="line">    dispatch_async(queue, ^&#123;</div><div class="line">        NSLog(@&quot;Thread:%@ i:%d&quot;,[NSThread currentThread],i);</div><div class="line">    &#125;);</div><div class="line">&#125;</div><div class="line">[NSThread sleepForTimeInterval:2.0];</div><div class="line">NSLog(@&quot;Thread:%@ gcd end&quot;,[NSThread currentThread]);</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">[3726:201976] Thread:&lt;NSThread: 0x60c00006e800&gt;&#123;number = 1, name = main&#125; gcd start</div><div class="line">[3726:202046] Thread:&lt;NSThread: 0x60000006d740&gt;&#123;number = 4, name = (null)&#125; i:1</div><div class="line">[3726:202063] Thread:&lt;NSThread: 0x60c00026c080&gt;&#123;number = 3, name = (null)&#125; i:0</div><div class="line">[3726:202047] Thread:&lt;NSThread: 0x60400007f2c0&gt;&#123;number = 6, name = (null)&#125; i:3</div><div class="line">[3726:202048] Thread:&lt;NSThread: 0x60800007bb40&gt;&#123;number = 5, name = (null)&#125; i:2</div><div class="line">[3726:202046] Thread:&lt;NSThread: 0x60000006d740&gt;&#123;number = 4, name = (null)&#125; i:4</div><div class="line">[3726:202063] Thread:&lt;NSThread: 0x60c00026c080&gt;&#123;number = 3, name = (null)&#125; i:6</div><div class="line">[3726:202045] Thread:&lt;NSThread: 0x60400007f600&gt;&#123;number = 7, name = (null)&#125; i:5</div><div class="line">[3726:202065] Thread:&lt;NSThread: 0x60800007bd80&gt;&#123;number = 8, name = (null)&#125; i:7</div><div class="line">[3726:202066] Thread:&lt;NSThread: 0x60400007f300&gt;&#123;number = 9, name = (null)&#125; i:8</div><div class="line">[3726:202067] Thread:&lt;NSThread: 0x60800007bc40&gt;&#123;number = 10, name = (null)&#125; i:9</div><div class="line">[3726:201976] Thread:&lt;NSThread: 0x60c00006e800&gt;&#123;number = 1, name = main&#125; gcd end</div></pre></td></tr></table></figure>
+<p>从结果可以看出,全局队列就是一个并行队列.第一个参数是优先级,第二个暂时没有用,传0即可</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/gcd/" rel="tag"><i class="fa fa-tag"></i> gcd</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/11/03/UITableView偏移设置/" rel="next" title="UITableView偏移设置">
+                <i class="fa fa-chevron-left"></i> UITableView偏移设置
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="http://oanq2qjpp.bkt.clouddn.com/avatar.jpg"
+                alt="汉秋" />
+            
+              <p class="site-author-name" itemprop="name">汉秋</p>
+              <p class="site-description motion-element" itemprop="description">天下事有难易乎？为之，则难者亦易矣；不为，则易者亦难矣。</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">19</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">1</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">10</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          <div class="links-of-author motion-element">
+            
+              
+                <span class="links-of-author-item">
+                  <a href="https://github.com/lujiuyin" target="_blank" title="GitHub">
+                    
+                      <i class="fa fa-fw fa-github"></i>GitHub</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="http://www.jianshu.com/u/43a0f514c047" target="_blank" title="简书">
+                    
+                      <i class="fa fa-fw fa-qq"></i>简书</a>
+                </span>
+              
+            
+          </div>
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#iOS开发中gcd使用的个人理解"><span class="nav-number">1.</span> <span class="nav-text">iOS开发中gcd使用的个人理解</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#下面通过代码来演示排列组合的不同情况"><span class="nav-number">1.0.0.1.</span> <span class="nav-text">下面通过代码来演示排列组合的不同情况</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#下面介绍主队列的各种场景"><span class="nav-number">1.0.0.2.</span> <span class="nav-text">下面介绍主队列的各种场景</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#同步任务的使用场景"><span class="nav-number">1.0.0.3.</span> <span class="nav-text">同步任务的使用场景</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#下面介绍全局队列"><span class="nav-number">1.0.0.4.</span> <span class="nav-text">下面介绍全局队列</span></a></li></ol></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">汉秋</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.3</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.3"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.3"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.3"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

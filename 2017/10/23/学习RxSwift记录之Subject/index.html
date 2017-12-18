@@ -94,7 +94,7 @@
 <meta property="og:site_name" content="汉秋城">
 <meta property="og:description" content="Subject在RxSwift中的Subject同时扮演着Observer和Observable的角色。作为订阅者subscriber一个或多个Observables，作为Observable它可以传递它所观察的事件。 12345extension ObservableType &amp;#123;    func addObserver(_ id: String) -&amp;gt; Disposable &amp;#">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-10-23T07:49:49.000Z">
+<meta property="og:updated_time" content="2017-12-18T06:36:08.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="学习RxSwift记录之Subject">
 <meta name="twitter:description" content="Subject在RxSwift中的Subject同时扮演着Observer和Observable的角色。作为订阅者subscriber一个或多个Observables，作为Observable它可以传递它所观察的事件。 12345extension ObservableType &amp;#123;    func addObserver(_ id: String) -&amp;gt; Disposable &amp;#">
@@ -364,6 +364,7 @@
 <h3 id="PublicSubject"><a href="#PublicSubject" class="headerlink" title="PublicSubject"></a>PublicSubject</h3><p>自订阅时间起，新事件会广播给订阅了这个Observable的所有Observer。</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">let disposeBag = DisposeBag()</div><div class="line">   let subject = PublishSubject&lt;String&gt;()</div><div class="line">   </div><div class="line">   subject.addObserver(&quot;1&quot;).disposed(by: disposeBag)</div><div class="line">   subject.onNext(&quot;🐶&quot;)</div><div class="line">   subject.onNext(&quot;🐱&quot;)</div><div class="line">   </div><div class="line">   subject.addObserver(&quot;2&quot;).disposed(by: disposeBag)</div><div class="line">   subject.onNext(&quot;🅰️&quot;)</div><div class="line">   subject.onNext(&quot;🅱️&quot;)</div></pre></td></tr></table></figure>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">Subscription: 1 Event: next(🐶)</div><div class="line">Subscription: 1 Event: next(🐱)</div><div class="line">Subscription: 1 Event: next(🅰️)</div><div class="line">Subscription: 2 Event: next(🅰️)</div><div class="line">Subscription: 1 Event: next(🅱️)</div><div class="line">Subscription: 2 Event: next(🅱️)</div></pre></td></tr></table></figure>
+<a id="more"></a>
 <h3 id="ReplaySubject"><a href="#ReplaySubject" class="headerlink" title="ReplaySubject"></a>ReplaySubject</h3><p>新事件会广播给订阅了这个Observable的所有Observer，此外还会将此前缓存的指定个数的事件广播给订阅者。</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">let disposeBag = DisposeBag()</div><div class="line">let subject = ReplaySubject&lt;String&gt;.create(bufferSize: 1)</div><div class="line"></div><div class="line">subject.addObserver(&quot;1&quot;).disposed(by: disposeBag)</div><div class="line">subject.onNext(&quot;🐶&quot;)</div><div class="line">subject.onNext(&quot;🐱&quot;)</div><div class="line"></div><div class="line">subject.addObserver(&quot;2&quot;).disposed(by: disposeBag)</div><div class="line">subject.onNext(&quot;🅰️&quot;)</div><div class="line">subject.onNext(&quot;🅱️&quot;)</div></pre></td></tr></table></figure>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">Subscription: 1 Event: next(🐶)</div><div class="line">Subscription: 1 Event: next(🐱)</div><div class="line">Subscription: 2 Event: next(🐱)</div><div class="line">Subscription: 1 Event: next(🅰️)</div><div class="line">Subscription: 2 Event: next(🅰️)</div><div class="line">Subscription: 1 Event: next(🅱️)</div><div class="line">Subscription: 2 Event: next(🅱️)</div></pre></td></tr></table></figure>
@@ -495,7 +496,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">18</span>
+                  <span class="site-state-item-count">19</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -517,7 +518,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">9</span>
+                  <span class="site-state-item-count">10</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
