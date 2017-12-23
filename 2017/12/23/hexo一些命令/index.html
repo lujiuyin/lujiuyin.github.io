@@ -75,7 +75,7 @@
 
 
 
-  <meta name="keywords" content="RxSwift," />
+  <meta name="keywords" content="Hexo, NexT" />
 
 
 
@@ -86,18 +86,17 @@
 
 
 
-<meta name="description" content="Transforming Operators这些操作用来转换那些被观察序列释放出来的next事件元素。 Mapmap类似swift中的map，提供一个转换closure，在发出的事件上都调用一遍才发出去。 123456let disposeBag = DisposeBag()    Observable.of(1,2,3)    .map &amp;#123; $0 * $0 &amp;#125;    .sub">
-<meta name="keywords" content="RxSwift">
+<meta name="description" content="创建一篇文章hexo n “custom title” == hexo new “custom” 也可以指定自己写好的scaffolds中的layout快捷生成模版(post.md、draft.md等),自己可以定义 hexo n [layout] “custom title” == hexo new [layout] “custom” 新增、修改的文件生效hexo g  == hexo gene">
 <meta property="og:type" content="article">
-<meta property="og:title" content="学习RxSwift记录之Transforming Operators">
-<meta property="og:url" content="http://hanqiu.info/2017/10/23/学习RxSwift记录之Transforming-Operators/index.html">
+<meta property="og:title" content="hexo一些命令">
+<meta property="og:url" content="http://hanqiu.info/2017/12/23/hexo一些命令/index.html">
 <meta property="og:site_name" content="汉秋城">
-<meta property="og:description" content="Transforming Operators这些操作用来转换那些被观察序列释放出来的next事件元素。 Mapmap类似swift中的map，提供一个转换closure，在发出的事件上都调用一遍才发出去。 123456let disposeBag = DisposeBag()    Observable.of(1,2,3)    .map &amp;#123; $0 * $0 &amp;#125;    .sub">
+<meta property="og:description" content="创建一篇文章hexo n “custom title” == hexo new “custom” 也可以指定自己写好的scaffolds中的layout快捷生成模版(post.md、draft.md等),自己可以定义 hexo n [layout] “custom title” == hexo new [layout] “custom” 新增、修改的文件生效hexo g  == hexo gene">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-12-18T06:35:23.000Z">
+<meta property="og:updated_time" content="2017-12-23T08:50:57.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="学习RxSwift记录之Transforming Operators">
-<meta name="twitter:description" content="Transforming Operators这些操作用来转换那些被观察序列释放出来的next事件元素。 Mapmap类似swift中的map，提供一个转换closure，在发出的事件上都调用一遍才发出去。 123456let disposeBag = DisposeBag()    Observable.of(1,2,3)    .map &amp;#123; $0 * $0 &amp;#125;    .sub">
+<meta name="twitter:title" content="hexo一些命令">
+<meta name="twitter:description" content="创建一篇文章hexo n “custom title” == hexo new “custom” 也可以指定自己写好的scaffolds中的layout快捷生成模版(post.md、draft.md等),自己可以定义 hexo n [layout] “custom title” == hexo new [layout] “custom” 新增、修改的文件生效hexo g  == hexo gene">
 
 
 
@@ -127,13 +126,13 @@
 
 
 
-  <link rel="canonical" href="http://hanqiu.info/2017/10/23/学习RxSwift记录之Transforming-Operators/"/>
+  <link rel="canonical" href="http://hanqiu.info/2017/12/23/hexo一些命令/"/>
 
 
 
 
 
-  <title>学习RxSwift记录之Transforming Operators | 汉秋城</title>
+  <title>hexo一些命令 | 汉秋城</title>
   
 
 
@@ -270,7 +269,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://hanqiu.info/2017/10/23/学习RxSwift记录之Transforming-Operators/">
+    <link itemprop="mainEntityOfPage" href="http://hanqiu.info/2017/12/23/hexo一些命令/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="汉秋">
@@ -287,7 +286,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">学习RxSwift记录之Transforming Operators</h1>
+          <h1 class="post-title" itemprop="name headline">hexo一些命令</h1>
         
 
         <div class="post-meta">
@@ -299,8 +298,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-10-23T20:14:28+08:00">
-                2017-10-23
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-12-23T16:40:40+08:00">
+                2017-12-23
               </time>
             
 
@@ -309,28 +308,6 @@
             
           </span>
 
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/iOS开发学习/" itemprop="url" rel="index">
-                    <span itemprop="name">iOS开发学习</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
           
 
           
@@ -359,24 +336,13 @@
       
 
       
-        <h1 id="Transforming-Operators"><a href="#Transforming-Operators" class="headerlink" title="Transforming Operators"></a>Transforming Operators</h1><p>这些操作用来转换那些被观察序列释放出来的next事件元素。</p>
-<h3 id="Map"><a href="#Map" class="headerlink" title="Map"></a>Map</h3><p>map类似swift中的map，提供一个转换closure，在发出的事件上都调用一遍才发出去。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">let disposeBag = DisposeBag()</div><div class="line">    </div><div class="line">Observable.of(1,2,3)</div><div class="line">    .map &#123; $0 * $0 &#125;</div><div class="line">    .subscribe(onNext: &#123;print($0)&#125;)</div><div class="line">    .disposed(by: disposeBag)</div></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">1</div><div class="line">4</div><div class="line">9</div></pre></td></tr></table></figure>
-<a id="more"></a>
-<h3 id="FlatMap-FlatMapLatest"><a href="#FlatMap-FlatMapLatest" class="headerlink" title="FlatMap/FlatMapLatest"></a>FlatMap/FlatMapLatest</h3><ul>
-<li>FlatMap<br>  就是把emit出来的元素放到多个观察序列中，然后在把所有观察序列中发出的事件merge在一条观察序列中。不管哪一个观察序列中有新事件到来都会被观察到。</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line">let disposeBag = DisposeBag()</div><div class="line">    </div><div class="line">    struct Player &#123;</div><div class="line">        var score: Variable&lt;Int&gt;</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    let 👦🏻 = Player(score: Variable(80))</div><div class="line">    let 👧🏼 = Player(score: Variable(90))</div><div class="line">    </div><div class="line">    let player = Variable(👦🏻)</div><div class="line">    </div><div class="line">    player.asObservable()</div><div class="line">        .flatMap &#123; $0.score.asObservable() &#125; // Change flatMap to flatMapLatest and observe change in printed output</div><div class="line">        .subscribe(onNext: &#123; print($0) &#125;)</div><div class="line">        .disposed(by: disposeBag)</div><div class="line">    </div><div class="line">    👦🏻.score.value = 85</div><div class="line">    </div><div class="line">    player.value = 👧🏼</div><div class="line">    </div><div class="line">    👦🏻.score.value = 95 // Will be printed when using flatMap, but will not be printed when using flatMapLatest</div><div class="line">    </div><div class="line">    👧🏼.score.value = 100</div></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">80</div><div class="line">85</div><div class="line">90</div><div class="line">95</div><div class="line">100</div></pre></td></tr></table></figure>
-<ul>
-<li>FlatMapLatest<br>  FlatMapLatest与FlatMap的区别就在于FlatMapLatest只会发出最新观察到的序列中的序列中的元素，有点类似SwitchLatest。</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line">let disposeBag = DisposeBag()</div><div class="line"></div><div class="line">struct Player &#123;</div><div class="line">    var score: Variable&lt;Int&gt;</div><div class="line">&#125;</div><div class="line"></div><div class="line">let 👦🏻 = Player(score: Variable(80))</div><div class="line">let 👧🏼 = Player(score: Variable(90))</div><div class="line"></div><div class="line">let player = Variable(👦🏻)</div><div class="line"></div><div class="line">player.asObservable()</div><div class="line">    .flatMapLatest &#123; $0.score.asObservable() &#125; // Change flatMap to flatMapLatest and observe change in printed output</div><div class="line">    .subscribe(onNext: &#123; print($0) &#125;)</div><div class="line">    .disposed(by: disposeBag)</div><div class="line"></div><div class="line">👦🏻.score.value = 85</div><div class="line"></div><div class="line">player.value = 👧🏼</div><div class="line"></div><div class="line">👦🏻.score.value = 95 // Will be printed when using flatMap, but will not be printed when using flatMapLatest</div><div class="line"></div><div class="line">👧🏼.score.value = 100</div></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">80</div><div class="line">85</div><div class="line">90</div><div class="line">100</div></pre></td></tr></table></figure>
-<p>当使用FlatMap时，虽然我们已经将player.value设置为👧🏼，但是👦🏻的观察序列仍然会向外传递信息，并且会影响到player。如果我们使用了FlatMapLatest，当player.value设置为👧🏼后，👦🏻的信号值对player就不起作用了。</p>
-<h3 id="Scan"><a href="#Scan" class="headerlink" title="Scan"></a>Scan</h3><p>以一个初始值开始，将一个累加closure调用在观察序列发出的元素上，向外返回一个单元素的观察序列。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">let disposeBag = DisposeBag()</div><div class="line">    </div><div class="line">Observable.of(10,100,1000)</div><div class="line">    .scan(1) &#123; (aggregateValue, newValue) in</div><div class="line">        aggregateValue + newValue</div><div class="line">    &#125;</div><div class="line">    .subscribe(onNext: &#123;print($0)&#125;)</div><div class="line">    .disposed(by: disposeBag)</div></pre></td></tr></table></figure></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">11</div><div class="line">111</div><div class="line">1111</div></pre></td></tr></table></figure>
+        <h3 id="创建一篇文章"><a href="#创建一篇文章" class="headerlink" title="创建一篇文章"></a>创建一篇文章</h3><p><strong>hexo n “custom title” == hexo new “custom”</strong></p>
+<p>也可以指定自己写好的scaffolds中的layout快捷生成模版(post.md、draft.md等),自己可以定义</p>
+<p><strong>hexo n [layout] “custom title” == hexo new [layout] “custom”</strong></p>
+<h3 id="新增、修改的文件生效"><a href="#新增、修改的文件生效" class="headerlink" title="新增、修改的文件生效"></a>新增、修改的文件生效</h3><p><strong>hexo g  == hexo generate</strong></p>
+<h3 id="部署"><a href="#部署" class="headerlink" title="部署"></a>部署</h3><p><strong>hexo d  == hexo deploy</strong></p>
+<h3 id="启动服务预览"><a href="#启动服务预览" class="headerlink" title="启动服务预览"></a>启动服务预览</h3><p><strong>hexo s  == hexo server</strong></p>
+
       
     </div>
     
@@ -391,12 +357,6 @@
 
     <footer class="post-footer">
       
-        <div class="post-tags">
-          
-            <a href="/tags/RxSwift/" rel="tag"><i class="fa fa-tag"></i> RxSwift</a>
-          
-        </div>
-      
 
       
       
@@ -406,8 +366,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/10/23/学习RxSwift记录之Combination-Operators/" rel="next" title="学习RxSwift记录之Combination Operators">
-                <i class="fa fa-chevron-left"></i> 学习RxSwift记录之Combination Operators
+              <a href="/2017/12/18/GCD使用总结/" rel="next" title="GCD使用总结">
+                <i class="fa fa-chevron-left"></i> GCD使用总结
               </a>
             
           </div>
@@ -415,10 +375,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2017/11/03/UITableView偏移设置/" rel="prev" title="UITableView偏移设置">
-                UITableView偏移设置 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -570,7 +526,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Transforming-Operators"><span class="nav-number">1.</span> <span class="nav-text">Transforming Operators</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Map"><span class="nav-number">1.0.1.</span> <span class="nav-text">Map</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#FlatMap-FlatMapLatest"><span class="nav-number">1.0.2.</span> <span class="nav-text">FlatMap/FlatMapLatest</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Scan"><span class="nav-number">1.0.3.</span> <span class="nav-text">Scan</span></a></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#创建一篇文章"><span class="nav-number">1.</span> <span class="nav-text">创建一篇文章</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#新增、修改的文件生效"><span class="nav-number">2.</span> <span class="nav-text">新增、修改的文件生效</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#部署"><span class="nav-number">3.</span> <span class="nav-text">部署</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#启动服务预览"><span class="nav-number">4.</span> <span class="nav-text">启动服务预览</span></a></li></ol></div>
             
 
           </div>
