@@ -93,7 +93,7 @@
 <meta property="og:site_name" content="汉秋城">
 <meta property="og:description" content="我们通常调用一个方法如下 1[target MethodName:var1]; 在编译后会变成下面这样 1objc_msgSend(target,@selector(MethodName:),var1); 所有消息的转发都和这个obj_msgSend方法有关.ObjC是一种面向runtime的语言,它会尽可能的把代码执行的决策从编译和链接的时候,推迟到运行时. objc_msgSend函数的原型如">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-12-23T09:51:07.000Z">
+<meta property="og:updated_time" content="2017-12-27T02:33:12.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="oc-runtime介绍">
 <meta name="twitter:description" content="我们通常调用一个方法如下 1[target MethodName:var1]; 在编译后会变成下面这样 1objc_msgSend(target,@selector(MethodName:),var1); 所有消息的转发都和这个obj_msgSend方法有关.ObjC是一种面向runtime的语言,它会尽可能的把代码执行的决策从编译和链接的时候,推迟到运行时. objc_msgSend函数的原型如">
@@ -347,7 +347,9 @@
 <p><strong>id</strong></p>
 <p>objc_msgSend第一个参数的类型为id,它是一个指向类实例的指针:</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">typedef struct objc_object *id;</div></pre></td></tr></table></figure>
-
+<p><strong>SEL</strong></p>
+<p>SEL是selector在Objc中的表现类型(在swift中为Selector类型),selector是方法选择器,可以理解为是用来区分方法的ID,这个ID的数据机构是SEL.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">typedef struct objc_selector *SEL</div></pre></td></tr></table></figure>
       
     </div>
     
@@ -526,7 +528,7 @@
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright">&copy; <span itemprop="copyrightYear">2017</span>
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
   <span class="with-love">
     <i class="fa fa-user"></i>
   </span>
