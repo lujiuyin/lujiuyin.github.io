@@ -269,6 +269,155 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://hanqiu.info/2017/10/20/学习RxSwift记录Operators之Create Observables/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="汉秋">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="http://oanq2qjpp.bkt.clouddn.com/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="汉秋城">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/10/20/学习RxSwift记录Operators之Create Observables/" itemprop="url">学习RxSwift记录Operators之Create Observables</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-10-20T18:01:07+08:00">
+                2017-10-20
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/iOS开发学习/" itemprop="url" rel="index">
+                    <span itemprop="name">iOS开发学习</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h3 id="Create"><a href="#Create" class="headerlink" title="Create"></a>Create</h3><p><img src="http://oanq2qjpp.bkt.clouddn.com/create.png" alt=""></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">let source = Observable&lt;Any&gt;.create &#123; observer in</div><div class="line">            for i in 1...5 &#123;</div><div class="line">                observer.on(.next(i))</div><div class="line">            &#125;</div><div class="line">            observer.on(.completed)</div><div class="line"></div><div class="line">            return Disposables.create &#123;</div><div class="line">                print(&quot;disposed&quot;)</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        source.subscribe &#123;</div><div class="line">            print($0)</div><div class="line">        &#125;</div></pre></td></tr></table></figure>
+<p>输出：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">next(1)</div><div class="line">next(2)</div><div class="line">next(3)</div><div class="line">next(4)</div><div class="line">next(5)</div><div class="line">completed</div><div class="line">disposed</div></pre></td></tr></table></figure>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2017/10/20/学习RxSwift记录Operators之Create Observables/#espandi" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://hanqiu.info/2017/10/19/App开发图标素材/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -517,7 +666,7 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">@interface Person: NSObject &#123;</div><div class="line">@property NSString *firstName;</div><div class="line">@property NSString *secondName;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/2017/10/19/proptery属性/#more" rel="contents">
+            <a class="btn" href="/2017/10/19/proptery属性/#espandi" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -645,7 +794,7 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">static const NSTimeInterval kAnimationDuration = 0.3;</div></pre></td></tr></table></figure>
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/2017/10/19/Effective-Objective-C-2-0笔记/#more" rel="contents">
+            <a class="btn" href="/2017/10/19/Effective-Objective-C-2-0笔记/#espandi" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -791,7 +940,7 @@
           <p>iCarousel                  卡片切换<br>JSPatch                     js控制oc代码，修复线上bug<br>FoldingTabBar        q版tabbar<br>MMProgressHUD   各种动画的提示框<br>IQKeyboardManager     键盘问题<br>
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/2017/10/19/🐂👃的第三方库/#more" rel="contents">
+            <a class="btn" href="/2017/10/19/🐂👃的第三方库/#espandi" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -939,7 +1088,7 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath &#123;</div><div class="line">    static NSString *reuseIdentifier = @&quot;reuseIdentifier&quot;;</div><div class="line">    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:reuseIdentifier];</div><div class="line">    if (!cell) &#123;</div><div class="line">        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:reuseIdentifier];</div><div class="line">    &#125;</div><div class="line">    return cell;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/2017/10/19/UITableViewCell两种复用方式的区别/#more" rel="contents">
+            <a class="btn" href="/2017/10/19/UITableViewCell两种复用方式的区别/#espandi" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -1089,7 +1238,7 @@
 <h3 id="创建代码仓库，用于存储客户端上传的代码"><a href="#创建代码仓库，用于存储客户端上传的代码" class="headerlink" title="创建代码仓库，用于存储客户端上传的代码"></a>创建代码仓库，用于存储客户端上传的代码</h3><p>根据网上的教程是在终端输入下面的命令创建代码仓库，此时该路径下会多出一些文件。但是在此之前必须确保/Users/ljy/Desktop/svn/mycode已经存在。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">promote:~ ljy$ svnadmin create /Users/ljy/Desktop/svn/mycode</div><div class="line">promote:~ ljy$ cd /Users/ljy/Desktop/svn/mycode/</div><div class="line">promote:mycode ljy$ ls</div><div class="line">README.txt	db		hooks</div><div class="line">conf		format		locks</div></pre></td></tr></table></figure></p>
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/2017/10/19/mac环境下配置本地svn服务器/#more" rel="contents">
+            <a class="btn" href="/2017/10/19/mac环境下配置本地svn服务器/#espandi" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -1531,159 +1680,7 @@
 <h2 id="setNeedsLayout"><a href="#setNeedsLayout" class="headerlink" title="setNeedsLayout"></a>setNeedsLayout</h2><p>标记为需要重新布局，不立即刷新，但layoutSubviews一定会被调用<br>配合layoutIfNeeded立即更新<br>
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/2017/10/19/iOS-setNeedsLayout等布局方法/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://hanqiu.info/2017/10/19/OpenGL-ES学习记录/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="汉秋">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="http://oanq2qjpp.bkt.clouddn.com/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="汉秋城">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2017/10/19/OpenGL-ES学习记录/" itemprop="url">OpenGL ES学习记录</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-10-19T10:14:31+08:00">
-                2017-10-19
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/iOS开发学习/" itemprop="url" rel="index">
-                    <span itemprop="name">iOS开发学习</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <blockquote>
-<p>本学习记录参考OpenGL ES应用开发实践 指南iOS卷.pdf</p>
-</blockquote>
-<h1 id="3D渲染"><a href="#3D渲染" class="headerlink" title="3D渲染"></a>3D渲染</h1><p>屏幕只有2维，想要在屏幕展示3D的效果，首先我们就需要一些3D效果的数据，然后将这些3D数据通过计算机的计算、渲染转化为2D的数据，从而迷惑人们的眼睛使其产生3D的效果。</p>
-<p>用3D数据生成一个2D图像的过程就是所谓的渲染。计算机中图片是有一个个像素构成的，当你把一张图片放大很多倍后你会发现它是由一个个小方格组成了一张图。每个小方格都有自己的颜色，如果一张图由很少的像素组成的话，就会很模糊、很方。</p>
-<p>OpenGL ES部分运行在cpu上，部分运行在gpu上。OpenGL ES横跨两个处理器之间。<br>CPU负责提供3D数据，将计算好的数据提供给GPU渲染，但是由于计算机对于内存的访问较慢，且数据交换时会阻塞cpu运行。</p>
-<h1 id="缓存"><a href="#缓存" class="headerlink" title="缓存"></a>缓存</h1><p>对于上面遇到的问题，OpenGL ES为两者的数据交换定义了缓存的概念。首先cpu将计算的数据放入换乘，然后就可以放弃对缓存的控制去处理其他事务，这是gpu就可以独自占有缓存的控制权。<br>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2017/10/19/OpenGL-ES学习记录/#more" rel="contents">
+            <a class="btn" href="/2017/10/19/iOS-setNeedsLayout等布局方法/#espandi" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -1775,7 +1772,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">21</span>
+                  <span class="site-state-item-count">22</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
