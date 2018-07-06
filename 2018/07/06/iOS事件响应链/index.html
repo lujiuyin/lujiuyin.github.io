@@ -94,7 +94,7 @@
 <meta property="og:description" content="iOS事件的产生、传递、响应iOS事件iOS中事件分为三种,触摸事件、加速计事件、远程事件,这里我们讨论的是触摸事件. 当我们在手指触摸到手机屏幕上时,系统硬件会把触摸信息封装并传递给正在打开的app,这个触摸信息会被添加到application的事件队列中(FIFO),这就是一个事件的产生. 对于事件的传递,它只能是在响应者之间传递,什么是响应者?在iOS中继承了UIResponder的UIVi">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://oanq2qjpp.bkt.clouddn.com/1055199-2a49a16e1e483b5c.png">
-<meta property="og:updated_time" content="2018-07-06T08:59:24.000Z">
+<meta property="og:updated_time" content="2018-07-06T09:01:26.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="iOS事件响应链">
 <meta name="twitter:description" content="iOS事件的产生、传递、响应iOS事件iOS中事件分为三种,触摸事件、加速计事件、远程事件,这里我们讨论的是触摸事件. 当我们在手指触摸到手机屏幕上时,系统硬件会把触摸信息封装并传递给正在打开的app,这个触摸信息会被添加到application的事件队列中(FIFO),这就是一个事件的产生. 对于事件的传递,它只能是在响应者之间传递,什么是响应者?在iOS中继承了UIResponder的UIVi">
@@ -342,6 +342,7 @@
 <p>当我们在手指触摸到手机屏幕上时,系统硬件会把触摸信息封装并传递给正在打开的app,这个触摸信息会被添加到application的事件队列中(FIFO),这就是一个事件的产生.</p>
 <p>对于事件的传递,它只能是在响应者之间传递,什么是响应者?在iOS中继承了UIResponder的UIView、UIWindow、UIApplication都是响应者,在UIResponder中对应着处理上述三种事件的方法.</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">//触摸事件</div><div class="line">- (void)touchesBegan:(NSSet&lt;UITouch *&gt; *)touches withEvent:(nullable UIEvent *)event;</div><div class="line">- (void)touchesMoved:(NSSet&lt;UITouch *&gt; *)touches withEvent:(nullable UIEvent *)event;</div><div class="line">- (void)touchesEnded:(NSSet&lt;UITouch *&gt; *)touches withEvent:(nullable UIEvent *)event;</div><div class="line">- (void)touchesCancelled:(NSSet&lt;UITouch *&gt; *)touches withEvent:(nullable UIEvent *)event;</div><div class="line"></div><div class="line">//加速计事件</div><div class="line">- (void)motionBegan:(UIEventSubtype)motion withEvent:(nullable UIEvent *)event NS_AVAILABLE_IOS(3_0);</div><div class="line">- (void)motionEnded:(UIEventSubtype)motion withEvent:(nullable UIEvent *)event NS_AVAILABLE_IOS(3_0);</div><div class="line">- (void)motionCancelled:(UIEventSubtype)motion withEvent:(nullable UIEvent *)event NS_AVAILABLE_IOS(3_0);</div><div class="line"></div><div class="line">//远程事件</div><div class="line">- (void)remoteControlReceivedWithEvent:(nullable UIEvent *)event NS_AVAILABLE_IOS(4_0);</div></pre></td></tr></table></figure>
+<a id="more"></a>
 <p>一个事件的传递方向是从父试图传递给子视图的,在事件的传递过程中,我们需要找到一个最适合处理这个事件的响应者.</p>
 <p>一个合格的响应者应该具备下面的条件,否则是不能处理事件</p>
 <p>1、userInteractionEnabled=YES;</p>
